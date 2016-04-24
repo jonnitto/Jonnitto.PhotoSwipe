@@ -1,0 +1,26 @@
+{
+  "name": "NeosPhotoSwipe",
+  "description": "Dependencies for PhotoSwipe",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonnitto/NeosPhotoswipe.git"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "cssnano-cli": "latest",
+    "node-sass": "latest",
+    "photoswipe": "https://github.com/jonnitto/PhotoSwipe.git",
+    "uglifyify": "latest"
+  },
+  "scripts": {
+    "build:assets": "rsync -av node_modules/photoswipe/dist/default-skin/* Resources/Public --exclude *.css",
+    "build:js": "browserify Resources/Private/Javascripts/PhotoSwipe.js | uglifyjs -c > Resources/Public/Main.js",
+    "build:rawjs":  "browserify Resources/Private/Javascripts/PhotoSwipe.js -o Resources/Public/Main.js",
+    "build:dark": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Styles/PhotoSwipe-Dark.scss Resources/Public/PhotoSwipe-Dark.css | cssnano Resources/Public/PhotoSwipe-Dark.css Resources/Public/PhotoSwipe-Dark.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
+    "build:light": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Styles/PhotoSwipe-Light.scss Resources/Public/PhotoSwipe-Light.css | cssnano Resources/Public/PhotoSwipe-Light.css Resources/Public/PhotoSwipe-Light.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
+    "build:css": "npm run build:dark && npm run build:light",
+    "build": "npm run build:assets && npm run build:css && npm run build:js",
+    "start": "npm run build"
+  }
+}

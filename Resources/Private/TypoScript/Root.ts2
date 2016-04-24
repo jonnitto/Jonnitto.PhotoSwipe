@@ -1,0 +1,5 @@
+namespace: TypoScript=TYPO3.TypoScript
+namespace: Neos=TYPO3.Neos
+namespace: PhotoSwipe=Jonnitto.PhotoSwipe
+
+include: Prototypes/*

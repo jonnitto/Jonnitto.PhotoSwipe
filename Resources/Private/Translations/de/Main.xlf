@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Jonnitto.PhotoSwipe" source-language="de" datatype="plaintext">
+		<body>
+			<trans-unit id="close" xml:space="preserve">
+				<source>Schließen (Esc)</source>
+			</trans-unit>
+			<trans-unit id="share" xml:space="preserve">
+				<source>Teilen</source>
+			</trans-unit>
+			<trans-unit id="fullscreen" xml:space="preserve">
+				<source>Vollbildmodus ein-/ausschalten</source>
+			</trans-unit>
+			<trans-unit id="zoom" xml:space="preserve">
+				<source>Rein/Rauszoomen</source>
+			</trans-unit>
+			<trans-unit id="prev" xml:space="preserve">
+				<source>Zurück (Pfeiltaste links)</source>
+			</trans-unit>
+			<trans-unit id="next" xml:space="preserve">
+				<source>Vorwärts (Pfeiltaste rechts)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

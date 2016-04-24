@@ -1,0 +1,31 @@
+{
+    "name": "jonnitto/photoswipe",
+    "type": "typo3-flow-plugin",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "PhotoSwipe for Neos CMS",
+    "keywords": ["flow", "neos", "gallery", "lightbox", "photo", "image"],
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/neos": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jonnitto\\PhotoSwipe": "Classes"
+        }
+    },
+    "extra": {
+        "marketplace-account": "me@jonnitto.ch",
+        "installer-name": "Jonnitto.PhotoSwipe",
+        "neos": {
+            "package-key": "Jonnitto.PhotoSwipe"
+        }
+    }
+}

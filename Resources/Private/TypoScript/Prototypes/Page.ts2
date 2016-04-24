@@ -1,0 +1,34 @@
+prototype(Neos:Page) {
+	@context.includeLightbox = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()}
+	head.photoswipe = TypoScript:Tag {
+		@context.cssFile = ${Configuration.setting('Jonnitto.PhotoSwipe.includeCSS')}
+
+		tagName = 'link'
+		attributes {
+			rel = 'stylesheet'
+			href = TypoScript:ResourceUri {
+				path = ${'resource://Jonnitto.PhotoSwipe/Public/PhotoSwipe-' + cssFile + '.css'}
+			}
+		}
+		@if.includeLighboxAndActive = ${includeLightbox && cssFile}
+	}
+
+	body {
+		javascripts {
+			photoswipeMarkup = TypoScript:Template {
+				photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+				templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/TypoScriptObjects/Markup.html'
+				@position = 'start 1'
+				@if.includeLighbox = ${includeLightbox}
+			}
+			photoswipeJavascript = TypoScript:Tag {
+				tagName = 'script'
+				attributes.src = TypoScript:ResourceUri {
+					path = 'resource://Jonnitto.PhotoSwipe/Public/Main.js'
+				}
+				@position = 'end'
+				@if.includeLighboxAndActive = ${includeLightbox && Configuration.setting('Jonnitto.PhotoSwipe.includeJavascript')}
+			}
+		}
+	}
+}
