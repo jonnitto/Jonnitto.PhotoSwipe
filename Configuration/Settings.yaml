@@ -13,6 +13,7 @@ Jonnitto:
     includeJavascript: TRUE
     includeCSS: Dark  # Light / Dark / FALSE
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
+    bgOpacity: 0.8
     show:
       topbar: TRUE
       counter: TRUE

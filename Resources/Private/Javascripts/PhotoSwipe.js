@@ -4,37 +4,36 @@ var PhotoSwipeUI = require('photoswipe/dist/photoswipe-ui-default.js');
 window.initPhotoSwipeFromDOM = function(gallerySelector) {
 	var lightboxSelector = '.lightbox';
 	var parseThumbnailElements = function(el) {
-		var thumbElements = el.querySelectorAll(lightboxSelector);
-		var numNodes = thumbElements.length;
+		var lighboxElements = el.querySelectorAll(lightboxSelector);
+		var numNodes = lighboxElements.length;
 		var items = [];
-		var figureEl;
-		var linkEl;
+		var element;
 		var size;
 		var item;
+		var image;
 		var figcaption;
 
 		for (var i = 0; i < numNodes; i++) {
-			linkEl = thumbElements[i];
-			size = linkEl.getAttribute('data-size').split('x');
+			element = lighboxElements[i];
+			size = element.getAttribute('data-size').split('x');
 			item = {
-				src: linkEl.getAttribute('href'),
+				src: element.getAttribute('href'),
 				w: parseInt(size[0], 10),
 				h: parseInt(size[1], 10)
 			};
-			figureEl = linkEl.parentNode;
+			figcaption = element.parentNode.querySelector('figcaption');
+			image = element.querySelector('img');
 
-			if (figureEl.children.length > 1) {
-				figcaption = figureEl.children[1];
+			if (figcaption) {
 				item.title = figcaption.innerText || figcaption.textContent || false;
 			}
 
-			if (linkEl.children.length > 0) {
-				// <img> thumbnail element, retrieving thumbnail url
-				item.msrc = linkEl.children[0].getAttribute('src');
+			if (image) {
+				item.msrc = image.getAttribute('src');
 			}
 
-			item.el = figureEl; // save link to element for getThumbBoundsFn
-			items.push(item);
+			item.el = element;
+			items[items.length] = item;
 		}
 
 		return items;
@@ -77,9 +76,7 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 		}
 
 		if (index >= 0) {
-			// open PhotoSwipe if valid index found
 			openPhotoSwipe(index, clickedGallery);
-
 		}
 		return false;
 	};
@@ -113,15 +110,15 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 	};
 
 	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-		var pswpElement = document.querySelectorAll('.pswp')[0];
+		var pswpElement = document.getElementById('pswp');
+		var opacity = pswpElement.getAttribute('data-opacity');
 		var gallery;
 		var options;
-		var items;
-
-		items = parseThumbnailElements(galleryElement);
+		var items = parseThumbnailElements(galleryElement);
 
 		// define options (if needed)
 		options = {
+			bgOpacity: opacity ? parseFloat(opacity) : 0,
 
 			// define gallery index (for URL)
 			galleryUID: galleryElement.getAttribute('data-pswp-uid'),

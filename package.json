@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build:assets": "rsync -av node_modules/photoswipe/dist/default-skin/* Resources/Public --exclude *.css",
-    "build:js": "browserify Resources/Private/Javascripts/PhotoSwipe.js | uglifyjs -c > Resources/Public/Main.js",
+    "build:js": "browserify Resources/Private/Javascripts/PhotoSwipe.js | uglifyjs --mangle --compress > Resources/Public/Main.js",
     "build:rawjs":  "browserify Resources/Private/Javascripts/PhotoSwipe.js -o Resources/Public/Main.js",
     "build:dark": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Styles/PhotoSwipe-Dark.scss Resources/Public/PhotoSwipe-Dark.css | cssnano Resources/Public/PhotoSwipe-Dark.css Resources/Public/PhotoSwipe-Dark.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
     "build:light": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Styles/PhotoSwipe-Light.scss Resources/Public/PhotoSwipe-Light.css | cssnano Resources/Public/PhotoSwipe-Light.css Resources/Public/PhotoSwipe-Light.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
