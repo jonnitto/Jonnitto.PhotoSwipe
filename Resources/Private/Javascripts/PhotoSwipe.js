@@ -1,5 +1,5 @@
-var PhotoSwipe = require('photoswipe');
-var PhotoSwipeUI = require('photoswipe/dist/photoswipe-ui-default.js');
+window.PhotoSwipe = require('photoswipe');
+window.PhotoSwipeUI = require('photoswipe/dist/photoswipe-ui-default.js');
 
 window.initPhotoSwipeFromDOM = function(gallerySelector) {
 	var lightboxSelector = '.lightbox';
