@@ -1,4 +1,4 @@
-<div id="pswp" class="pswp" tabindex="-1" role="dialog" aria-hidden="true"{f:if(condition:photoswipe.bgOpacity,then: 'data-opacity="{photoswipe.bgOpacity}"')}>
+<div{attributes -> f:format.raw()}>
 	<div class="pswp__bg"></div>
 	<div class="pswp__scroll-wrap">
 		<div class="pswp__container">
@@ -8,7 +8,9 @@
 		</div>
 		<div class="pswp__ui pswp__ui--hidden">
 			<f:if condition="{photoswipe.show.topbar}"><div class="pswp__top-bar"></f:if>
-				<div class="pswp__counter"{f:if(condition:photoswipe.show.counter,else: 'style="display:none;"')}></div>
+				<f:if condition="{photoswipe.show.counter}">
+					<div class="pswp__counter"></div>
+				</f:if>
 				<f:if condition="{photoswipe.show.close}">
 					<button class="pswp__button pswp__button--close" title="{f:translate(id:'close',package:'Jonnitto.PhotoSwipe')}"></button>
 				</f:if>
@@ -36,7 +38,9 @@
 				<button class="pswp__button pswp__button--arrow--left" title="{f:translate(id:'prev',package:'Jonnitto.PhotoSwipe')}"></button>
 				<button class="pswp__button pswp__button--arrow--right" title="{f:translate(id:'next',package:'Jonnitto.PhotoSwipe')}"></button>
 			</f:if>
-			<div class="pswp__caption"{f:if(condition:photoswipe.show.caption,else: 'style="display:none;"')}><div class="pswp__caption__center"></div></div>
+			<f:if condition="{photoswipe.show.caption}">
+				<div class="pswp__caption"><div class="pswp__caption__center"></div></div>
+			</f:if>
 		</div>
 	</div>
 </div>

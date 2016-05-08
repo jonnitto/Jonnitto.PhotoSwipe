@@ -7,3 +7,7 @@ $pswp__caption-color: #333;
 
 @import 'main';
 @import 'default-skin/default-skin';
+
+.pswp--zoom-allowed[data-zoom="false"] .pswp__img {
+	cursor: default;
+}

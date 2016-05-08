@@ -14,6 +14,7 @@ Jonnitto:
     includeCSS: Dark  # Light / Dark / FALSE
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
+    alwaysInclude: FALSE
     show:
       topbar: TRUE
       counter: TRUE
@@ -23,3 +24,6 @@ Jonnitto:
       zoom: TRUE
       arrows: TRUE
       caption: TRUE
+      modal: TRUE
+      preloader: TRUE
+      zoomEffect: TRUE

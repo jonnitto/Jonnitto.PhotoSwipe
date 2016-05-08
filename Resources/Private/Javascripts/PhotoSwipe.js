@@ -109,9 +109,17 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 		return params;
 	};
 
+	var getBoolean = function(key) {
+		return (pswpElement.getAttribute('data-' + key) === 'true');
+	};
+
+	var pswpElement;
+
 	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-		var pswpElement = document.getElementById('pswp');
+		pswpElement = document.getElementById('pswp');
 		var opacity = pswpElement.getAttribute('data-opacity');
+		var effect = getBoolean('effect');
+		var zoom = getBoolean('zoom');
 		var gallery;
 		var options;
 		var items = parseThumbnailElements(galleryElement);
@@ -119,20 +127,51 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 		// define options (if needed)
 		options = {
 			bgOpacity: opacity ? parseFloat(opacity) : 0,
+			zoomEl: zoom,
 
 			// define gallery index (for URL)
 			galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
-			getThumbBoundsFn: function(index) {
-				// See Options -> getThumbBoundsFn section of documentation for more info
-				var thumbnail = items[index].el.getElementsByTagName('img')[0]; // find thumbnail
-				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-				var rect = thumbnail.getBoundingClientRect();
-
-				return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
-			}
-
+			counterEl: getBoolean('counter'),
+			closeEl: getBoolean('close'),
+			captionEl: getBoolean('caption'),
+			fullscreenEl: getBoolean('fullscreen'),
+			close: getBoolean('close'),
+			modal: getBoolean('modal'),
+			shareEl: getBoolean('share'),
+			arrowEl: getBoolean('arrows'),
+			preloaderEl: getBoolean('preloader'),
+			showHideOpacity: effect ? false : true
 		};
+
+		if (effect) {
+			options.getThumbBoundsFn = function(index) {
+				// See Options -> getThumbBoundsFn section of documentation for more info
+				var element = items[index].el;
+				var thumbnail = element.getElementsByTagName('img')[0]; // find thumbnail
+
+				if (!element || !thumbnail) {
+					return {};
+				}
+
+				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+				var width = window.innerWidth;
+				var rect = thumbnail.getBoundingClientRect();
+				return {
+					x: rect.left,
+					y: rect.top + pageYScroll,
+					w: rect.width
+				};
+			};
+		}
+
+		if (!zoom) {
+			options.zoomEl = false;
+			options.maxSpreadZoom = 1;
+			options.getDoubleTapZoom = function(isMouseClick, item) {
+				return item.initialZoomLevel;
+			};
+		}
 
 		// PhotoSwipe opened from URL
 		if (fromURL) {

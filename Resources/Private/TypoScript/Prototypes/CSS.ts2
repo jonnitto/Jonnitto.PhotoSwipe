@@ -1,0 +1,11 @@
+prototype(PhotoSwipe:TagCSS) <  prototype(TypoScript:Tag) {
+	@context.photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+	tagName = 'link'
+	attributes {
+		rel = 'stylesheet'
+		href = TypoScript:ResourceUri {
+			path = ${'resource://Jonnitto.PhotoSwipe/Public/PhotoSwipe-' + photoswipe.includeCSS + '.css'}
+		}
+	}
+	@if.includeLightbox = ${(photoswipe.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()) && photoswipe.includeCSS}
+}
