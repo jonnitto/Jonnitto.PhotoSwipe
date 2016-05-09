@@ -15,6 +15,10 @@ Jonnitto:
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
     alwaysInclude: FALSE
+    executeJS: TRUE
+    selector:
+      lightbox: '.lightbox'
+      gallery: 'body'
     show:
       topbar: TRUE
       arrows: TRUE

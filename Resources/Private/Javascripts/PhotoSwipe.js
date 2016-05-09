@@ -7,10 +7,30 @@ if (typeof neosPhotoSwipe.defaults !== 'object') {
 	neosPhotoSwipe.defaults = {};
 }
 
-neosPhotoSwipe.init = function(gallerySelector) {
-	var lightboxSelector = '.lightbox';
+if (typeof neosPhotoSwipe.pswp !== 'object') {
+	neosPhotoSwipe.pswp = document.getElementById('pswp');
+}
+
+neosPhotoSwipe.open = function(items, options) {
+	if (typeof options === 'undefined') {
+		options = neosPhotoSwipe.defaults;
+	}
+	if (Object.prototype.toString.call(items) == '[object Array]') {
+		// Pass data to PhotoSwipe and initialize it
+		neosPhotoSwipe.gallery = new PhotoSwipe(neosPhotoSwipe.pswp, PhotoSwipeUI, items, options);
+		neosPhotoSwipe.gallery.init();
+	} else {
+		return 'Please define items for neosPhotoSwipe.open';
+	}
+};
+
+neosPhotoSwipe.init = function(selector) {
+	if (typeof selector.lightbox !== 'string') {
+		selector.lightbox = '.lightbox';
+	}
+
 	var parseThumbnailElements = function(el) {
-		var lighboxElements = el.querySelectorAll(lightboxSelector);
+		var lighboxElements = el.querySelectorAll(selector.lightbox);
 		var numNodes = lighboxElements.length;
 		var items = [];
 		var element;
@@ -72,7 +92,7 @@ neosPhotoSwipe.init = function(gallerySelector) {
 		var clickedGallery = closest(_this, function(element) {
 			return (element.hasAttribute('data-pswp-uid'));
 		});
-		var childNodes = clickedGallery.querySelectorAll(lightboxSelector);
+		var childNodes = clickedGallery.querySelectorAll(selector.lightbox);
 		var numChildNodes = childNodes.length;
 		var nodeIndex = 0;
 		var index;
@@ -124,13 +144,11 @@ neosPhotoSwipe.init = function(gallerySelector) {
 	};
 
 	var getBoolean = function(key) {
-		return (pswpElement.getAttribute('data-' + key) === 'true');
+		return (neosPhotoSwipe.pswp.getAttribute('data-' + key) !== null);
 	};
 
-	var pswpElement = document.getElementById('pswp');
-
 	var settings = {
-		opacity: pswpElement.getAttribute('data-opacity'),
+		opacity: neosPhotoSwipe.pswp.getAttribute('data-opacity'),
 		effect: getBoolean('effect'),
 		zoom: getBoolean('zoom')
 	};
@@ -161,7 +179,6 @@ neosPhotoSwipe.init = function(gallerySelector) {
 			}
 
 			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var width = window.innerWidth;
 			var rect = thumbnail.getBoundingClientRect();
 			return {
 				x: rect.left,
@@ -180,19 +197,6 @@ neosPhotoSwipe.init = function(gallerySelector) {
 	}
 
 	extend(neosPhotoSwipe.defaults, defaults);
-
-	neosPhotoSwipe.open = function(items, options) {
-		if (typeof options === 'undefined') {
-			options = neosPhotoSwipe.defaults;
-		}
-		if (Object.prototype.toString.call(items) == '[object Array]') {
-			// Pass data to PhotoSwipe and initialize it
-			neosPhotoSwipe.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
-			neosPhotoSwipe.gallery.init();
-		} else {
-			return 'Please define items for neosPhotoSwipe.open';
-		}
-	};
 
 	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL, opt) {
 		var items = parseThumbnailElements(galleryElement);
@@ -238,14 +242,14 @@ neosPhotoSwipe.init = function(gallerySelector) {
 
 	// loop through all gallery elements and bind events
 	var galleryElements = [];
-	if (typeof gallerySelector === 'object') {
-		if (typeof gallerySelector.length == 'number') {
-			galleryElements = gallerySelector;
+	if (typeof selector.gallery === 'object') {
+		if (typeof selector.gallery.length == 'number') {
+			galleryElements = selector.gallery;
 		} else {
-			galleryElements[0] = gallerySelector;
+			galleryElements[0] = selector.gallery;
 		}
-	} else if (typeof gallerySelector === 'string') {
-		galleryElements = document.querySelectorAll(gallerySelector);
+	} else if (typeof selector.gallery === 'string') {
+		galleryElements = document.querySelectorAll(selector.gallery);
 	} else {
 		galleryElements[0] = document.body;
 	}
@@ -254,7 +258,7 @@ neosPhotoSwipe.init = function(gallerySelector) {
 		galleryElements[i].setAttribute('data-pswp-uid', i + 1);
 	}
 
-	var lightbox = document.querySelectorAll(lightboxSelector);
+	var lightbox = document.querySelectorAll(selector.lightbox);
 	var lightboxLength = lightbox.length;
 	while (lightboxLength--) {
 		lightbox[lightboxLength].addEventListener('click', onThumbnailsClick);
@@ -267,12 +271,15 @@ neosPhotoSwipe.init = function(gallerySelector) {
 	}
 };
 
-// execute above function
-neosPhotoSwipe.init();
+neosPhotoSwipe.initDom = function() {
+	var gallery = neosPhotoSwipe.pswp.getAttribute('data-gallery') || false;
+	var lightbox = neosPhotoSwipe.pswp.getAttribute('data-lightbox') || false;
+	neosPhotoSwipe.init({
+		gallery: gallery,
+		lightbox: lightbox
+	});
+};
 
-// (function() {
-// 	var events = ['ContentModuleLoaded','PageLoaded','NodeCreated'];
-// 	for (var i = 0; i < events.length; i++) {
-// 		document.addEventListener('Neos.' + events[i], initPhotoSwipe);
-// 	}
-// })();
+if (neosPhotoSwipe.pswp.getAttribute('data-init') !== null) {
+	neosPhotoSwipe.initDom();
+}

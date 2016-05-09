@@ -1,6 +1,6 @@
 prototype(PhotoSwipe:Markup) <  prototype(TypoScript:Template) {
-	photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-	@context.photoswipe = ${this.photoswipe}
+	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+	@context.settings = ${this.settings}
 
 	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/TypoScriptObjects/Markup.html'
 	attributes = TypoScript:Attributes {
@@ -12,17 +12,20 @@ prototype(PhotoSwipe:Markup) <  prototype(TypoScript:Template) {
 		tabindex = '-1'
 		role = 'dialog'
 		aria-hidden = 'true'
-		data-arrows = ${photoswipe.show.arrows ? 'true' : 'false'}
-		data-caption = ${photoswipe.show.caption ? 'true' : 'false'}
-		data-close = ${photoswipe.show.close ? 'true' : 'false'}
-		data-counter = ${photoswipe.show.counter ? 'true' : 'false'}
-		data-effect = ${photoswipe.show.zoomEffect ? 'true' : 'false'}
-		data-fullscreen = ${photoswipe.show.fullscreen ? 'true' : 'false'}
-		data-modal = ${photoswipe.show.modal ? 'true' : 'false'}
-		data-opacity = ${photoswipe.bgOpacity ? photoswipe.bgOpacity : false}
-		data-preloader = ${photoswipe.show.preloader ? 'true' : 'false'}
-		data-share = ${photoswipe.show.share ? 'true' : 'false'}
-		data-zoom = ${photoswipe.show.zoom ? 'true' : 'false'}
+		data-init = ${settings.executeJS}
+		data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
+		data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
+		data-arrows = ${settings.show.arrows}
+		data-caption = ${settings.show.caption}
+		data-close = ${settings.show.close}
+		data-counter = ${settings.show.counter}
+		data-effect = ${settings.show.zoomEffect}
+		data-fullscreen = ${settings.show.fullscreen}
+		data-modal = ${settings.show.modal}
+		data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
+		data-preloader = ${settings.show.preloader}
+		data-share = ${settings.show.share}
+		data-zoom = ${settings.show.zoom}
 	}
-	@if.includeLightbox = ${photoswipe.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()}
+	@if.includeLightbox = ${settings.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()}
 }
