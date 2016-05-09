@@ -17,13 +17,13 @@ Jonnitto:
     alwaysInclude: FALSE
     show:
       topbar: TRUE
-      counter: TRUE
-      close: TRUE
-      share: TRUE
-      fullscreen: TRUE
-      zoom: TRUE
       arrows: TRUE
       caption: TRUE
+      close: TRUE
+      counter: TRUE
+      fullscreen: TRUE
       modal: TRUE
       preloader: TRUE
+      share: TRUE
+      zoom: TRUE
       zoomEffect: TRUE

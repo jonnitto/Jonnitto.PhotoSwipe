@@ -7,22 +7,22 @@ prototype(PhotoSwipe:Markup) <  prototype(TypoScript:Template) {
 		id = 'pswp'
 		class = TypoScript:RawArray {
 			default = 'pswp'
-			zoom = ${photoswipe.zoom ? 'pswp-no-zoom' : false}
+			zoom = ${photoswipe.zoom ? false : 'pswp-no-zoom'}
 		}
 		tabindex = '-1'
 		role = 'dialog'
 		aria-hidden = 'true'
-		data-opacity = ${photoswipe.bgOpacity ? photoswipe.bgOpacity : false}
-		data-close = ${photoswipe.show.close ? 'true' : 'false'}
-		data-caption = ${photoswipe.show.caption ? 'true' : 'false'}
-		data-fullscreen = ${photoswipe.show.fullscreen ? 'true' : 'false'}
-		data-zoom = ${photoswipe.show.zoom ? 'true' : 'false'}
-		data-modal = ${photoswipe.show.modal ? 'true' : 'false'}
-		data-effect = ${photoswipe.show.zoomEffect ? 'true' : 'false'}
-		data-close = ${photoswipe.show.close ? 'true' : 'false'}
-		data-share = ${photoswipe.show.share ? 'true' : 'false'}
 		data-arrows = ${photoswipe.show.arrows ? 'true' : 'false'}
+		data-caption = ${photoswipe.show.caption ? 'true' : 'false'}
+		data-close = ${photoswipe.show.close ? 'true' : 'false'}
+		data-counter = ${photoswipe.show.counter ? 'true' : 'false'}
+		data-effect = ${photoswipe.show.zoomEffect ? 'true' : 'false'}
+		data-fullscreen = ${photoswipe.show.fullscreen ? 'true' : 'false'}
+		data-modal = ${photoswipe.show.modal ? 'true' : 'false'}
+		data-opacity = ${photoswipe.bgOpacity ? photoswipe.bgOpacity : false}
 		data-preloader = ${photoswipe.show.preloader ? 'true' : 'false'}
+		data-share = ${photoswipe.show.share ? 'true' : 'false'}
+		data-zoom = ${photoswipe.show.zoom ? 'true' : 'false'}
 	}
 	@if.includeLightbox = ${photoswipe.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()}
 }

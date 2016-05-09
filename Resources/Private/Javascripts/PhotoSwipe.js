@@ -1,7 +1,13 @@
 window.PhotoSwipe = require('photoswipe');
 window.PhotoSwipeUI = require('photoswipe/dist/photoswipe-ui-default.js');
+if (typeof neosPhotoSwipe !== 'object') {
+	window.neosPhotoSwipe = {};
+}
+if (typeof neosPhotoSwipe.defaults !== 'object') {
+	neosPhotoSwipe.defaults = {};
+}
 
-window.initPhotoSwipeFromDOM = function(gallerySelector) {
+neosPhotoSwipe.init = function(gallerySelector) {
 	var lightboxSelector = '.lightbox';
 	var parseThumbnailElements = function(el) {
 		var lighboxElements = el.querySelectorAll(lightboxSelector);
@@ -42,6 +48,14 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 	// find nearest parent element
 	var closest = function closest(element, fn) {
 		return element && (fn(element) ? element : closest(element.parentNode, fn));
+	};
+
+	// Extend Objects
+	var extend = function(obj, src) {
+		Object.keys(src).forEach(function(key) {
+			obj[key] = src[key];
+		});
+		return obj;
 	};
 
 	// triggers when user clicks on thumbnail
@@ -113,65 +127,78 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 		return (pswpElement.getAttribute('data-' + key) === 'true');
 	};
 
-	var pswpElement;
+	var pswpElement = document.getElementById('pswp');
 
-	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-		pswpElement = document.getElementById('pswp');
-		var opacity = pswpElement.getAttribute('data-opacity');
-		var effect = getBoolean('effect');
-		var zoom = getBoolean('zoom');
-		var gallery;
-		var options;
-		var items = parseThumbnailElements(galleryElement);
+	var settings = {
+		opacity: pswpElement.getAttribute('data-opacity'),
+		effect: getBoolean('effect'),
+		zoom: getBoolean('zoom')
+	};
 
-		// define options (if needed)
-		options = {
-			bgOpacity: opacity ? parseFloat(opacity) : 0,
-			zoomEl: zoom,
+	var defaults = {
+		bgOpacity: settings.opacity ? parseFloat(settings.opacity) : 0,
+		zoomEl: settings.zoom,
+		counterEl: getBoolean('counter'),
+		closeEl: getBoolean('close'),
+		captionEl: getBoolean('caption'),
+		fullscreenEl: getBoolean('fullscreen'),
+		close: getBoolean('close'),
+		modal: getBoolean('modal'),
+		shareEl: getBoolean('share'),
+		arrowEl: getBoolean('arrows'),
+		preloaderEl: getBoolean('preloader'),
+		showHideOpacity: settings.effect ? false : true
+	};
 
-			// define gallery index (for URL)
-			galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+	if (settings.effect) {
+		defaults.getThumbBoundsFn = function(index) {
+			// See Options -> getThumbBoundsFn section of documentation for more info
+			var element = items[index].el;
+			var thumbnail = element.getElementsByTagName('img')[0]; // find thumbnail
 
-			counterEl: getBoolean('counter'),
-			closeEl: getBoolean('close'),
-			captionEl: getBoolean('caption'),
-			fullscreenEl: getBoolean('fullscreen'),
-			close: getBoolean('close'),
-			modal: getBoolean('modal'),
-			shareEl: getBoolean('share'),
-			arrowEl: getBoolean('arrows'),
-			preloaderEl: getBoolean('preloader'),
-			showHideOpacity: effect ? false : true
+			if (!element || !thumbnail) {
+				return {};
+			}
+
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+			var width = window.innerWidth;
+			var rect = thumbnail.getBoundingClientRect();
+			return {
+				x: rect.left,
+				y: rect.top + pageYScroll,
+				w: rect.width
+			};
 		};
+	}
 
-		if (effect) {
-			options.getThumbBoundsFn = function(index) {
-				// See Options -> getThumbBoundsFn section of documentation for more info
-				var element = items[index].el;
-				var thumbnail = element.getElementsByTagName('img')[0]; // find thumbnail
+	if (!settings.zoom) {
+		defaults.zoomEl = false;
+		defaults.maxSpreadZoom = 1;
+		defaults.getDoubleTapZoom = function(isMouseClick, item) {
+			return item.initialZoomLevel;
+		};
+	}
 
-				if (!element || !thumbnail) {
-					return {};
-				}
+	extend(neosPhotoSwipe.defaults, defaults);
 
-				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-				var width = window.innerWidth;
-				var rect = thumbnail.getBoundingClientRect();
-				return {
-					x: rect.left,
-					y: rect.top + pageYScroll,
-					w: rect.width
-				};
-			};
+	neosPhotoSwipe.open = function(items, options) {
+		if (typeof options === 'undefined') {
+			options = neosPhotoSwipe.defaults;
 		}
-
-		if (!zoom) {
-			options.zoomEl = false;
-			options.maxSpreadZoom = 1;
-			options.getDoubleTapZoom = function(isMouseClick, item) {
-				return item.initialZoomLevel;
-			};
+		if (Object.prototype.toString.call(items) == '[object Array]') {
+			// Pass data to PhotoSwipe and initialize it
+			neosPhotoSwipe.gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
+			neosPhotoSwipe.gallery.init();
+		} else {
+			return 'Please define items for neosPhotoSwipe.open';
 		}
+	};
+
+	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL, opt) {
+		var items = parseThumbnailElements(galleryElement);
+		var options = neosPhotoSwipe.defaults;
+		// define gallery index (for URL)
+		options.galleryUID = galleryElement.getAttribute('data-pswp-uid');
 
 		// PhotoSwipe opened from URL
 		if (fromURL) {
@@ -201,9 +228,12 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 			options.showAnimationDuration = 0;
 		}
 
+		if (typeof opt === 'object') {
+			extend(options, opt);
+		}
+
 		// Pass data to PhotoSwipe and initialize it
-		gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
-		gallery.init();
+		neosPhotoSwipe.open(items, options);
 	};
 
 	// loop through all gallery elements and bind events
@@ -238,7 +268,7 @@ window.initPhotoSwipeFromDOM = function(gallerySelector) {
 };
 
 // execute above function
-initPhotoSwipeFromDOM();
+neosPhotoSwipe.init();
 
 // (function() {
 // 	var events = ['ContentModuleLoaded','PageLoaded','NodeCreated'];
