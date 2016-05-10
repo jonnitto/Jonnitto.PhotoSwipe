@@ -155,7 +155,6 @@ neosPhotoSwipe.init = function(selector) {
 
 	var defaults = {
 		bgOpacity: settings.opacity ? parseFloat(settings.opacity) : 0,
-		zoomEl: settings.zoom,
 		counterEl: getBoolean('counter'),
 		closeEl: getBoolean('close'),
 		captionEl: getBoolean('caption'),
@@ -167,26 +166,6 @@ neosPhotoSwipe.init = function(selector) {
 		preloaderEl: getBoolean('preloader'),
 		showHideOpacity: settings.effect ? false : true
 	};
-
-	if (settings.effect) {
-		defaults.getThumbBoundsFn = function(index) {
-			// See Options -> getThumbBoundsFn section of documentation for more info
-			var element = items[index].el;
-			var thumbnail = element.getElementsByTagName('img')[0]; // find thumbnail
-
-			if (!element || !thumbnail) {
-				return {};
-			}
-
-			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var rect = thumbnail.getBoundingClientRect();
-			return {
-				x: rect.left,
-				y: rect.top + pageYScroll,
-				w: rect.width
-			};
-		};
-	}
 
 	if (!settings.zoom) {
 		defaults.zoomEl = false;
@@ -201,8 +180,32 @@ neosPhotoSwipe.init = function(selector) {
 	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL, opt) {
 		var items = parseThumbnailElements(galleryElement);
 		var options = neosPhotoSwipe.defaults;
+
 		// define gallery index (for URL)
 		options.galleryUID = galleryElement.getAttribute('data-pswp-uid');
+
+		if (settings.effect) {
+			options.showHideOpacity = false;
+			options.getThumbBoundsFn = function(index) {
+				// See Options -> getThumbBoundsFn section of documentation for more info
+				var element = items[index].el;
+				var thumbnail = element.getElementsByTagName('img')[0]; // find thumbnail
+
+				if (!element || !thumbnail) {
+					options.showHideOpacity = true;
+					return {};
+				}
+
+				var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+				var rect = thumbnail.getBoundingClientRect();
+
+				return {
+					x: rect.left,
+					y: rect.top + pageYScroll,
+					w: rect.width
+				};
+			};
+		}
 
 		// PhotoSwipe opened from URL
 		if (fromURL) {
