@@ -1,5 +1,4 @@
-namespace: TypoScript=TYPO3.TypoScript
-namespace: Neos=TYPO3.Neos
+namespace: TS=TYPO3.TypoScript
 namespace: PhotoSwipe=Jonnitto.PhotoSwipe
 
 include: Prototypes/*

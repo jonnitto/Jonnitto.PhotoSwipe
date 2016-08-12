@@ -1,11 +1,11 @@
-prototype(PhotoSwipe:Markup) <  prototype(TypoScript:Template) {
+prototype(PhotoSwipe:Markup) <  prototype(TS:Template) {
 	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	@context.settings = ${this.settings}
 
 	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/TypoScriptObjects/Markup.html'
-	attributes = TypoScript:Attributes {
+	attributes = TS:Attributes {
 		id = 'pswp'
-		class = TypoScript:RawArray {
+		class = TS:RawArray {
 			default = 'pswp'
 			zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
 		}

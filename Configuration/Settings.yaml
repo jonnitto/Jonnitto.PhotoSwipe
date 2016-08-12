@@ -2,7 +2,7 @@ TYPO3:
   Neos:
     typoScript:
       autoInclude:
-        'Jonnitto.PhotoSwipe': TRUE
+        'Jonnitto.PhotoSwipe': true
     userInterface:
       translation:
         autoInclude:
@@ -10,24 +10,24 @@ TYPO3:
 
 Jonnitto:
   PhotoSwipe:
-    includeJavascript: TRUE
-    includeCSS: Dark  # Light / Dark / FALSE
+    includeJavascript: true
+    includeCSS: Dark  # Light / Dark / false
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
-    alwaysInclude: FALSE
-    executeJS: TRUE
+    alwaysInclude: false
+    executeJS: true
     selector:
       lightbox: '.lightbox'
-      gallery: 'body'
+      gallery: body
     show:
-      topbar: TRUE
-      arrows: TRUE
-      caption: TRUE
-      close: TRUE
-      counter: TRUE
-      fullscreen: TRUE
-      modal: TRUE
-      preloader: TRUE
-      share: TRUE
-      zoom: TRUE
-      zoomEffect: TRUE
+      topbar: true
+      arrows: true
+      caption: true
+      close: true
+      counter: true
+      fullscreen: true
+      modal: true
+      preloader: true
+      share: true
+      zoom: true
+      zoomEffect: true

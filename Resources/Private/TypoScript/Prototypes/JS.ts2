@@ -1,7 +1,7 @@
-prototype(PhotoSwipe:TagJS) <  prototype(TypoScript:Tag) {
+prototype(PhotoSwipe:TagJS) <  prototype(TS:Tag) {
 	@context.photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'script'
-	attributes.src = TypoScript:ResourceUri {
+	attributes.src = TS:ResourceUri {
 		path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
 	}
 	@position = 'end'

@@ -1,9 +1,9 @@
-prototype(PhotoSwipe:TagCSS) <  prototype(TypoScript:Tag) {
+prototype(PhotoSwipe:TagCSS) <  prototype(TS:Tag) {
 	@context.photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'link'
 	attributes {
 		rel = 'stylesheet'
-		href = TypoScript:ResourceUri {
+		href = TS:ResourceUri {
 			path = ${'resource://Jonnitto.PhotoSwipe/Public/Assets/PhotoSwipe-' + photoswipe.includeCSS + '.css'}
 		}
 	}

@@ -233,6 +233,9 @@ neosPhotoSwipe.init = function(selector) {
 
 		if (disableAnimation) {
 			options.showAnimationDuration = 0;
+			setTimeout(function() {
+				options.showAnimationDuration = 333;
+			}, 333);
 		}
 
 		if (typeof opt === 'object') {

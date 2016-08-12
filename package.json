@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jonnitto/NeosPhotoswipe.git"
+    "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
   "devDependencies": {
     "browserify": "latest",
