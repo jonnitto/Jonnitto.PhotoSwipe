@@ -3,9 +3,12 @@ prototype(Page) {
 	body {
 		javascripts {
 			photoswipeMarkup = PhotoSwipe:Markup {
+				@if.isLive = ${node.context.live}
 				@position = 'start 1'
 			}
-			photoswipeJavascript = PhotoSwipe:TagJS
+			photoswipeJavascript = PhotoSwipe:TagJS {
+				@if.isLive = ${node.context.live}
+			}
 		}
 	}
 }
