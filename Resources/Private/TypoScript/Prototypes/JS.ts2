@@ -1,9 +1,12 @@
-prototype(PhotoSwipe:TagJS) <  prototype(TS:Tag) {
-	@context.photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+prototype(PS:TagJS) <  prototype(TS:Tag) {
+	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'script'
 	attributes.src = TS:ResourceUri {
 		path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
 	}
 	@position = 'end'
-	@if.includeLightbox = ${(photoswipe.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()) && photoswipe.includeJavascript}
+	@if {
+		includeCSS = ${settings.includeJavascript ? true : false}
+		includeLightbox = PS:IncludeCase
+	}
 }

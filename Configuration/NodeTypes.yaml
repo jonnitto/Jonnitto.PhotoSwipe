@@ -10,7 +10,6 @@
           group: image
           position: 800
 
-
 'TYPO3.Neos.NodeTypes:TextWithImage':
   superTypes:
     'Jonnitto.PhotoSwipe:LightboxMixin': true

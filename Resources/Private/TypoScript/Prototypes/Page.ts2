@@ -1,12 +1,12 @@
 prototype(Page) {
-	head.photoswipe = PhotoSwipe:TagCSS
+	head.photoswipe = PS:TagCSS
 	body {
 		javascripts {
-			photoswipeMarkup = PhotoSwipe:Markup {
+			photoswipeMarkup = PS:Markup {
 				@if.isLive = ${node.context.live}
 				@position = 'start 1'
 			}
-			photoswipeJavascript = PhotoSwipe:TagJS {
+			photoswipeJavascript = PS:TagJS {
 				@if.isLive = ${node.context.live}
 			}
 		}

@@ -1,4 +1,4 @@
-prototype(PhotoSwipe:Markup) <  prototype(TS:Template) {
+prototype(PS:Markup) <  prototype(TS:Template) {
 	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	@context.settings = ${this.settings}
 
@@ -27,5 +27,5 @@ prototype(PhotoSwipe:Markup) <  prototype(TS:Template) {
 		data-share = ${settings.show.share}
 		data-zoom = ${settings.show.zoom}
 	}
-	@if.includeLightbox = ${settings.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()}
+	@if.includeLightbox = PS:IncludeCase
 }

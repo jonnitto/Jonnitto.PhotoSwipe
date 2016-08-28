@@ -1,11 +1,15 @@
-prototype(PhotoSwipe:TagCSS) <  prototype(TS:Tag) {
-	@context.photoswipe = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+prototype(PS:TagCSS) <  prototype(TS:Tag) {
+	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'link'
 	attributes {
 		rel = 'stylesheet'
 		href = TS:ResourceUri {
-			path = ${'resource://Jonnitto.PhotoSwipe/Public/Assets/PhotoSwipe-' + photoswipe.includeCSS + '.css'}
+			path = ${'resource://Jonnitto.PhotoSwipe/Public/Assets/PhotoSwipe-' + settings.includeCSS + '.css'}
 		}
 	}
-	@if.includeLightbox = ${(photoswipe.alwaysInclude || q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find('[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true]').is()) && photoswipe.includeCSS}
+
+	@if {
+		includeCSS = ${settings.includeCSS ? true : false}
+		includeLightbox = PS:IncludeCase
+	}
 }

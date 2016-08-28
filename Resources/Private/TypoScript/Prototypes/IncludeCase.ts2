@@ -1,0 +1,16 @@
+prototype(PS:IncludeCase) <  prototype(TS:Case) {
+	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+
+	alwaysInclude {
+		condition = ${settings.alwaysInclude}
+		renderer = true
+	}
+	hasLightbox {
+		condition = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find(settings.filter).is()}
+		renderer = true
+	}
+	default {
+		condition = true
+		renderer = false
+	}
+}
