@@ -1,7 +1,7 @@
 {
     "name": "jonnitto/photoswipe",
     "type": "typo3-flow-plugin",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "license": "MIT",
     "description": "PhotoSwipe for Neos CMS",
     "keywords": ["flow", "neos", "gallery", "lightbox", "photo", "image"],
