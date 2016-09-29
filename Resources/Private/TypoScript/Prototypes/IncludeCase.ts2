@@ -1,4 +1,4 @@
-prototype(PS:IncludeCase) <  prototype(TS:Case) {
+prototype(PS:IncludeCase) <  prototype(Fusion:Case) {
 	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 
 	alwaysInclude {

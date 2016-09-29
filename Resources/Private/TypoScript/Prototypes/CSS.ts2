@@ -1,9 +1,9 @@
-prototype(PS:TagCSS) <  prototype(TS:Tag) {
+prototype(PS:TagCSS) <  prototype(Fusion:Tag) {
 	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'link'
 	attributes {
 		rel = 'stylesheet'
-		href = TS:ResourceUri {
+		href = Fusion:ResourceUri {
 			path = ${'resource://Jonnitto.PhotoSwipe/Public/Assets/PhotoSwipe-' + settings.includeCSS + '.css'}
 		}
 	}

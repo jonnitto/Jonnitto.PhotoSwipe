@@ -1,7 +1,7 @@
-prototype(PS:TagJS) <  prototype(TS:Tag) {
+prototype(PS:TagJS) <  prototype(Fusion:Tag) {
 	@context.settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	tagName = 'script'
-	attributes.src = TS:ResourceUri {
+	attributes.src = Fusion:ResourceUri {
 		path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
 	}
 	@position = 'end'
