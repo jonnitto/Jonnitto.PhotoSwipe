@@ -2,7 +2,7 @@ prototype(PS:Markup) <  prototype(Fusion:Template) {
 	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
 	@context.settings = ${this.settings}
 
-	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/TypoScriptObjects/Markup.html'
+	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/FusionObjects/Markup.html'
 	attributes = Fusion:Attributes {
 		id = 'pswp'
 		class = Fusion:RawArray {
