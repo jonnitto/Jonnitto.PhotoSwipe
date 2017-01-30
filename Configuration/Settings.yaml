@@ -1,24 +1,15 @@
-TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        'Jonnitto.PhotoSwipe': true
-    userInterface:
-      translation:
-        autoInclude:
-          'Jonnitto.PhotoSwipe': ['NodeTypes/*']
 
 Jonnitto:
   PhotoSwipe:
     includeJavascript: true
-    includeCSS: Dark  # Light / Dark / false
+    includeCSS: Dark
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
     alwaysInclude: false
     filter: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
     executeJS: true
     selector:
-      lightbox: '.lightbox'
+      lightbox: .lightbox
       gallery: body
     show:
       topbar: true
@@ -32,3 +23,13 @@ Jonnitto:
       share: true
       zoom: true
       zoomEffect: true
+Neos:
+  Neos:
+    typoScript:
+      autoInclude:
+        Jonnitto.PhotoSwipe: true
+    userInterface:
+      translation:
+        autoInclude:
+          Jonnitto.PhotoSwipe:
+            - 'NodeTypes/*'
