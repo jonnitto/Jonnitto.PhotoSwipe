@@ -1,3 +1,4 @@
+
 'Jonnitto.PhotoSwipe:LightboxMixin':
   abstract: true
   properties:
@@ -9,11 +10,9 @@
         inspector:
           group: image
           position: 800
-
 'TYPO3.Neos.NodeTypes:TextWithImage':
   superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': true
-
+    'Jonnitto.PhotoSwipe:LightboxMixin': '1'
 'TYPO3.Neos.NodeTypes:Image':
   superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': true
+    'Jonnitto.PhotoSwipe:LightboxMixin': '1'
