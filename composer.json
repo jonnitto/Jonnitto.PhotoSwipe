@@ -4,7 +4,14 @@
     "version": "0.1.7",
     "license": "MIT",
     "description": "PhotoSwipe for Neos CMS",
-    "keywords": ["flow", "neos", "gallery", "lightbox", "photo", "image"],
+    "keywords": [
+        "flow",
+        "neos",
+        "gallery",
+        "lightbox",
+        "photo",
+        "image"
+    ],
     "authors": [
         {
             "name": "Jon Uhlmann",
@@ -26,6 +33,9 @@
         "installer-name": "Jonnitto.PhotoSwipe",
         "neos": {
             "package-key": "Jonnitto.PhotoSwipe"
-        }
+        },
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
     }
 }
