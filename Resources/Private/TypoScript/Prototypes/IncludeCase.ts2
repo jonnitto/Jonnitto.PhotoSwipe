@@ -6,7 +6,7 @@ prototype(PS:IncludeCase) <  prototype(Fusion:Case) {
 		renderer = true
 	}
 	hasLightbox {
-		condition = ${q(node).children('[instanceof TYPO3.Neos:ContentCollection]').find(settings.filter).is()}
+		condition = ${q(node).children('[instanceof Neos.Neos:ContentCollection]').find(settings.filter).is()}
 		renderer = true
 	}
 	default {
