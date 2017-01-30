@@ -25,11 +25,11 @@ Jonnitto:
       zoomEffect: true
 Neos:
   Neos:
-    typoScript:
-      autoInclude:
-        Jonnitto.PhotoSwipe: true
     userInterface:
       translation:
         autoInclude:
           Jonnitto.PhotoSwipe:
             - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Jonnitto.PhotoSwipe: true
