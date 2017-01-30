@@ -12,7 +12,7 @@
           position: 800
 'TYPO3.Neos.NodeTypes:TextWithImage':
   superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': '1'
+    'Jonnitto.PhotoSwipe:LightboxMixin': true
 'TYPO3.Neos.NodeTypes:Image':
   superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': '1'
+    'Jonnitto.PhotoSwipe:LightboxMixin': true
