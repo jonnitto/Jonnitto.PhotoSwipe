@@ -164,6 +164,7 @@ neosPhotoSwipe.init = function(selector) {
 		shareEl: getBoolean('share'),
 		arrowEl: getBoolean('arrows'),
 		preloaderEl: getBoolean('preloader'),
+		history: getBoolean('history'),
 		showHideOpacity: settings.effect ? false : true
 	};
 
@@ -286,6 +287,6 @@ neosPhotoSwipe.initDom = function() {
 	});
 };
 
-if (neosPhotoSwipe.pswp.getAttribute('data-init') !== null) {
+if (neosPhotoSwipe.pswp.getAttribute('data-init') == 'true') {
 	neosPhotoSwipe.initDom();
 }
