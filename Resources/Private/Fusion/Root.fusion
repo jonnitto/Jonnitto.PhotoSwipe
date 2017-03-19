@@ -1,4 +1,4 @@
 namespace: Fusion = Neos.Fusion
 namespace: PS = Jonnitto.PhotoSwipe
 
-include: Prototypes/**/*.ts2
+include: Prototypes/**/*.fusion
