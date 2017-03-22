@@ -53,6 +53,9 @@ neosPhotoSwipe.init = function(selector) {
 			if (figcaption) {
 				item.title = figcaption.innerText || figcaption.textContent || false;
 			}
+			if (!item.title) {
+				item.title = element.getAttribute('data-title') || element.getAttribute('title') || false;
+			}
 
 			if (image) {
 				item.msrc = image.getAttribute('src');

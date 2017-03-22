@@ -5,7 +5,7 @@ Jonnitto:
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
     alwaysInclude: false
-    filter: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
+    filter: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Jonnitto.Picture:Lightbox][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
     executeJS: true
     history: true
     selector:
