@@ -12,7 +12,7 @@ prototype(PS:Markup) <  prototype(TS:Template) {
 		tabindex = '-1'
 		role = 'dialog'
 		aria-hidden = 'true'
-		data-init = ${settings.executeJS}
+		data-init = ${settings.executeJS ? 'true' : 'false'}
 		data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
 		data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
 		data-arrows = ${settings.show.arrows}
@@ -26,6 +26,7 @@ prototype(PS:Markup) <  prototype(TS:Template) {
 		data-preloader = ${settings.show.preloader}
 		data-share = ${settings.show.share}
 		data-zoom = ${settings.show.zoom}
+		data-history = ${settings.history}
 	}
 	@if.includeLightbox = PS:IncludeCase
 }

@@ -47,11 +47,39 @@ neosPhotoSwipe.init = function(selector) {
 				w: parseInt(size[0], 10),
 				h: parseInt(size[1], 10)
 			};
+
+			if (!size.length || !item.w || !item.h) {
+				var isSVG = false;
+				var childNodes = element.childNodes;
+				for (var x = 0; x < childNodes.length; x++) {
+					var tagName = childNodes[x].nodeType == 1 ? childNodes[x].tagName.toLowerCase() : false;
+					if (tagName == 'svg') {
+						isSVG = true;
+					} else if (tagName == 'img') {
+						var filename = childNodes[x].getAttribute('src');
+						var ext = filename.substr(filename.lastIndexOf('.') + 1);
+						if (ext == 'svg') {
+							isSVG = true;
+						}
+					}
+				}
+
+				if (isSVG) {
+					item.w = window.innerWidth * 2;
+					item.h = window.innerHeight * 2;
+				} else {
+					continue;
+				}
+			}
+
 			figcaption = element.parentNode.querySelector('figcaption');
 			image = element.querySelector('img');
 
 			if (figcaption) {
 				item.title = figcaption.innerText || figcaption.textContent || false;
+			}
+			if (!item.title) {
+				item.title = element.getAttribute('data-title') || element.getAttribute('title') || false;
 			}
 
 			if (image) {
@@ -164,6 +192,7 @@ neosPhotoSwipe.init = function(selector) {
 		shareEl: getBoolean('share'),
 		arrowEl: getBoolean('arrows'),
 		preloaderEl: getBoolean('preloader'),
+		history: getBoolean('history'),
 		showHideOpacity: settings.effect ? false : true
 	};
 
@@ -286,6 +315,6 @@ neosPhotoSwipe.initDom = function() {
 	});
 };
 
-if (neosPhotoSwipe.pswp.getAttribute('data-init') !== null) {
+if (neosPhotoSwipe.pswp.getAttribute('data-init') == 'true') {
 	neosPhotoSwipe.initDom();
 }

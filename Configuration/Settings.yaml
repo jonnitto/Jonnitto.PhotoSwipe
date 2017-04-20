@@ -17,6 +17,7 @@ Jonnitto:
     alwaysInclude: false
     filter: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
     executeJS: true
+    history: true
     selector:
       lightbox: '.lightbox'
       gallery: body
