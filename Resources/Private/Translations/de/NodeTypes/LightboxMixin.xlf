@@ -3,7 +3,7 @@
 	<file original="" product-name="Jonnitto.PhotoSwipe" source-language="de" datatype="plaintext">
 		<body>
 			<trans-unit id="properties.lightbox" xml:space="preserve">
-				<source>Bild mit Klick vergrössern</source>
+				<source>Bild mit Klick vergrößern</source>
 			</trans-unit>
 		</body>
 	</file>
