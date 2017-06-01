@@ -73,14 +73,10 @@ neosPhotoSwipe.init = function(selector) {
 			}
 
 			figcaption = element.parentNode.querySelector('figcaption');
+			figcaption = figcaption ? (figcaption.innerText || figcaption.textContent || false) : false;
 			image = element.querySelector('img');
 
-			if (figcaption) {
-				item.title = figcaption.innerText || figcaption.textContent || false;
-			}
-			if (!item.title) {
-				item.title = element.getAttribute('data-title') || element.getAttribute('title') || false;
-			}
+			item.title = element.getAttribute('data-title') || (figcaption ? figcaption : element.getAttribute('title')) || false
 
 			if (image) {
 				item.msrc = image.getAttribute('src');
