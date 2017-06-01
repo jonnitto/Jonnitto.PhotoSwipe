@@ -5,8 +5,12 @@ prototype(PS:IncludeCase) <  prototype(Fusion:Case) {
 		condition = ${settings.alwaysInclude}
 		renderer = true
 	}
-	hasLightbox {
-		condition = ${q(node).children('[instanceof Neos.Neos:ContentCollection]').find(settings.filter).is()}
+	onContent {
+		condition = ${q(documentNode).children(settings.selector.collection).find(settings.selector.content).is()}
+		renderer = true
+	}
+	onDocument {
+		condition = ${settings.selector.onDocument && q(documentNode).filter(settings.selector.onDocument).is()}
 		renderer = true
 	}
 	default {
