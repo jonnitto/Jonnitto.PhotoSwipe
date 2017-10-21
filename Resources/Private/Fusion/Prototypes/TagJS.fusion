@@ -2,8 +2,11 @@ prototype(Jonnitto.PhotoSwipe:TagJS) <  prototype(Neos.Fusion:Tag) {
     includeJavascript = ${Configuration.setting('Jonnitto.PhotoSwipe.includeJavascript')}
 
     tagName = 'script'
-    attributes.src = Neos.Fusion:ResourceUri {
-        path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
+    attributes {
+        async = true
+        src = Neos.Fusion:ResourceUri {
+            path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
+        }
     }
 
     @if {
