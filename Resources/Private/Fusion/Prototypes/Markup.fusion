@@ -1,32 +1,32 @@
-prototype(PS:Markup) <  prototype(Fusion:Template) {
-	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-	@context.settings = ${this.settings}
+prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(Neos.Fusion:Template) {
+    settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+    @context.settings = ${this.settings}
 
-	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/FusionObjects/Markup.html'
-	attributes = Fusion:Attributes {
-		id = 'pswp'
-		class = Fusion:RawArray {
-			default = 'pswp'
-			zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
-		}
-		tabindex = '-1'
-		role = 'dialog'
-		aria-hidden = 'true'
-		data-init = ${settings.executeJS ? 'true' : 'false'}
-		data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
-		data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
-		data-arrows = ${settings.show.arrows}
-		data-caption = ${settings.show.caption}
-		data-close = ${settings.show.close}
-		data-counter = ${settings.show.counter}
-		data-effect = ${settings.show.zoomEffect}
-		data-fullscreen = ${settings.show.fullscreen}
-		data-modal = ${settings.show.modal}
-		data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
-		data-preloader = ${settings.show.preloader}
-		data-share = ${settings.show.share}
-		data-zoom = ${settings.show.zoom}
-		data-history = ${settings.history}
-	}
-	@if.includeLightbox = PS:IncludeCase
+    templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/FusionObjects/Markup.html'
+    attributes = Neos.Fusion:Attributes {
+        id = 'pswp'
+        class = Neos.Fusion:RawArray {
+            default = 'pswp'
+            zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
+        }
+        tabindex = '-1'
+        role = 'dialog'
+        aria-hidden = 'true'
+        data-init = ${settings.executeJS ? 'true' : 'false'}
+        data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
+        data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
+        data-arrows = ${settings.show.arrows}
+        data-caption = ${settings.show.caption}
+        data-close = ${settings.show.close}
+        data-counter = ${settings.show.counter}
+        data-effect = ${settings.show.zoomEffect}
+        data-fullscreen = ${settings.show.fullscreen}
+        data-modal = ${settings.show.modal}
+        data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
+        data-preloader = ${settings.show.preloader}
+        data-share = ${settings.show.share}
+        data-zoom = ${settings.show.zoom}
+        data-history = ${settings.history}
+    }
+    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }

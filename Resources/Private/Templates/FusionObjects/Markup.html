@@ -1,46 +1,46 @@
 <div{attributes -> f:format.raw()}>
-	<div class="pswp__bg"></div>
-	<div class="pswp__scroll-wrap">
-		<div class="pswp__container">
-			<div class="pswp__item"></div>
-			<div class="pswp__item"></div>
-			<div class="pswp__item"></div>
-		</div>
-		<div class="pswp__ui pswp__ui--hidden">
-			<f:if condition="{settings.show.topbar}"><div class="pswp__top-bar"></f:if>
-				<f:if condition="{settings.show.counter}">
-					<div class="pswp__counter"></div>
-				</f:if>
-				<f:if condition="{settings.show.close}">
-					<button class="pswp__button pswp__button--close" title="{f:translate(id:'close',package:'Jonnitto.PhotoSwipe')}"></button>
-				</f:if>
-				<f:if condition="{settings.show.share}">
-					<button class="pswp__button pswp__button--share" title="{f:translate(id:'share',package:'Jonnitto.PhotoSwipe')}"></button>
-				</f:if>
-				<f:if condition="{settings.show.fullscreen}">
-					<button class="pswp__button pswp__button--fs" title="{f:translate(id:'fullscreen',package:'Jonnitto.PhotoSwipe')}"></button>
-				</f:if>
-				<f:if condition="{settings.show.zoom}">
-					<button class="pswp__button pswp__button--zoom" title="{f:translate(id:'zoom',package:'Jonnitto.PhotoSwipe')}"></button>
-				</f:if>
-				<f:if condition="{settings.preloaderMarkup}">
-					<div class="pswp__preloader">
-						{settings.preloaderMarkup -> f:format.raw()}
-					</div>
-				</f:if>
-			<f:if condition="{settings.show.topbar}"></div></f:if>
-			<f:if condition="{settings.show.share}">
-				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-					<div class="pswp__share-tooltip"></div>
-				</div>
-			</f:if>
-			<f:if condition="{settings.show.arrows}">
-				<button class="pswp__button pswp__button--arrow--left" title="{f:translate(id:'prev',package:'Jonnitto.PhotoSwipe')}"></button>
-				<button class="pswp__button pswp__button--arrow--right" title="{f:translate(id:'next',package:'Jonnitto.PhotoSwipe')}"></button>
-			</f:if>
-			<f:if condition="{settings.show.caption}">
-				<div class="pswp__caption"><div class="pswp__caption__center"></div></div>
-			</f:if>
-		</div>
-	</div>
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <f:if condition="{settings.show.topbar}"><div class="pswp__top-bar"></f:if>
+                <f:if condition="{settings.show.counter}">
+                    <div class="pswp__counter"></div>
+                </f:if>
+                <f:if condition="{settings.show.close}">
+                    <button class="pswp__button pswp__button--close" title="{f:translate(id:'close',package:'Jonnitto.PhotoSwipe')}"></button>
+                </f:if>
+                <f:if condition="{settings.show.share}">
+                    <button class="pswp__button pswp__button--share" title="{f:translate(id:'share',package:'Jonnitto.PhotoSwipe')}"></button>
+                </f:if>
+                <f:if condition="{settings.show.fullscreen}">
+                    <button class="pswp__button pswp__button--fs" title="{f:translate(id:'fullscreen',package:'Jonnitto.PhotoSwipe')}"></button>
+                </f:if>
+                <f:if condition="{settings.show.zoom}">
+                    <button class="pswp__button pswp__button--zoom" title="{f:translate(id:'zoom',package:'Jonnitto.PhotoSwipe')}"></button>
+                </f:if>
+                <f:if condition="{settings.preloaderMarkup}">
+                    <div class="pswp__preloader">
+                        {settings.preloaderMarkup -> f:format.raw()}
+                    </div>
+                </f:if>
+            <f:if condition="{settings.show.topbar}"></div></f:if>
+            <f:if condition="{settings.show.share}">
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+            </f:if>
+            <f:if condition="{settings.show.arrows}">
+                <button class="pswp__button pswp__button--arrow--left" title="{f:translate(id:'prev',package:'Jonnitto.PhotoSwipe')}"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="{f:translate(id:'next',package:'Jonnitto.PhotoSwipe')}"></button>
+            </f:if>
+            <f:if condition="{settings.show.caption}">
+                <div class="pswp__caption"><div class="pswp__caption__center"></div></div>
+            </f:if>
+        </div>
+    </div>
 </div>

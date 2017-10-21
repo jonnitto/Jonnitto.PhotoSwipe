@@ -1,0 +1,13 @@
+prototype(Page) {
+    head.photoswipe = Jonnitto.PhotoSwipe:TagCSS
+    body.javascripts {
+        photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
+            @if.isLive = ${node.context.live}
+            @position = 'start 1'
+        }
+        photoswipeJavascript = Jonnitto.PhotoSwipe:TagJS {
+            @if.isLive = ${node.context.live}
+            @position = 'end'
+        }
+    }
+}

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Jonnitto.PhotoSwipe" source-language="fr" datatype="plaintext">
-		<body>
-			<trans-unit id="close" xml:space="preserve">
-				<source>Fermer (esc.)</source>
-			</trans-unit>
-			<trans-unit id="share" xml:space="preserve">
-				<source>Partager</source>
-			</trans-unit>
-			<trans-unit id="fullscreen" xml:space="preserve">
-				<source>(Dés)activer le mode plein écran</source>
-			</trans-unit>
-			<trans-unit id="zoom" xml:space="preserve">
-				<source>Zoom +/-</source>
-			</trans-unit>
-			<trans-unit id="prev" xml:space="preserve">
-				<source>Reculer (flèche à gauche)</source>
-			</trans-unit>
-			<trans-unit id="next" xml:space="preserve">
-				<source>Avancer (flèche à droite)</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file original="" product-name="Jonnitto.PhotoSwipe" source-language="fr" datatype="plaintext">
+        <body>
+            <trans-unit id="close" xml:space="preserve">
+                <source>Fermer (esc.)</source>
+            </trans-unit>
+            <trans-unit id="share" xml:space="preserve">
+                <source>Partager</source>
+            </trans-unit>
+            <trans-unit id="fullscreen" xml:space="preserve">
+                <source>(Dés)activer le mode plein écran</source>
+            </trans-unit>
+            <trans-unit id="zoom" xml:space="preserve">
+                <source>Zoom +/-</source>
+            </trans-unit>
+            <trans-unit id="prev" xml:space="preserve">
+                <source>Reculer (flèche à gauche)</source>
+            </trans-unit>
+            <trans-unit id="next" xml:space="preserve">
+                <source>Avancer (flèche à droite)</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

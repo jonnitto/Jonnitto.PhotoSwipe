@@ -7,12 +7,12 @@
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
   "devDependencies": {
-    "browserify": "latest",
+    "browserify": "14.5.0",
     "cssnano-cli": "latest",
-    "node-sass": "latest",
+    "node-sass": "4.5.3",
     "photoswipe": "https://github.com/jonnitto/PhotoSwipe.git",
-    "uglifyify": "latest",
-    "uglifyjs": "latest"
+    "uglify-js": "^3.1.4",
+    "uglifyify": "4.0.4"
   },
   "scripts": {
     "build:assets": "rsync -av node_modules/photoswipe/dist/default-skin/* Resources/Public/Assets/ --exclude *.css",

@@ -3,14 +3,7 @@
     "type": "neos-plugin",
     "license": "MIT",
     "description": "PhotoSwipe for Neos CMS",
-    "keywords": [
-        "flow",
-        "neos",
-        "gallery",
-        "lightbox",
-        "photo",
-        "image"
-    ],
+    "keywords": ["flow", "neos", "gallery", "lightbox", "photo", "image"],
     "authors": [
         {
             "name": "Jon Uhlmann",
@@ -26,6 +19,9 @@
         "psr-4": {
             "Jonnitto\\PhotoSwipe\\": "Classes"
         }
+    },
+    "archive": {
+        "exclude": [".editorconfig", ".gitattributes", ".github", ".gitignore", "CODE_OF_CONDUCT.md", "package.json", "yarn.lock"]
     },
     "extra": {
         "marketplace-account": "me@jonnitto.ch",
