@@ -1,4 +1,1 @@
-namespace: Fusion = Neos.Fusion
-namespace: PS = Jonnitto.PhotoSwipe
-
 include: **/*.fusion

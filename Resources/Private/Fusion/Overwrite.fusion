@@ -1,13 +1,12 @@
 prototype(Page) {
-    head.photoswipe = Jonnitto.PhotoSwipe:TagCSS
-    body.javascripts {
-        photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
-            @if.isLive = ${node.context.live}
-            @position = 'start 1'
-        }
-        photoswipeJavascript = Jonnitto.PhotoSwipe:TagJS {
-            @if.isLive = ${node.context.live}
-            @position = 'end'
-        }
-    }
+  photoswipeHead = Jonnitto.PhotoSwipe:TagCSS {
+    @position = 'before closingHeadTag'
+  }
+
+  photoswipeBody = Neos.Fusion:Array {
+      @position = 'before closingBodyTag'
+      @if.isLive = ${node.context.live}
+      markup = Jonnitto.PhotoSwipe:Markup
+      javascript = Jonnitto.PhotoSwipe:TagJS
+  }
 }
