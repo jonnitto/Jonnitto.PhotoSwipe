@@ -34,7 +34,7 @@ neosPhotoSwipe.init = function(selector) {
         selector.lightbox = ".lightbox";
     }
 
-    var parseThumbnailElements = function(el) {
+    function parseThumbnailElements(el) {
         var lighboxElements = el.querySelectorAll(selector.lightbox);
         var numNodes = lighboxElements.length;
         var items = [];
@@ -102,31 +102,30 @@ neosPhotoSwipe.init = function(selector) {
         }
 
         return items;
-    };
+    }
 
     // find nearest parent element
-    var closest = function closest(element, fn) {
+    function closest(element, fn) {
         return (
             element && (fn(element) ? element : closest(element.parentNode, fn))
         );
-    };
+    }
 
     // Extend Objects
-    var extend = function(obj, src) {
+    function extend(obj, src) {
         Object.keys(src).forEach(function(key) {
             obj[key] = src[key];
         });
         return obj;
-    };
+    }
 
     // triggers when user clicks on thumbnail
-    var onThumbnailsClick = function(event) {
+    function onThumbnailsClick(event) {
         event = event || window.event;
-        //jshint -W030
+
         event.preventDefault
             ? event.preventDefault()
             : (event.returnValue = false);
-        //jshint +W030
 
         var _this = this;
 
@@ -156,10 +155,10 @@ neosPhotoSwipe.init = function(selector) {
             openPhotoSwipe(index, clickedGallery);
         }
         return false;
-    };
+    }
 
     // parse picture index and gallery index from URL (#&pid=1&gid=2)
-    var photoswipeParseHash = function() {
+    function photoswipeParseHash() {
         var hash = window.location.hash.substring(1);
         var params = {};
 
@@ -184,17 +183,61 @@ neosPhotoSwipe.init = function(selector) {
         }
 
         return params;
-    };
+    }
 
-    var getBoolean = function(key) {
+    function getBoolean(key) {
         return neosPhotoSwipe.pswp.getAttribute("data-" + key) !== null;
-    };
+    }
+
+    function getShare(key) {
+        var value = neosPhotoSwipe.pswp.getAttribute("data-share-" + key);
+        return value && typeof value == "string" ? value.trim() : false;
+    }
 
     var settings = {
         opacity: neosPhotoSwipe.pswp.getAttribute("data-opacity"),
         effect: getBoolean("effect"),
         zoom: getBoolean("zoom")
     };
+
+    var shareButtons = [];
+    var textShare = {
+        facebook: getShare("facebook"),
+        twitter: getShare("twitter"),
+        pinterest: getShare("pinterest"),
+        download: getShare("download")
+    };
+    if (textShare.facebook) {
+        shareButtons.push({
+            id: "facebook",
+            label: textShare.facebook,
+            url: "https://www.facebook.com/sharer/sharer.php?u={{url}}"
+        });
+    }
+    if (textShare.twitter) {
+        shareButtons.push({
+            id: "twitter",
+            label: textShare.twitter,
+            url: "https://twitter.com/intent/tweet?text={{text}}&url={{url}}"
+        });
+    }
+    if (textShare.pinterest) {
+        shareButtons.push({
+            id: "pinterest",
+            label: textShare.pinterest,
+            url:
+                "http://www.pinterest.com/pin/create/button/" +
+                "?url={{url}}&media={{image_url}}&description={{text}}"
+        });
+    }
+    if (textShare.download) {
+        shareButtons.push({
+            id: "download",
+            label: textShare.download,
+            url: "{{raw_image_url}}",
+            download: true
+        });
+    }
 
     var defaults = {
         bgOpacity: settings.opacity ? parseFloat(settings.opacity) : 0,
@@ -208,7 +251,8 @@ neosPhotoSwipe.init = function(selector) {
         arrowEl: getBoolean("arrows"),
         preloaderEl: getBoolean("preloader"),
         history: getBoolean("history"),
-        showHideOpacity: settings.effect ? false : true
+        showHideOpacity: settings.effect ? false : true,
+        shareButtons: shareButtons
     };
 
     if (!settings.zoom) {
@@ -221,7 +265,7 @@ neosPhotoSwipe.init = function(selector) {
 
     extend(neosPhotoSwipe.defaults, defaults);
 
-    var openPhotoSwipe = function(
+    function openPhotoSwipe(
         index,
         galleryElement,
         disableAnimation,
@@ -295,7 +339,7 @@ neosPhotoSwipe.init = function(selector) {
 
         // Pass data to PhotoSwipe and initialize it
         neosPhotoSwipe.open(items, options);
-    };
+    }
 
     // loop through all gallery elements and bind events
     var galleryElements = [];

@@ -20,6 +20,18 @@
             <trans-unit id="next" xml:space="preserve">
                 <source>Next (arrow right)</source>
             </trans-unit>
+            <trans-unit id="share.facebook" xml:space="preserve">
+                <source>Share on Facebook</source>
+            </trans-unit>
+            <trans-unit id="share.twitter" xml:space="preserve">
+                <source>Tweet</source>
+            </trans-unit>
+            <trans-unit id="share.pinterest" xml:space="preserve">
+                <source>Save on Pinterest</source>
+            </trans-unit>
+            <trans-unit id="share.download" xml:space="preserve">
+                <source>Download image</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

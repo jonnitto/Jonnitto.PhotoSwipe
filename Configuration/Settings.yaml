@@ -23,7 +23,11 @@ Jonnitto:
       fullscreen: true
       modal: true
       preloader: true
-      share: true
+      share:
+        facebook: true
+        twitter: true
+        pinterest: true
+        download: true
       zoom: true
       zoomEffect: true
 

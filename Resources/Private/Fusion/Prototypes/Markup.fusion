@@ -1,6 +1,9 @@
 prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(Neos.Fusion:Template) {
     settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-    @context.settings = ${this.settings}
+    @context {
+        settings = ${this.settings}
+        share = ${this.settings.show.share}
+    }
 
     templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/FusionObjects/Markup.html'
     attributes = Neos.Fusion:Attributes {
@@ -24,9 +27,13 @@ prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(Neos.Fusion:Template) {
         data-modal = ${settings.show.modal}
         data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
         data-preloader = ${settings.show.preloader}
-        data-share = ${settings.show.share}
         data-zoom = ${settings.show.zoom}
         data-history = ${settings.history}
+        data-share = ${Type.isBoolean(share) ? share : (share.facebook || share.twitter || share.pinterest || share.download)}
+        data-share-facebook = ${(Type.isBoolean(share) ? share : share.facebook) ? Translation.translate('share.facebook', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-twitter = ${(Type.isBoolean(share) ? share : share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-pinterest = ${(Type.isBoolean(share) ? share : share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-download = ${(Type.isBoolean(share) ? share : share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
     }
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }
