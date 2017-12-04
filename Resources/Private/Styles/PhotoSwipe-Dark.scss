@@ -1,8 +1,8 @@
-$pswp__assets-path: '../Assets/';
+$pswp__assets-path: "../Assets/";
 
-@import 'main';
-@import 'default-skin/default-skin';
+@import "main";
+@import "default-skin/default-skin";
 
 .pswp.pswp-no-zoom .pswp__img {
-	cursor: default;
+  cursor: default;
 }

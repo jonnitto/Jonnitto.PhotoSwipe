@@ -1,4 +1,1 @@
-namespace: TS=TYPO3.TypoScript
-namespace: PS=Jonnitto.PhotoSwipe
-
-include: Prototypes/**/*.ts2
+include: **/*.ts2

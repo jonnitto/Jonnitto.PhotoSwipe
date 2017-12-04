@@ -1,0 +1,17 @@
+prototype(Jonnitto.PhotoSwipe:TagCSS) <  prototype(TYPO3.TypoScript:Tag) {
+    includeCSS = ${Configuration.setting('Jonnitto.PhotoSwipe.includeCSS')}
+    @context.includeCSS = ${this.includeCSS}
+
+    tagName = 'link'
+    attributes {
+        rel = 'stylesheet'
+        href = TYPO3.TypoScript:ResourceUri {
+            path = ${'resource://Jonnitto.PhotoSwipe/Public/Assets/PhotoSwipe-' + includeCSS + '.css'}
+        }
+    }
+
+    @if {
+        includeCSS = ${this.includeCSS ? true : false}
+        includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
+    }
+}

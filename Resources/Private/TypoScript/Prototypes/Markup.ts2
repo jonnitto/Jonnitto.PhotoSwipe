@@ -1,32 +1,39 @@
-prototype(PS:Markup) <  prototype(TS:Template) {
-	settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-	@context.settings = ${this.settings}
+prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(TYPO3.TypoScript:Template) {
+    settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
+    @context {
+        settings = ${this.settings}
+        share = ${this.settings.show.share}
+    }
 
-	templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/TypoScriptObjects/Markup.html'
-	attributes = TS:Attributes {
-		id = 'pswp'
-		class = TS:RawArray {
-			default = 'pswp'
-			zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
-		}
-		tabindex = '-1'
-		role = 'dialog'
-		aria-hidden = 'true'
-		data-init = ${settings.executeJS ? 'true' : 'false'}
-		data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
-		data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
-		data-arrows = ${settings.show.arrows}
-		data-caption = ${settings.show.caption}
-		data-close = ${settings.show.close}
-		data-counter = ${settings.show.counter}
-		data-effect = ${settings.show.zoomEffect}
-		data-fullscreen = ${settings.show.fullscreen}
-		data-modal = ${settings.show.modal}
-		data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
-		data-preloader = ${settings.show.preloader}
-		data-share = ${settings.show.share}
-		data-zoom = ${settings.show.zoom}
-		data-history = ${settings.history}
-	}
-	@if.includeLightbox = PS:IncludeCase
+    templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/Markup.html'
+    attributes = TYPO3.TypoScript:Attributes {
+        id = 'pswp'
+        class = TYPO3.TypoScript:RawArray {
+            default = 'pswp'
+            zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
+        }
+        tabindex = '-1'
+        role = 'dialog'
+        aria-hidden = 'true'
+        data-init = ${settings.executeJS ? 'true' : 'false'}
+        data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
+        data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
+        data-arrows = ${settings.show.arrows}
+        data-caption = ${settings.show.caption}
+        data-close = ${settings.show.close}
+        data-counter = ${settings.show.counter}
+        data-effect = ${settings.show.zoomEffect}
+        data-fullscreen = ${settings.show.fullscreen}
+        data-modal = ${settings.show.modal}
+        data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
+        data-preloader = ${settings.show.preloader}
+        data-zoom = ${settings.show.zoom}
+        data-history = ${settings.history}
+        data-share = ${Type.isBoolean(share) ? share : (share.facebook || share.twitter || share.pinterest || share.download)}
+        data-share-facebook = ${(Type.isBoolean(share) ? share : share.facebook) ? Translation.translate('share.facebook', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-twitter = ${(Type.isBoolean(share) ? share : share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-pinterest = ${(Type.isBoolean(share) ? share : share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        data-share-download = ${(Type.isBoolean(share) ? share : share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+    }
+    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }

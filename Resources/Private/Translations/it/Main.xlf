@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file original="" product-name="Jonnitto.PhotoSwipe" source-language="it" datatype="plaintext">
-		<body>
-			<trans-unit id="close" xml:space="preserve">
-				<source>Chiudere (esc)</source>
-			</trans-unit>
-			<trans-unit id="share" xml:space="preserve">
-				<source>Condividere</source>
-			</trans-unit>
-			<trans-unit id="fullscreen" xml:space="preserve">
-				<source>Passare alla/uscire dalla modalità tutto schermo</source>
-			</trans-unit>
-			<trans-unit id="zoom" xml:space="preserve">
-				<source>Avvicinare/allontanare</source>
-			</trans-unit>
-			<trans-unit id="prev" xml:space="preserve">
-				<source>Indietro (tasto freccia a sinistra)</source>
-			</trans-unit>
-			<trans-unit id="next" xml:space="preserve">
-				<source>Avanti (tasto freccia a destra)</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file original="" product-name="Jonnitto.PhotoSwipe" source-language="it" datatype="plaintext">
+        <body>
+            <trans-unit id="close" xml:space="preserve">
+                <source>Chiudere (esc)</source>
+            </trans-unit>
+            <trans-unit id="share" xml:space="preserve">
+                <source>Condividere</source>
+            </trans-unit>
+            <trans-unit id="fullscreen" xml:space="preserve">
+                <source>Passare alla/uscire dalla modalità tutto schermo</source>
+            </trans-unit>
+            <trans-unit id="zoom" xml:space="preserve">
+                <source>Avvicinare/allontanare</source>
+            </trans-unit>
+            <trans-unit id="prev" xml:space="preserve">
+                <source>Indietro (tasto freccia a sinistra)</source>
+            </trans-unit>
+            <trans-unit id="next" xml:space="preserve">
+                <source>Avanti (tasto freccia a destra)</source>
+            </trans-unit>
+            <trans-unit id="share.facebook" xml:space="preserve">
+                <source>Condividi su Facebook</source>
+            </trans-unit>
+            <trans-unit id="share.twitter" xml:space="preserve">
+                <source>Tweet</source>
+            </trans-unit>
+            <trans-unit id="share.pinterest" xml:space="preserve">
+                <source>Salva su Pinterest</source>
+            </trans-unit>
+            <trans-unit id="share.download" xml:space="preserve">
+                <source>Scarica l'immagine</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

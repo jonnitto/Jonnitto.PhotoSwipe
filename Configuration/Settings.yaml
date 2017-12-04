@@ -1,13 +1,3 @@
-TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        'Jonnitto.PhotoSwipe': true
-    userInterface:
-      translation:
-        autoInclude:
-          'Jonnitto.PhotoSwipe': ['NodeTypes/*']
-
 Jonnitto:
   PhotoSwipe:
     includeJavascript: true
@@ -15,6 +5,9 @@ Jonnitto:
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
     alwaysInclude: false
+    selector:
+      onDocument: false
+      collection: '[instanceof Neos.Neos:ContentCollection]'
     filter: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
     executeJS: true
     history: true
@@ -30,6 +23,22 @@ Jonnitto:
       fullscreen: true
       modal: true
       preloader: true
-      share: true
+      # If you want to turn all share buttons off at once you set it to false: (share: false)
+      share:
+        facebook: true
+        twitter: true
+        pinterest: true
+        download: true
       zoom: true
       zoomEffect: true
+
+TYPO3:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          'Jonnitto.PhotoSwipe':
+            - 'NodeTypes/*'
+    typoScript:
+      autoInclude:
+        'Jonnitto.PhotoSwipe': true

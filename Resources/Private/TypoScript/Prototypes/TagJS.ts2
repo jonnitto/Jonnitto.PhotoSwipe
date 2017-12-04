@@ -1,0 +1,16 @@
+prototype(Jonnitto.PhotoSwipe:TagJS) <  prototype(TYPO3.TypoScript:Tag) {
+    includeJavascript = ${Configuration.setting('Jonnitto.PhotoSwipe.includeJavascript')}
+
+    tagName = 'script'
+    attributes {
+        async = true
+        src = TYPO3.TypoScript:ResourceUri {
+            path = 'resource://Jonnitto.PhotoSwipe/Public/Assets/Main.js'
+        }
+    }
+
+    @if {
+        includeJavascript = ${this.includeJavascript ? true : false}
+        includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
+    }
+}
