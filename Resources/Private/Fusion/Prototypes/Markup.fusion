@@ -5,7 +5,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(Neos.Fusion:Template) {
         share = ${this.settings.show.share}
     }
 
-    templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/FusionObjects/Markup.html'
+    templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/Markup.html'
     attributes = Neos.Fusion:Attributes {
         id = 'pswp'
         class = Neos.Fusion:RawArray {

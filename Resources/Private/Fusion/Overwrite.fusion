@@ -1,12 +1,12 @@
 prototype(Page) {
-  photoswipeHead = Jonnitto.PhotoSwipe:TagCSS {
-    @position = 'before closingHeadTag'
-  }
+    photoswipeHead = Jonnitto.PhotoSwipe:TagCSS {
+        @position = 'before closingHeadTag'
+    }
 
-  photoswipeBody = Neos.Fusion:Array {
-      @position = 'before closingBodyTag'
-      @if.isLive = ${node.context.live}
-      markup = Jonnitto.PhotoSwipe:Markup
-      javascript = Jonnitto.PhotoSwipe:TagJS
-  }
+    photoswipeBody = Neos.Fusion:Array {
+        @position = 'before closingBodyTag'
+        @if.isLive = ${node.context.live}
+        markup = Jonnitto.PhotoSwipe:Markup
+        javascript = Jonnitto.PhotoSwipe:TagJS
+    }
 }
