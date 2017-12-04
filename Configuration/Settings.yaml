@@ -23,6 +23,7 @@ Jonnitto:
       fullscreen: true
       modal: true
       preloader: true
+      # If you want to turn all share buttons off at once you set it to false: (share: false)
       share:
         facebook: true
         twitter: true
