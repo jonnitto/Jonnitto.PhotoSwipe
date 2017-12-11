@@ -1,8 +1,13 @@
-# Jonnitto.PhotoSwipe
-
 [![Latest Stable Version](https://poser.pugx.org/jonnitto/photoswipe/v/stable)](https://packagist.org/packages/jonnitto/photoswipe)
 [![Total Downloads](https://poser.pugx.org/jonnitto/photoswipe/downloads)](https://packagist.org/packages/jonnitto/photoswipe)
 [![License](https://poser.pugx.org/jonnitto/photoswipe/license)](https://packagist.org/packages/jonnitto/photoswipe)
+[![GitHub forks](https://img.shields.io/github/forks/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Fork)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/fork)
+[![GitHub stars](https://img.shields.io/github/stars/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Stars)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Watch)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/subscription)
+[![GitHub followers](https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow)](https://github.com/jonnitto/followers)
+[![Follow Jon on Twitter](https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow)](https://twitter.com/jonnitto)
+
+# Jonnitto.PhotoSwipe
 
 [PhotoSwipe](http://photoswipe.com/) for [Neos CMS](https://www.neos.io)
 
