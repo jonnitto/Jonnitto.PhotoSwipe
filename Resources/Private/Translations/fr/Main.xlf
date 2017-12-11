@@ -15,16 +15,16 @@
                 <source>Zoom +/-</source>
             </trans-unit>
             <trans-unit id="prev" xml:space="preserve">
-                <source>Reculer (flèche à gauche)</source>
+                <source>Précédent (flèche gauche)</source>
             </trans-unit>
             <trans-unit id="next" xml:space="preserve">
-                <source>Avancer (flèche à droite)</source>
+                <source>Suivant (flèche droite)</source>
             </trans-unit>
             <trans-unit id="share.facebook" xml:space="preserve">
                 <source>Partager sur Facebook</source>
             </trans-unit>
             <trans-unit id="share.twitter" xml:space="preserve">
-                <source>Tweeter</source>
+                <source>Partager sur Twitter</source>
             </trans-unit>
             <trans-unit id="share.pinterest" xml:space="preserve">
                 <source>Enregistrer sur Pinterest</source>
