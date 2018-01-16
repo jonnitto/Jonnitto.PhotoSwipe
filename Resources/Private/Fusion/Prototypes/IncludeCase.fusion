@@ -1,23 +1,18 @@
-prototype(Jonnitto.PhotoSwipe:IncludeCase) <  prototype(Neos.Fusion:Case) {
+prototype(Jonnitto.PhotoSwipe:IncludeCase) <  prototype(Neos.Fusion:Value) {
     settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
     @context.settings = ${this.settings}
 
-    @ignoreProperties = ${['settings']}
+    value = Carbon.Condition:Case {
+        context {
+            backend = ${settings.alwaysInclude}
+            live = ${settings.alwaysInclude}
+        }
 
-    alwaysInclude {
-        condition = ${settings.alwaysInclude}
-        renderer = true
-    }
-    onContent {
-        condition = ${q(documentNode).children(settings.selector.collection).find(settings.selector.content).is()}
-        renderer = true
-    }
-    onDocument {
-        condition = ${settings.selector.onDocument && q(documentNode).filter(settings.selector.onDocument).is()}
-        renderer = true
-    }
-    default {
-        condition = true
-        renderer = false
+        content {
+            collection = ${settings.selector.collection}
+            filter = ${settings.selector.content}
+        }
+
+        document.filter = ${settings.selector.onDocument}
     }
 }
