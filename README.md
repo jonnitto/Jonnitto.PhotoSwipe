@@ -11,10 +11,10 @@
 
 [PhotoSwipe](http://photoswipe.com/) for [Neos CMS](https://www.neos.io)
 
-| Version | Neos |
-| ------- | ---- |
-| 0.\*    | 2.\* |
-| 1.\*    | 3.\* |
+| Version | Neos        |
+| ------- | ----------- |
+| 0.\*    | 2.\*        |
+| > 1.4   | 3.\* + 4.\* |
 
 ## Installation
 
