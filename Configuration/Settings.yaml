@@ -9,11 +9,10 @@ Jonnitto:
       onDocument: false
       collection: '[instanceof Neos.Neos:ContentCollection]'
       content: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Carbon.Image:Lightbox][lightbox=true],[instanceof Jonnitto.Picture:Lightbox][lightbox=true],[instanceof Jonnitto.Image:Lightbox][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
-    executeJS: true
-    history: true
-    selector:
       lightbox: .lightbox
       gallery: body
+    executeJS: true
+    history: true
     show:
       topbar: true
       arrows: true
