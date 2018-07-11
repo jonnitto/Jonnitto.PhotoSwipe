@@ -1,7 +1,21 @@
+Carbon:
+  IncludeAssets:
+    Packages:
+      zzz_JonnittoPhotoSwipe:
+        Package: 'Jonnitto.PhotoSwipe'
+        ConditionPrototype: 'Jonnitto.PhotoSwipe:IncludeCase'
+        Path:
+          File:
+            CSS: 'Public'
+            JS: 'Public'
+        Live:
+          # Dark.css and Light.css are included Themes
+          Head:
+            - Dark.css[async]
+            - Main.js[defer]
+
 Jonnitto:
   PhotoSwipe:
-    includeJavascript: true
-    includeCSS: Dark
     preloaderMarkup: '<div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div>'
     bgOpacity: 0.8
     alwaysInclude: false

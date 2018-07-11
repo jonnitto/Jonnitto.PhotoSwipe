@@ -1,18 +1,19 @@
-prototype(Jonnitto.PhotoSwipe:IncludeCase) <  prototype(Neos.Fusion:Value) {
-    settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-    @context.settings = ${this.settings}
+prototype(Jonnitto.PhotoSwipe:IncludeCase) <  prototype(Neos.Fusion:Component) {
+    alwaysInclude = ${Configuration.setting('Jonnitto.PhotoSwipe.alwaysInclude')}
+    selectorCollection = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.collection')}
+    selectorContent = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.content')}
+    selectorOnDocument = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.onDocument')}
 
-    value = Carbon.Condition:Case {
-        context {
-            backend = ${settings.alwaysInclude}
-            live = ${settings.alwaysInclude}
-        }
+    enabled = ${node.content.live}
+
+    renderer = Carbon.Condition:Case {
+        context.live = ${props.alwaysInclude}
 
         content {
-            collection = ${settings.selector.collection}
-            filter = ${settings.selector.content}
+            collection = ${props.selectorCollection}
+            filter = ${props.selectorContent}
         }
 
-        document.filter = ${settings.selector.onDocument}
+        document.filter = ${props.selectorOnDocument}
     }
 }

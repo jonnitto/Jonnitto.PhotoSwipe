@@ -1,12 +1,4 @@
-prototype(Neos.Neos:Page) {
-    photoswipeHead = Jonnitto.PhotoSwipe:TagCSS {
-        @position = 'before closingHeadTag'
-    }
-
-    photoswipeBody = Neos.Fusion:Array {
-        @position = 'before closingBodyTag'
-        @if.isLive = ${node.context.live}
-        markup = Jonnitto.PhotoSwipe:Markup
-        javascript = Jonnitto.PhotoSwipe:TagJS
-    }
+prototype(Neos.Neos:Page).photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
+    @position = 'before closingBodyTag'
+    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }

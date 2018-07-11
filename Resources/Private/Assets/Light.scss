@@ -1,4 +1,3 @@
-$pswp__assets-path: "../Assets/";
 $pswp__background-color: #fff;
 $pswp__placeholder-color: #fff;
 $pswp__template-filemame: light-skin;
@@ -8,7 +7,4 @@ $pswp__caption-color: #333;
 
 @import "main";
 @import "default-skin/default-skin";
-
-.pswp.pswp-no-zoom .pswp__img {
-  cursor: default;
-}
+@import "Addition";

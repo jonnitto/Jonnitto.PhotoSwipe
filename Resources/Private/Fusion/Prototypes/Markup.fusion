@@ -1,39 +1,73 @@
-prototype(Jonnitto.PhotoSwipe:Markup) <  prototype(Neos.Fusion:Template) {
-    settings = ${Configuration.setting('Jonnitto.PhotoSwipe')}
-    @context {
-        settings = ${this.settings}
-        share = ${this.settings.show.share}
-    }
+prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
+    executeJS = ${Configuration.setting('Jonnitto.PhotoSwipe.executeJS')}
 
-    templatePath = 'resource://Jonnitto.PhotoSwipe/Private/Templates/Markup.html'
-    attributes = Neos.Fusion:Attributes {
-        id = 'pswp'
-        class = Neos.Fusion:RawArray {
-            default = 'pswp'
-            zoom = ${settings.show.zoom ? false : 'pswp-no-zoom'}
+    selector = ${Configuration.setting('Jonnitto.PhotoSwipe.selector')}
+    show = ${Configuration.setting('Jonnitto.PhotoSwipe.show')}
+    share = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share')}
+
+    bgOpacity = ${Configuration.setting('Jonnitto.PhotoSwipe.bgOpacity')}
+    history = ${Configuration.setting('Jonnitto.PhotoSwipe.history')}
+    preloaderMarkup = ${Configuration.setting('Jonnitto.PhotoSwipe.preloaderMarkup')}
+
+    renderer = Neos.Fusion:Tag {
+        attributes = Neos.Fusion:Attributes {
+            id = 'pswp'
+            class = Neos.Fusion:RawArray {
+                default = 'pswp'
+                zoom = ${props.show.zoom ? false : 'pswp-no-zoom'}
+            }
+            tabindex = '-1'
+            role = 'dialog'
+            aria-hidden = 'true'
+            data-init = ${props.executeJS ? 'true' : 'false'}
+            data-lightbox = ${props.selector.lightbox == '.lightbox' ? false : props.selector.lightbox}
+            data-gallery = ${props.selector.gallery == 'body' ? false : props.selector.gallery}
+            data-arrows = ${props.show.arrows}
+            data-caption = ${props.show.caption}
+            data-close = ${props.show.close}
+            data-counter = ${props.show.counter}
+            data-effect = ${props.show.zoomEffect}
+            data-fullscreen = ${props.show.fullscreen}
+            data-modal = ${props.show.modal}
+            data-opacity = ${props.bgOpacity ? props.bgOpacity : false}
+            data-preloader = ${props.show.preloader}
+            data-zoom = ${props.show.zoom}
+            data-history = ${props.history}
+            data-share = ${Type.isBoolean(props.share) ? props.share : (props.share.facebook || props.share.twitter || props.share.pinterest || props.share.download)}
+            data-share-facebook = ${(Type.isBoolean(props.share) ? props.share : props.share.facebook) ? Translation.translate('share.facebook', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+            data-share-twitter = ${(Type.isBoolean(props.share) ? props.share : props.share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+            data-share-pinterest = ${(Type.isBoolean(props.share) ? props.share : props.share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+            data-share-download = ${(Type.isBoolean(props.share) ? props.share : props.share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
         }
-        tabindex = '-1'
-        role = 'dialog'
-        aria-hidden = 'true'
-        data-init = ${settings.executeJS ? 'true' : 'false'}
-        data-lightbox = ${settings.selector.lightbox == '.lightbox' ? false : settings.selector.lightbox}
-        data-gallery = ${settings.selector.gallery == 'body' ? false : settings.selector.gallery}
-        data-arrows = ${settings.show.arrows}
-        data-caption = ${settings.show.caption}
-        data-close = ${settings.show.close}
-        data-counter = ${settings.show.counter}
-        data-effect = ${settings.show.zoomEffect}
-        data-fullscreen = ${settings.show.fullscreen}
-        data-modal = ${settings.show.modal}
-        data-opacity = ${settings.bgOpacity ? settings.bgOpacity : false}
-        data-preloader = ${settings.show.preloader}
-        data-zoom = ${settings.show.zoom}
-        data-history = ${settings.history}
-        data-share = ${Type.isBoolean(share) ? share : (share.facebook || share.twitter || share.pinterest || share.download)}
-        data-share-facebook = ${(Type.isBoolean(share) ? share : share.facebook) ? Translation.translate('share.facebook', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-        data-share-twitter = ${(Type.isBoolean(share) ? share : share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-        data-share-pinterest = ${(Type.isBoolean(share) ? share : share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-        data-share-download = ${(Type.isBoolean(share) ? share : share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+        content = afx`
+            <div class='pswp__bg'></div>
+            <div class='pswp__scroll-wrap'>
+                <div class='pswp__container'>
+                    <div class='pswp__item'></div>
+                    <div class='pswp__item'></div>
+                    <div class='pswp__item'></div>
+                </div>
+                <div class='pswp__ui pswp__ui--hidden'>
+                    <div @if.condition={props.show.topbar} class='pswp__top-bar'>
+                        <div @if.condition={props.show.counter} class='pswp__counter' ></div>
+                        <button @if.condition={props.show.close} class='pswp__button pswp__button--close' title={Translation.translate('close', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.share} class='pswp__button pswp__button--share' title={Translation.translate('share', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.fullscreen} class='pswp__button pswp__button--fs' title={Translation.translate('fullscreen', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.zoom} class='pswp__button pswp__button--zoom' title={Translation.translate('zoom', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                        <div @if.condition={props.preloaderMarkup} class='pswp__preloader'>
+                            {props.preloaderMarkup}
+                        </div>
+                    </div>
+                    <div @if.condition={props.share} class='pswp__share-modal pswp__share-modal--hidden pswp__single-tap'>
+                        <div class='pswp__share-tooltip'></div>
+                    </div>
+                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--left' title={Translation.translate('prev', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--right' title={Translation.translate('next', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                    <div @if.condition={props.show.caption} class='pswp__caption'>
+                        <div class='pswp__caption__center'></div>
+                    </div>
+                </div>
+            </div>
+        `
     }
-    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }
