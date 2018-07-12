@@ -23,7 +23,7 @@
         "neos/neos": "~3.3 || ~4.0",
         "neos/fusion-afx": "^1.0",
         "carbon/condition": "^1.1",
-        "carbon/includeassets": "^3.0"
+        "carbon/includeassets": "^3.1"
     },
     "autoload": {
         "psr-4": {
