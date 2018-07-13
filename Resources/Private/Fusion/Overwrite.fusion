@@ -1,4 +1,3 @@
 prototype(Neos.Neos:Page).photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
     @position = 'before closingBodyTag'
-    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 }

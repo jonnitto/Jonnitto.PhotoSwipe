@@ -4,9 +4,8 @@ prototype(Jonnitto.PhotoSwipe:IncludeCase) <  prototype(Neos.Fusion:Component) {
     selectorContent = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.content')}
     selectorOnDocument = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.onDocument')}
 
-    enabled = ${node.content.live}
-
     renderer = Carbon.Condition:Case {
+        enabled = ${node.content.live ? true : false}
         context.live = ${props.alwaysInclude}
 
         content {

@@ -9,6 +9,8 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     history = ${Configuration.setting('Jonnitto.PhotoSwipe.history')}
     preloaderMarkup = ${Configuration.setting('Jonnitto.PhotoSwipe.preloaderMarkup')}
 
+    @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
+
     renderer = Neos.Fusion:Tag {
         attributes = Neos.Fusion:Attributes {
             id = 'pswp'
