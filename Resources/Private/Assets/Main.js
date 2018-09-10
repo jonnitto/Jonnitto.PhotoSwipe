@@ -92,7 +92,7 @@ neosPhotoSwipe.init = function(selector) {
                 false;
 
             if (image) {
-                item.msrc = image.getAttribute("src");
+                item.msrc = image.currentSrc || image.src || image.getAttribute("src");
             }
 
             item.el = element;
