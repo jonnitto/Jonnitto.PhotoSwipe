@@ -83,9 +83,7 @@ neosPhotoSwipe.init = function(selector) {
             }
 
             figcaption = element.parentNode.querySelector("figcaption");
-            figcaption = figcaption
-                ? figcaption.innerText || figcaption.textContent || false
-                : false;
+            figcaption = figcaption ? figcaption.innerHTML || false : false;
             image = element.querySelector("img");
 
             item.title =
