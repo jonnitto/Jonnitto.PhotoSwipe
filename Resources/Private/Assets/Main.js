@@ -82,7 +82,11 @@ neosPhotoSwipe.init = function(selector) {
                 }
             }
 
-            figcaption = element.parentNode.querySelector("figcaption");
+            var figure = closest(element, function(el) {
+                return el.tagName && el.tagName.toLowerCase() === 'figure';
+            });
+
+            figcaption = figure ? figure.querySelector("figcaption") : element.querySelector("figcaption");
             figcaption = figcaption ? figcaption.innerHTML || false : false;
             image = element.querySelector("img");
 
