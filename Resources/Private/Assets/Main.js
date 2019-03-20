@@ -39,6 +39,7 @@ neosPhotoSwipe.init = function(selector) {
         var numNodes = lighboxElements.length;
         var items = [];
         var element;
+        var data;
         var size;
         var item;
         var image;
@@ -46,7 +47,8 @@ neosPhotoSwipe.init = function(selector) {
 
         for (var i = 0; i < numNodes; i++) {
             element = lighboxElements[i];
-            size = element.getAttribute("data-size").split("x");
+            data = element.getAttribute("data-size");
+            size = data && data.length ? data.split("x") : [0, 0];
             item = {
                 src: element.getAttribute("href"),
                 w: parseInt(size[0], 10),
@@ -83,10 +85,12 @@ neosPhotoSwipe.init = function(selector) {
             }
 
             var figure = closest(element, function(el) {
-                return el.tagName && el.tagName.toLowerCase() === 'figure';
+                return el.tagName && el.tagName.toLowerCase() === "figure";
             });
 
-            figcaption = figure ? figure.querySelector("figcaption") : element.querySelector("figcaption");
+            figcaption = figure
+                ? figure.querySelector("figcaption")
+                : element.querySelector("figcaption");
             figcaption = figcaption ? figcaption.innerHTML || false : false;
             image = element.querySelector("img");
 
@@ -96,7 +100,8 @@ neosPhotoSwipe.init = function(selector) {
                 false;
 
             if (image) {
-                item.msrc = image.currentSrc || image.src || image.getAttribute("src");
+                item.msrc =
+                    image.currentSrc || image.src || image.getAttribute("src");
             }
 
             item.el = element;
