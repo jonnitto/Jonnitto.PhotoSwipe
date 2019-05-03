@@ -12,11 +12,3 @@
 
 'Jonnitto.PhotoSwipe:Include':
   abstract: true
-
-'Neos.NodeTypes:TextWithImage':
-  superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': true
-
-'Neos.NodeTypes:Image':
-  superTypes:
-    'Jonnitto.PhotoSwipe:LightboxMixin': true
