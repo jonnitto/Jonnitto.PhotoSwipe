@@ -20,9 +20,9 @@ Jonnitto:
     bgOpacity: 0.8
     alwaysInclude: false
     selector:
-      onDocument: false
+      onDocument: '[instanceof Jonnitto.PhotoSwipe:Include]'
       collection: '[instanceof Neos.Neos:ContentCollection]'
-      content: '[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Carbon.Image:Lightbox][lightbox=true],[instanceof Jonnitto.Picture:Lightbox][lightbox=true],[instanceof Jonnitto.Image:Lightbox][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
+      content: '[instanceof Jonnitto.PhotoSwipe:Include],[instanceof Jonnitto.PhotoSwipe:LightboxMixin][lightbox=true],[instanceof Carbon.Image:Lightbox][lightbox=true],[instanceof Jonnitto.Picture:Lightbox][lightbox=true],[instanceof Jonnitto.Image:Lightbox][lightbox=true],[instanceof Jonnitto.NodeTypes:ImageLightboxMixin][lightbox=true]'
       lightbox: .lightbox
       gallery: body
     executeJS: true

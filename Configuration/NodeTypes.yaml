@@ -10,6 +10,9 @@
           group: image
           position: 800
 
+'Jonnitto.PhotoSwipe:Include':
+  abstract: true
+
 'Neos.NodeTypes:TextWithImage':
   superTypes:
     'Jonnitto.PhotoSwipe:LightboxMixin': true
