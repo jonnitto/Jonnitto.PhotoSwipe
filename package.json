@@ -7,11 +7,11 @@
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
   "devDependencies": {
-    "browserify": "16.2.2",
+    "browserify": "16.2.3",
     "cssnano-cli": "latest",
-    "node-sass": "4.9.2",
+    "node-sass": "4.12.0",
     "photoswipe": "https://github.com/jonnitto/PhotoSwipe.git",
-    "uglify-js": "^3.4.4",
+    "uglify-js": "^3.5.10",
     "uglifyify": "5.0.1"
   },
   "scripts": {
