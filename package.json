@@ -6,6 +6,15 @@
     "type": "git",
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not ie <= 10",
+    "not ie_mob <= 10",
+    "not bb <= 10",
+    "not op_mob <= 12.1"
+  ],
   "devDependencies": {
     "browserify": "16.2.3",
     "cssnano-cli": "latest",
