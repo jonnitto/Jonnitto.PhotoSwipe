@@ -37,6 +37,7 @@
             ".gitignore",
             "CODE_OF_CONDUCT.md",
             "package.json",
+            "postcss.config.js",
             "yarn.lock"
         ]
     },

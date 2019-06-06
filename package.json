@@ -16,10 +16,12 @@
     "not op_mob <= 12.1"
   ],
   "devDependencies": {
+    "autoprefixer": "^9.6.0",
     "browserify": "16.2.3",
-    "cssnano-cli": "latest",
+    "cssnano": "^4.1.10",
     "node-sass": "4.12.0",
     "photoswipe": "https://github.com/jonnitto/PhotoSwipe.git",
+    "postcss-cli": "^6.1.2",
     "uglify-js": "^3.6.0",
     "uglifyify": "5.0.1"
   },
@@ -27,8 +29,8 @@
     "build:assets": "rsync -av node_modules/photoswipe/dist/default-skin/* Resources/Public/ --exclude *.css",
     "build:js": "browserify Resources/Private/Assets/Main.js | uglifyjs --mangle --compress > Resources/Public/Main.js",
     "build:rawjs": "browserify Resources/Private/Javascripts/Main.js -o Resources/Public/Main.js",
-    "build:dark": "node-sass  --include-path node_modules/photoswipe/src/css Resources/Private/Assets/Dark.scss  Resources/Public/Dark.css  | cssnano Resources/Public/Dark.css  Resources/Public/Dark.css  --autoprefixer.add true --no-zindex --discardComments.removeAll true",
-    "build:light": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Assets/Light.scss Resources/Public/Light.css | cssnano Resources/Public/Light.css Resources/Public/Light.css --autoprefixer.add true --no-zindex --discardComments.removeAll true",
+    "build:dark": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Assets/Dark.scss Resources/Public/Dark.css | postcss Resources/Public/Dark.css -r",
+    "build:light": "node-sass --include-path node_modules/photoswipe/src/css Resources/Private/Assets/Light.scss Resources/Public/Light.css | postcss Resources/Public/Light.css -r",
     "build:css": "yarn build:dark && yarn build:light",
     "build": "yarn build:assets && yarn build:css && yarn build:js",
     "start": "yarn build"
