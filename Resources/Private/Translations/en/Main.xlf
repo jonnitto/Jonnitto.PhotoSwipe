@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" 
+    xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="Jonnitto.PhotoSwipe" source-language="en" datatype="plaintext">
         <body>
             <trans-unit id="close" xml:space="preserve">
@@ -31,6 +32,9 @@
             </trans-unit>
             <trans-unit id="share.download" xml:space="preserve">
                 <source>Download image</source>
+            </trans-unit>
+            <trans-unit id="indexIndicatorSep" xml:space="preserve">
+                <source> / </source>
             </trans-unit>
         </body>
     </file>

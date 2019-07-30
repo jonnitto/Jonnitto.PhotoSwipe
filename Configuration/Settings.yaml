@@ -36,14 +36,26 @@ Jonnitto:
       fullscreen: true
       modal: true
       preloader: true
+
       # If you want to turn all share buttons off at once you set it to false: (share: false)
       share:
         facebook: true
         twitter: true
         pinterest: true
         download: true
+
       zoom: true
       zoomEffect: true
+
+      # Tap on sliding area should close gallery
+      tapToClose: false
+
+      # Tap should toggle visibility of controls
+      tapToToggleControls: true
+
+      # Mouse click on image should close the gallery,
+      # only when image is smaller than size of the viewport
+      clickToCloseNonZoomable: true
 
 Neos:
   Neos:

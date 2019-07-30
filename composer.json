@@ -38,7 +38,8 @@
             "CODE_OF_CONDUCT.md",
             "package.json",
             "postcss.config.js",
-            "yarn.lock"
+            "yarn.lock",
+            "Gulp.yaml"
         ]
     },
     "extra": {

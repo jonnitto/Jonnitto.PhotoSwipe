@@ -9,6 +9,9 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     history = ${Configuration.setting('Jonnitto.PhotoSwipe.history')}
     preloaderMarkup = ${Configuration.setting('Jonnitto.PhotoSwipe.preloaderMarkup')}
 
+    # Separator for "1 of X" counter
+    indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], null, 'Jonnitto.PhotoSwipe')}
+
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
     renderer = Neos.Fusion:Tag {
@@ -40,6 +43,10 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             data-share-twitter = ${(Type.isBoolean(props.share) ? props.share : props.share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
             data-share-pinterest = ${(Type.isBoolean(props.share) ? props.share : props.share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
             data-share-download = ${(Type.isBoolean(props.share) ? props.share : props.share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+            data-tap-to-close = ${props.show.tapToClose}
+            data-tap-to-toggle-controls = ${props.show.tapToToggleControls}
+            data-click-to-close-non-zoomable = ${props.show.clickToCloseNonZoomable}
+            data-indicator = ${props.indexIndicatorSep}
         }
         content = afx`
             <div class='pswp__bg'></div>
