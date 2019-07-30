@@ -2,8 +2,29 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     executeJS = ${Configuration.setting('Jonnitto.PhotoSwipe.executeJS')}
 
     selector = ${Configuration.setting('Jonnitto.PhotoSwipe.selector')}
-    show = ${Configuration.setting('Jonnitto.PhotoSwipe.show')}
-    share = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share')}
+    show = Neos.Fusion:RawArray {
+        topbar = ${Configuration.setting('Jonnitto.PhotoSwipe.show.topbar')}
+        arrows = ${Configuration.setting('Jonnitto.PhotoSwipe.show.arrows')}
+        caption = ${Configuration.setting('Jonnitto.PhotoSwipe.show.caption')}
+        close = ${Configuration.setting('Jonnitto.PhotoSwipe.show.close')}
+        counter = ${Configuration.setting('Jonnitto.PhotoSwipe.show.counter')}
+        fullscreen = ${Configuration.setting('Jonnitto.PhotoSwipe.show.fullscreen')}
+        modal = ${Configuration.setting('Jonnitto.PhotoSwipe.show.modal')}
+        preloader = ${Configuration.setting('Jonnitto.PhotoSwipe.show.preloader')}
+        zoom = ${Configuration.setting('Jonnitto.PhotoSwipe.show.zoom')}
+        zoomEffect = ${Configuration.setting('Jonnitto.PhotoSwipe.show.zoomEffect')}
+        tapToClose = ${Configuration.setting('Jonnitto.PhotoSwipe.show.tapToClose')}
+        tapToToggleControls = ${Configuration.setting('Jonnitto.PhotoSwipe.show.tapToToggleControls')}
+        clickToCloseNonZoomable = ${Configuration.setting('Jonnitto.PhotoSwipe.show.clickToCloseNonZoomable')}
+    }
+
+    share = Neos.Fusion:RawArray {
+        facebook = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.facebook')}
+        twitter = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.twitter')}
+        pinterest = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.pinterest')}
+        download = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.download')}
+    }
+
 
     bgOpacity = ${Configuration.setting('Jonnitto.PhotoSwipe.bgOpacity')}
     history = ${Configuration.setting('Jonnitto.PhotoSwipe.history')}
