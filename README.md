@@ -2,16 +2,17 @@
 
 # Jonnitto.PhotoSwipe
 
-[PhotoSwipe] for [Neos CMS]
-![Screenshot of PhotoSwipe][screenshot]
+**This package includes [PhotoSwipe] into [Neos CMS]**
 
-| Version  | Neos            |
-| -------- | --------------- |
-| 0.\*     | 2.\*            |
-| > 1.4    | 3.\* + 4.\*     |
-| 2.\*     | 3.3 + 4.\*      |
-| > 3.\*   | 3.3 + 4.\*      |
-| >= 3.1.2 | 3.3, 4.\*, 5.\* |
+| Version  | Neos            | maintained |
+| -------- | --------------- | :--------: |
+| 0.\*     | 2.\*            |     ✗      |
+| > 1.4    | 3.\* + 4.\*     |     ✗      |
+| 2.\*     | 3.3 + 4.\*      |     ✗      |
+| > 3.\*   | 3.3 + 4.\*      |     ✗      |
+| >= 3.1.2 | 3.3, 4.\*, 5.\* |     ✓      |
+
+![Screenshot of PhotoSwipe]
 
 ## Needed Markup
 
@@ -119,6 +120,6 @@ Licensed under MIT, see [LICENSE]
 [stargazers]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/stargazers
 [subscription]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/subscription
 [followers]: https://github.com/jonnitto/followers
-[screenshot]: https://user-images.githubusercontent.com/4510166/74859417-45f9be80-5347-11ea-901c-ad0ea5df07cf.jpg
+[screenshot of photoswipe]: https://user-images.githubusercontent.com/4510166/74859417-45f9be80-5347-11ea-901c-ad0ea5df07cf.jpg
 [license]: LICENSE
 [`settings.yaml`]: Configuration/Settings.yaml
