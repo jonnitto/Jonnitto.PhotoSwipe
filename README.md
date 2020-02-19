@@ -38,8 +38,7 @@ An alternative Markup would be:
     data-width="2560"
     data-height="1200"
     href="path/to/image.jpg"
-    >...</a
->
+    >...</a>
 ```
 
 ### `data-ratio` and `data-ratio-image`
