@@ -1,15 +1,9 @@
-[![Latest Stable Version](https://poser.pugx.org/jonnitto/photoswipe/v/stable)](https://packagist.org/packages/jonnitto/photoswipe)
-[![Total Downloads](https://poser.pugx.org/jonnitto/photoswipe/downloads)](https://packagist.org/packages/jonnitto/photoswipe)
-[![License](https://poser.pugx.org/jonnitto/photoswipe/license)](https://packagist.org/packages/jonnitto/photoswipe)
-[![GitHub forks](https://img.shields.io/github/forks/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Fork)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/fork)
-[![GitHub stars](https://img.shields.io/github/stars/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Stars)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/stargazers)
-[![GitHub watchers](https://img.shields.io/github/watchers/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Watch)](https://github.com/jonnitto/Jonnitto.PhotoSwipe/subscription)
-[![GitHub followers](https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow)](https://github.com/jonnitto/followers)
-[![Follow Jon on Twitter](https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow)](https://twitter.com/jonnitto)
+[![Latest stable version]][packagist] [![Total downloads]][packagist] [![License]][packagist] [![GitHub forks]][fork] [![GitHub stars]][stargazers] [![GitHub watchers]][subscription] [![GitHub followers]][followers] [![Follow Jon on Twitter]][twitter]
 
 # Jonnitto.PhotoSwipe
 
-[PhotoSwipe](http://photoswipe.com/) for [Neos CMS](https://www.neos.io)
+[PhotoSwipe] for [Neos CMS]
+![Screenshot of PhotoSwipe][screenshot]
 
 | Version  | Neos            |
 | -------- | --------------- |
@@ -61,7 +55,7 @@ There are three global variables who get set during the intialisation:
 
 | Path                          | Description                                                                                 |
 | ----------------------------- | ------------------------------------------------------------------------------------------- |
-| `defaults`                    | The default settings for PhotoSwipe (you can adust them in the `Settings.yaml` file)        |
+| `defaults`                    | The default settings for PhotoSwipe (you can adust them in the [`Settings.yaml`] file)      |
 | `pswp`                        | This is a reference to the markup of the lightbox                                           |
 | `dataset`                     | The `dataset` of the `pswp` element                                                         |
 | `open(items, options)`        | With this function you can open a lightbox via javascript                                   |
@@ -85,7 +79,7 @@ There are several events who get fired and you can react on. The events contains
 ## Installation
 
 Most of the time you have to make small adjustments to a package (e.g.
-configuration in `Settings.yaml`). Because of that, it is important to add the
+configuration in [`Settings.yaml`]). Because of that, it is important to add the
 corresponding package to the composer from your theme package. Mostly this is
 the site packages located under `Packages/Sites/`. To install it correctly go to
 your theme package (e.g.`Packages/Sites/Foo.Bar`) and run following command:
@@ -107,4 +101,24 @@ package is now installed correctly.
 
 ## License
 
-Licensed under MIT, see [LICENSE](LICENSE)
+Licensed under MIT, see [LICENSE]
+
+[packagist]: https://packagist.org/packages/jonnitto/photoswipe
+[neos cms]: https://www.neos.io
+[photoswipe]: http://photoswipe.com/
+[latest stable version]: https://poser.pugx.org/jonnitto/photoswipe/v/stable
+[total downloads]: https://poser.pugx.org/jonnitto/photoswipe/downloads
+[license]: https://poser.pugx.org/jonnitto/photoswipe/license
+[github forks]: https://img.shields.io/github/forks/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Fork
+[github stars]: https://img.shields.io/github/stars/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Stars
+[github watchers]: https://img.shields.io/github/watchers/jonnitto/Jonnitto.PhotoSwipe.svg?style=social&label=Watch
+[github followers]: https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow
+[follow jon on twitter]: https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow
+[twitter]: https://twitter.com/jonnitto
+[fork]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/fork
+[stargazers]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/stargazers
+[subscription]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/subscription
+[followers]: https://github.com/jonnitto/followers
+[screenshot]: https://user-images.githubusercontent.com/4510166/74859417-45f9be80-5347-11ea-901c-ad0ea5df07cf.jpg
+[license]: LICENSE
+[`settings.yaml`]: Configuration/Settings.yaml
