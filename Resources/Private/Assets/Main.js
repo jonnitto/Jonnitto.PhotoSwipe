@@ -1,1 +1,1 @@
-import '/PhotoSwipe';
+import './PhotoSwipe';

@@ -1,4 +1,4 @@
-import PhotoSwipe from 'photoswipe';
+import PhotoSwipe from 'photoswipe/dist/photoswipe.js';
 import PhotoSwipeUI from 'photoswipe/dist/photoswipe-ui-default.js';
 
 // Make the variables global
