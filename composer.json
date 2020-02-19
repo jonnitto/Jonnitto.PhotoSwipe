@@ -3,6 +3,7 @@
     "type": "neos-plugin",
     "license": "MIT",
     "description": "PhotoSwipe for Neos CMS",
+    "homepage": "https://github.com/jonnitto/Jonnitto.PhotoSwipe",
     "keywords": [
         "flow",
         "neos",
@@ -28,19 +29,6 @@
         "psr-4": {
             "Jonnitto\\PhotoSwipe\\": "Classes"
         }
-    },
-    "archive": {
-        "exclude": [
-            ".editorconfig",
-            ".gitattributes",
-            ".github",
-            ".gitignore",
-            "CODE_OF_CONDUCT.md",
-            "package.json",
-            "postcss.config.js",
-            "yarn.lock",
-            "Gulp.yaml"
-        ]
     },
     "extra": {
         "marketplace-account": "me@jonnitto.ch",
