@@ -1,6 +1,4 @@
-import getBoolean from './getBoolean';
-import getShare from './getShare';
-import extend from './extend';
+import { getBoolean, getShare, extend } from './helper';
 
 export default function(object) {
     let dataset = object.pswp.dataset;

@@ -1,5 +1,5 @@
 import parseThumbnailElements from './parseThumbnailElements';
-import extend from './extend';
+import { extend } from './helper';
 
 export default function(
     selector,

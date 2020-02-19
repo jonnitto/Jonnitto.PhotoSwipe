@@ -1,5 +1,5 @@
 import { PhotoSwipe, PhotoSwipeUI, instance } from './library';
-import triggerEvent from './triggerEvent';
+import { triggerEvent } from './helper';
 import setDefaults from './setDefaults';
 import onThumbnailsClick from './onThumbnailsClick';
 import parseHash from './parseHash';

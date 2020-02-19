@@ -1,5 +1,4 @@
-import closest from './closest';
-import getTagName from './getTagName';
+import { closest, getTagName } from './helper';
 
 export default function(el, selector) {
     let lighboxElements = el.querySelectorAll(selector.lightbox);

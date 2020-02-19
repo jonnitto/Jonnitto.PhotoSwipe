@@ -1,4 +1,4 @@
-import closest from './closest';
+import { closest } from './helper';
 import openPhotoSwipe from './openPhotoSwipe';
 
 // triggers when user clicks on thumbnail
