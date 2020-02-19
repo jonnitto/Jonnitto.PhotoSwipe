@@ -5,21 +5,19 @@ import openPhotoSwipe from './openPhotoSwipe';
 export default function(element, selector) {
     // find index of clicked item by looping through all child nodes
     // alternatively, you may define index via data- attribute
-    let clickedGallery = closest(element, el =>
-        el.hasAttribute('data-pswp-uid')
-    );
+    const CLICKED_GALLERY = closest(element, el => el.hasAttribute('data-pswp-uid'));
 
-    let childNodes = clickedGallery.querySelectorAll(selector.lightbox);
-    let numChildNodes = childNodes.length;
+    const CHILD_NODES = CLICKED_GALLERY.querySelectorAll(selector.lightbox);
+    let numChildNodes = CHILD_NODES.length;
     let nodeIndex = 0;
     let index;
 
     for (let i = 0; i < numChildNodes; i++) {
-        if (childNodes[i].nodeType !== 1) {
+        if (CHILD_NODES[i].nodeType !== 1) {
             continue;
         }
 
-        if (childNodes[i] === element) {
+        if (CHILD_NODES[i] === element) {
             index = nodeIndex;
             break;
         }
@@ -27,7 +25,7 @@ export default function(element, selector) {
     }
 
     if (index >= 0) {
-        openPhotoSwipe(selector, index, clickedGallery);
+        openPhotoSwipe(selector, index, CLICKED_GALLERY);
     }
     return false;
 }

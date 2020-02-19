@@ -1,15 +1,14 @@
 import parseThumbnailElements from './parseThumbnailElements';
 import { extend } from './helper';
 
-export default function(
-    selector,
-    index,
-    galleryElement,
-    disableAnimation,
-    fromURL,
-    opt
-) {
-    let items = parseThumbnailElements(galleryElement, selector);
+export default async function(selector, index, galleryElement, disableAnimation, fromURL, opt) {
+    let items = await parseThumbnailElements(galleryElement, selector);
+
+    if (!items.length) {
+        console.warn('It seems that there are no photoswipe items on this page');
+        return;
+    }
+
     let options = window.neosPhotoSwipe.defaults;
 
     // define gallery index (for URL)
@@ -27,8 +26,7 @@ export default function(
                 return {};
             }
 
-            let pageYScroll =
-                window.pageYOffset || document.documentElement.scrollTop;
+            let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
             let rect = thumbnail.getBoundingClientRect();
 
             return {

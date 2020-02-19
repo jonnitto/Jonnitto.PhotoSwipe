@@ -11,6 +11,7 @@ if (typeof instance.defaults !== 'object') {
 
 if (typeof instance.pswp !== 'object') {
     instance.pswp = document.getElementById('pswp');
+    instance.dataset = instance.pswp.dataset;
 }
 
 instance.open = function(items, options) {
@@ -20,15 +21,10 @@ instance.open = function(items, options) {
     }
     if (Object.prototype.toString.call(items) == '[object Array]') {
         // Pass data to PhotoSwipe and initialize it
-        instance.gallery = new PhotoSwipe(
-            instance.pswp,
-            PhotoSwipeUI,
-            items,
-            options
-        );
+        instance.gallery = new PhotoSwipe(instance.pswp, PhotoSwipeUI, items, options);
         instance.gallery.init();
     } else {
-        return 'Please define items for neosPhotoSwipe.open';
+        return 'Please define items for neosPhotoSwipe.open(items, options)';
     }
     triggerEvent('neosPhotoSwipe.open.after', { instance, items, options });
 };
@@ -70,13 +66,7 @@ instance.init = function(selector) {
     // Parse URL and open gallery if it contains #&pid=3&gid=1
     const hashData = parseHash();
     if (hashData.pid && hashData.gid) {
-        openPhotoSwipe(
-            selector,
-            hashData.pid,
-            galleryElements[hashData.gid - 1],
-            true,
-            true
-        );
+        openPhotoSwipe(selector, hashData.pid, galleryElements[hashData.gid - 1], true, true);
     }
     triggerEvent('neosPhotoSwipe.init.after', {
         instance,
@@ -89,11 +79,11 @@ instance.init = function(selector) {
 
 instance.initDom = function() {
     triggerEvent('neosPhotoSwipe.initDom.before', { instance });
-    let gallery = instance.pswp.getAttribute('data-gallery') || false;
-    let lightbox = instance.pswp.getAttribute('data-lightbox') || false;
+    const gallery = instance.dataset.gallery || false;
+    const lightbox = instance.dataset.lightbox || false;
     instance.init({
-        gallery: gallery,
-        lightbox: lightbox
+        gallery,
+        lightbox
     });
     triggerEvent('neosPhotoSwipe.initDom.after', {
         instance,
@@ -102,6 +92,6 @@ instance.initDom = function() {
     });
 };
 
-if (instance.pswp.getAttribute('data-init') == 'true') {
+if (instance.dataset.init == 'true') {
     instance.initDom();
 }

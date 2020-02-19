@@ -32,9 +32,7 @@ export default function(object) {
         shareButtons.push({
             id: 'pinterest',
             label: pinterest,
-            url:
-                'http://www.pinterest.com/pin/create/button/' +
-                '?url={{url}}&media={{image_url}}&description={{text}}'
+            url: 'http://www.pinterest.com/pin/create/button/' + '?url={{url}}&media={{image_url}}&description={{text}}'
         });
     }
     if (download) {

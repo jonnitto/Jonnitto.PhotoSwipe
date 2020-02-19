@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime.js';
 import PhotoSwipe from 'photoswipe/dist/photoswipe.js';
 import PhotoSwipeUI from 'photoswipe/dist/photoswipe-ui-default.js';
 
