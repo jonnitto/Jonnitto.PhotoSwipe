@@ -1,5 +1,5 @@
 Name: regenerator-runtime
-Version: 0.13.3
+Version: 0.13.5
 License: MIT
 Private: false
 Description: Runtime for Regenerator-compiled generator and async functions.

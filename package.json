@@ -16,8 +16,8 @@
     "not op_mob <= 12.1"
   ],
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "autoprefixer": "^9.7.4",
@@ -26,12 +26,12 @@
     "postcss-banner": "^3.0.1",
     "postcss-cli": "^7.1.0",
     "postcss-sort-media-queries": "^1.31.21",
-    "regenerator": "^0.14.2",
+    "regenerator": "^0.14.4",
     "rollup": "^1.31.1",
-    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-license": "^0.13.0",
-    "rollup-plugin-terser": "^5.2.0",
-    "sass": "^1.25.0"
+    "rollup-plugin-terser": "^5.3.0",
+    "sass": "^1.26.3"
   },
   "scripts": {
     "build:images": "rsync -av Resources/Private/Images/* Resources/Public/",
