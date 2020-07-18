@@ -1,6 +1,6 @@
 import { closest, getTagName, getImageRatioFromUrl } from './helper';
 
-export default async function(el, selector) {
+export default async function (el, selector) {
     const LIGHBOX_ELEMENTS = el.querySelectorAll(selector.lightbox);
     let items = [];
     for (let i = 0; i < LIGHBOX_ELEMENTS.length; i++) {
@@ -63,7 +63,7 @@ export default async function(el, selector) {
         let title = dataset.title;
         if (!title) {
             // Try to get a title from a figcaption
-            const FIGURE = closest(ELEMENT, el => getTagName(el) === 'figure');
+            const FIGURE = closest(ELEMENT, (el) => getTagName(el) === 'figure');
             const FIGCAPTION = FIGURE ? FIGURE.querySelector('figcaption') : ELEMENT.querySelector('figcaption');
             title = FIGCAPTION ? FIGCAPTION.innerHTML || false : false;
         }
@@ -84,7 +84,7 @@ export default async function(el, selector) {
             h: parseInt(height, 10),
             title: title,
             el: ELEMENT,
-            data: dataset
+            data: dataset,
         };
     }
     return items;

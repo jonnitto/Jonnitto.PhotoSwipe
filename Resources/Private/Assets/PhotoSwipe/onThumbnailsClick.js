@@ -2,10 +2,10 @@ import { closest } from './helper';
 import openPhotoSwipe from './openPhotoSwipe';
 
 // triggers when user clicks on thumbnail
-export default function(element, selector) {
+export default function (element, selector) {
     // find index of clicked item by looping through all child nodes
     // alternatively, you may define index via data- attribute
-    const CLICKED_GALLERY = closest(element, el => el.hasAttribute('data-pswp-uid'));
+    const CLICKED_GALLERY = closest(element, (el) => el.hasAttribute('data-pswp-uid'));
 
     const CHILD_NODES = CLICKED_GALLERY.querySelectorAll(selector.lightbox);
     let numChildNodes = CHILD_NODES.length;

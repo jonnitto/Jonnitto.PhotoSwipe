@@ -1,12 +1,12 @@
 import { getBoolean, getShare, extend } from './helper';
 
-export default function(object) {
+export default function (object) {
     let dataset = object.pswp.dataset;
 
     let settings = {
         opacity: dataset.opacity ? parseFloat(dataset.opacity) : 0.8,
         effect: getBoolean(dataset, 'effect'),
-        zoom: getBoolean(dataset, 'zoom')
+        zoom: getBoolean(dataset, 'zoom'),
     };
     let shareButtons = [];
     let facebook = getShare(dataset, 'facebook');
@@ -18,21 +18,22 @@ export default function(object) {
         shareButtons.push({
             id: 'facebook',
             label: facebook,
-            url: 'https://www.facebook.com/sharer/sharer.php?u={{url}}'
+            url: 'https://www.facebook.com/sharer/sharer.php?u={{url}}',
         });
     }
     if (twitter) {
         shareButtons.push({
             id: 'twitter',
             label: twitter,
-            url: 'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'
+            url: 'https://twitter.com/intent/tweet?text={{text}}&url={{url}}',
         });
     }
     if (pinterest) {
         shareButtons.push({
             id: 'pinterest',
             label: pinterest,
-            url: 'http://www.pinterest.com/pin/create/button/' + '?url={{url}}&media={{image_url}}&description={{text}}'
+            url:
+                'http://www.pinterest.com/pin/create/button/' + '?url={{url}}&media={{image_url}}&description={{text}}',
         });
     }
     if (download) {
@@ -40,7 +41,7 @@ export default function(object) {
             id: 'download',
             label: download,
             url: '{{raw_image_url}}',
-            download: true
+            download: true,
         });
     }
 
@@ -62,13 +63,13 @@ export default function(object) {
         tapToClose: getBoolean(dataset, 'tapToClose'),
         tapToToggleControls: getBoolean(dataset, 'tapToToggleControls'),
         clickToCloseNonZoomable: getBoolean(dataset, 'clickToCloseNonZoomable'),
-        indexIndicatorSep: dataset.indicator
+        indexIndicatorSep: dataset.indicator,
     };
 
     if (!settings.zoom) {
         defaults.zoomEl = false;
         defaults.maxSpreadZoom = 1;
-        defaults.getDoubleTapZoom = function(isMouseClick, item) {
+        defaults.getDoubleTapZoom = function (isMouseClick, item) {
             return item.initialZoomLevel;
         };
     }

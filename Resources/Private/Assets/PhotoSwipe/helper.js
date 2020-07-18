@@ -3,7 +3,7 @@ function closest(element, fn) {
 }
 
 function extend(obj, src) {
-    Object.keys(src).forEach(function(key) {
+    Object.keys(src).forEach(function (key) {
         obj[key] = src[key];
     });
     return obj;
@@ -37,7 +37,7 @@ function triggerEvent(eventName, options) {
 }
 
 function getImageRatioFromUrl(url) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         let image = new Image();
         image.addEventListener('load', () => {
             resolve(image.naturalWidth / image.naturalHeight);

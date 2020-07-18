@@ -14,7 +14,7 @@ if (typeof instance.pswp !== 'object') {
     instance.dataset = instance.pswp.dataset;
 }
 
-instance.open = function(items, options) {
+instance.open = function (items, options) {
     triggerEvent('neosPhotoSwipe.open.before', { instance, items, options });
     if (typeof options === 'undefined') {
         options = instance.defaults;
@@ -29,7 +29,7 @@ instance.open = function(items, options) {
     triggerEvent('neosPhotoSwipe.open.after', { instance, items, options });
 };
 
-instance.init = function(selector) {
+instance.init = function (selector) {
     triggerEvent('neosPhotoSwipe.init.before', { instance, selector });
     if (typeof selector.lightbox !== 'string') {
         selector.lightbox = '.lightbox';
@@ -57,7 +57,7 @@ instance.init = function(selector) {
     let lightbox = document.querySelectorAll(selector.lightbox);
     let lightboxLength = lightbox.length;
     while (lightboxLength--) {
-        lightbox[lightboxLength].addEventListener('click', function(event) {
+        lightbox[lightboxLength].addEventListener('click', function (event) {
             event.preventDefault();
             onThumbnailsClick(this, selector);
         });
@@ -73,22 +73,22 @@ instance.init = function(selector) {
         selector,
         galleryElements,
         lightbox,
-        hashData
+        hashData,
     });
 };
 
-instance.initDom = function() {
+instance.initDom = function () {
     triggerEvent('neosPhotoSwipe.initDom.before', { instance });
     const gallery = instance.dataset.gallery || false;
     const lightbox = instance.dataset.lightbox || false;
     instance.init({
         gallery,
-        lightbox
+        lightbox,
     });
     triggerEvent('neosPhotoSwipe.initDom.after', {
         instance,
         gallery,
-        lightbox
+        lightbox,
     });
 };
 

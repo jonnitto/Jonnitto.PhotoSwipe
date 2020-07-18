@@ -1,7 +1,7 @@
 import parseThumbnailElements from './parseThumbnailElements';
 import { extend } from './helper';
 
-export default async function(selector, index, galleryElement, disableAnimation, fromURL, opt) {
+export default async function (selector, index, galleryElement, disableAnimation, fromURL, opt) {
     let items = await parseThumbnailElements(galleryElement, selector);
 
     if (!items.length) {
@@ -16,7 +16,7 @@ export default async function(selector, index, galleryElement, disableAnimation,
 
     if (options.effect) {
         options.showHideOpacity = false;
-        options.getThumbBoundsFn = function(index) {
+        options.getThumbBoundsFn = function (index) {
             // See Options -> getThumbBoundsFn section of documentation for more info
             let element = items[index].el;
             let thumbnail = element.querySelector('img'); // find thumbnail
@@ -32,7 +32,7 @@ export default async function(selector, index, galleryElement, disableAnimation,
             return {
                 x: rect.left,
                 y: rect.top + pageYScroll,
-                w: rect.width
+                w: rect.width,
             };
         };
     }
@@ -63,7 +63,7 @@ export default async function(selector, index, galleryElement, disableAnimation,
 
     if (disableAnimation) {
         options.showAnimationDuration = 0;
-        setTimeout(function() {
+        setTimeout(function () {
             options.showAnimationDuration = 333;
         }, 333);
     }

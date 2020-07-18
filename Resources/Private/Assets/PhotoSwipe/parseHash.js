@@ -1,5 +1,5 @@
 // parse picture index and gallery index from URL (#&pid=1&gid=2)
-export default function() {
+export default function () {
     let hash = window.location.hash.substring(1);
     let params = {};
 
