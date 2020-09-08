@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -18,27 +18,28 @@ module.exports = {
         resolve(),
         commonjs(),
         babel({
-            exclude: 'node_modules/**'
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
         }),
         terser({
             output: {
-                comments: false
-            }
+                comments: false,
+            },
         }),
         license({
             banner: {
                 content: BANNER_CONTENT,
-                commentStyle: 'ignored'
+                commentStyle: 'ignored',
             },
             thirdParty: {
                 includePrivate: true,
-                output: 'Resources/Public/Main.js.LICENSE'
-            }
-        })
+                output: 'Resources/Public/Main.js.LICENSE',
+            },
+        }),
     ],
     output: {
         sourcemap: true,
         file: 'Resources/Public/Main.js',
-        format: 'iife'
-    }
+        format: 'iife',
+    },
 };
