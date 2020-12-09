@@ -21,7 +21,7 @@
         }
     ],
     "require": {
-        "neos/neos": "^3.3 || ^4.0 || ^5.0",
+        "neos/neos": "^3.3 || ^4.0 || ^5.0 || ^7.0",
         "neos/fusion-afx": "^1.0",
         "carbon/includeassets": "^3.5 || ^4.0 || ^5.0 || dev-master"
     },
