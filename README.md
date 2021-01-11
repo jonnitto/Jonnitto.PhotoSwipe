@@ -5,7 +5,7 @@
 **This package includes [PhotoSwipe] into [Neos CMS]**
 
 | Version  | Neos        | Maintained |
-| -------- | ------------| :--------: |
+| -------- | ----------- | :--------: |
 | 0.\*     | 2.\*        |     ✗      |
 | > 1.4    | 3.\* + 4.\* |     ✗      |
 | 2.\*     | 3.3 + 4.\*  |     ✗      |
@@ -38,12 +38,17 @@ An alternative Markup would be:
     data-width="2560"
     data-height="1200"
     href="path/to/image.jpg"
-    >...</a>
+    >...</a
+>
 ```
 
 ### `data-ratio` and `data-ratio-image`
 
 If it not possible the get the size of the enlarged image (e.g. because the image is set to async), you can pass also `data-ratio` or `data-ratio-image`. Be aware, that this works best if you also pass the `data-width` (for zooming purposes). `data-ratio-image` can be a small version of the image (e.g. 100px wide). If this is given, it tries to get the dimensions and calculate the ratio from the filename. If this is not possible, the image get loaded and the ratio is calculated with `naturalWidth` and `naturalHeight`. After the first time an asnc picture is loaded, Neos replace the path width the filename where the ratio can be calculated without downloading the image.
+
+### `data-href-webp`
+
+If you want to open an image with the webp format you can pass it here (if the browser supports it)
 
 ## Javascript variables
 

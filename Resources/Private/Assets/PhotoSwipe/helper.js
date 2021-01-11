@@ -46,4 +46,12 @@ function getImageRatioFromUrl(url) {
     });
 }
 
-export { closest, extend, getBoolean, getShare, getTagName, getImageRatioFromUrl, triggerEvent };
+const canUseWebP = (() => {
+    let elem = document.createElement('canvas');
+    if (!!(elem.getContext && elem.getContext('2d'))) {
+        return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+    }
+    return false;
+})();
+
+export { closest, extend, getBoolean, getShare, getTagName, getImageRatioFromUrl, triggerEvent, canUseWebP };

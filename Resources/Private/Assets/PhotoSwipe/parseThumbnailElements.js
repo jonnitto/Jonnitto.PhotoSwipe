@@ -1,4 +1,4 @@
-import { closest, getTagName, getImageRatioFromUrl } from './helper';
+import { closest, getTagName, getImageRatioFromUrl, canUseWebP } from './helper';
 
 export default async function (el, selector) {
     const LIGHBOX_ELEMENTS = el.querySelectorAll(selector.lightbox);
@@ -68,6 +68,7 @@ export default async function (el, selector) {
             title = FIGCAPTION ? FIGCAPTION.innerHTML || false : false;
         }
 
+        const webpSrc = canUseWebP ? dataset.hrefWebp : null;
         // PhotoSwipe use these properties:
         // src (path to image)
         // w (image width)
@@ -76,7 +77,7 @@ export default async function (el, selector) {
         // html (custom HTML, optional)
         // title (The caption of the image, optional)
         items[items.length] = {
-            src: ELEMENT.getAttribute('href'),
+            src: webpSrc || ELEMENT.getAttribute('href'),
             msrc: PLACEHOLDER_IMAGE
                 ? PLACEHOLDER_IMAGE.currentSrc || PLACEHOLDER_IMAGE.src || PLACEHOLDER_IMAGE.getAttribute('src')
                 : null,
