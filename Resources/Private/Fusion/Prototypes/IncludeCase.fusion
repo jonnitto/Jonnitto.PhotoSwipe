@@ -8,6 +8,10 @@ prototype(Jonnitto.PhotoSwipe:IncludeCase) < prototype(Neos.Fusion:Component) {
     node = ${documentNode}
 
     renderer = Neos.Fusion:Case {
+        alwaysInclude {
+            condition = ${props.alwaysInclude}
+            renderer = true
+        }
         inBackend {
             condition = ${node.context.inBackend}
             renderer = ${props.includeInBackend}
@@ -22,7 +26,7 @@ prototype(Jonnitto.PhotoSwipe:IncludeCase) < prototype(Neos.Fusion:Component) {
         }
         default {
             condition = true
-            renderer = ${props.alwaysInclude}
+            renderer = false
         }
     }
 }
