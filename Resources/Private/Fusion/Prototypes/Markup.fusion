@@ -31,7 +31,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     preloaderMarkup = ${Configuration.setting('Jonnitto.PhotoSwipe.preloaderMarkup')}
 
     # Separator for "1 of X" counter
-    indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], null, 'Jonnitto.PhotoSwipe')}
+    indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
 
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
@@ -60,10 +60,10 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             data-zoom = ${props.show.zoom}
             data-history = ${props.history}
             data-share = ${Type.isBoolean(props.share) ? props.share : (props.share.facebook || props.share.twitter || props.share.pinterest || props.share.download)}
-            data-share-facebook = ${(Type.isBoolean(props.share) ? props.share : props.share.facebook) ? Translation.translate('share.facebook', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-            data-share-twitter = ${(Type.isBoolean(props.share) ? props.share : props.share.twitter) ? Translation.translate('share.twitter', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-            data-share-pinterest = ${(Type.isBoolean(props.share) ? props.share : props.share.pinterest) ? Translation.translate('share.pinterest', null, [], null, 'Jonnitto.PhotoSwipe') : false}
-            data-share-download = ${(Type.isBoolean(props.share) ? props.share : props.share.download) ? Translation.translate('share.download', null, [], null, 'Jonnitto.PhotoSwipe') : false}
+            data-share-facebook = ${(Type.isBoolean(props.share) ? props.share : props.share.facebook) ? Translation.translate('share.facebook', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
+            data-share-twitter = ${(Type.isBoolean(props.share) ? props.share : props.share.twitter) ? Translation.translate('share.twitter', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
+            data-share-pinterest = ${(Type.isBoolean(props.share) ? props.share : props.share.pinterest) ? Translation.translate('share.pinterest', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
+            data-share-download = ${(Type.isBoolean(props.share) ? props.share : props.share.download) ? Translation.translate('share.download', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
             data-tap-to-close = ${props.show.tapToClose}
             data-tap-to-toggle-controls = ${props.show.tapToToggleControls}
             data-click-to-close-non-zoomable = ${props.show.clickToCloseNonZoomable}
@@ -80,10 +80,10 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
                 <div class='pswp__ui pswp__ui--hidden'>
                     <div @if.condition={props.show.topbar} class='pswp__top-bar'>
                         <div @if.condition={props.show.counter} class='pswp__counter' ></div>
-                        <button @if.condition={props.show.close} class='pswp__button pswp__button--close' title={Translation.translate('close', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.share} class='pswp__button pswp__button--share' title={Translation.translate('share', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.fullscreen} class='pswp__button pswp__button--fs' title={Translation.translate('fullscreen', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.zoom} class='pswp__button pswp__button--zoom' title={Translation.translate('zoom', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.close} class='pswp__button pswp__button--close' title={Translation.translate('close', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.share} class='pswp__button pswp__button--share' title={Translation.translate('share', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.fullscreen} class='pswp__button pswp__button--fs' title={Translation.translate('fullscreen', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
+                        <button @if.condition={props.show.zoom} class='pswp__button pswp__button--zoom' title={Translation.translate('zoom', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
                         <div @if.condition={props.preloaderMarkup} class='pswp__preloader'>
                             {props.preloaderMarkup}
                         </div>
@@ -91,8 +91,8 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
                     <div @if.condition={props.share} class='pswp__share-modal pswp__share-modal--hidden pswp__single-tap'>
                         <div class='pswp__share-tooltip'></div>
                     </div>
-                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--left' title={Translation.translate('prev', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
-                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--right' title={Translation.translate('next', null, [], null, 'Jonnitto.PhotoSwipe')}></button>
+                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--left' title={Translation.translate('prev', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
+                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--right' title={Translation.translate('next', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
                     <div @if.condition={props.show.caption} class='pswp__caption'>
                         <div class='pswp__caption__center'></div>
                     </div>
