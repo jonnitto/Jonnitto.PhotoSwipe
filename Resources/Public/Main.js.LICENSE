@@ -1,9 +1,9 @@
 Name: regenerator-runtime
-Version: 0.13.7
+Version: 0.13.9
 License: MIT
 Private: false
 Description: Runtime for Regenerator-compiled generator and async functions.
-Repository: https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime
+Repository: https://github.com/facebook/regenerator/tree/master/packages/runtime
 Author: Ben Newman <bn@cs.stanford.edu>
 License Copyright:
 ===
