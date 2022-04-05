@@ -2,7 +2,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     executeJS = ${Configuration.setting('Jonnitto.PhotoSwipe.executeJS')}
 
     selector = ${Configuration.setting('Jonnitto.PhotoSwipe.selector')}
-    show = Neos.Fusion:RawArray {
+    show = Neos.Fusion:DataStructure {
         topbar = ${Configuration.setting('Jonnitto.PhotoSwipe.show.topbar')}
         arrows = ${Configuration.setting('Jonnitto.PhotoSwipe.show.arrows')}
         caption = ${Configuration.setting('Jonnitto.PhotoSwipe.show.caption')}
@@ -18,7 +18,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
         clickToCloseNonZoomable = ${Configuration.setting('Jonnitto.PhotoSwipe.show.clickToCloseNonZoomable')}
     }
 
-    share = Neos.Fusion:RawArray {
+    share = Neos.Fusion:DataStructure {
         facebook = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.facebook')}
         twitter = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.twitter')}
         pinterest = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.pinterest')}
@@ -36,9 +36,9 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
     renderer = Neos.Fusion:Tag {
-        attributes = Neos.Fusion:Attributes {
+        attributes = Neos.Fusion:DataStructure {
             id = 'pswp'
-            class = Neos.Fusion:RawArray {
+            class = Neos.Fusion:DataStructure {
                 default = 'pswp'
                 zoom = ${props.show.zoom ? false : 'pswp-no-zoom'}
             }
