@@ -1,7 +1,7 @@
 {
     "name": "jonnitto/photoswipe",
     "type": "neos-plugin",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "description": "PhotoSwipe for Neos CMS",
     "homepage": "https://github.com/jonnitto/Jonnitto.PhotoSwipe",
     "keywords": [

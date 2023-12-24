@@ -1,7 +1,7 @@
 {
   "name": "neosphotoswipe",
   "description": "Dependencies for PhotoSwipe",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
