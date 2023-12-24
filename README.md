@@ -34,11 +34,11 @@ An alternative Markup would be:
 
 ```html
 <a
-    class="lightbox"
-    data-width="2560"
-    data-height="1200"
-    href="path/to/image.jpg"
-    >...</a
+  class="lightbox"
+  data-width="2560"
+  data-height="1200"
+  href="path/to/image.jpg"
+  >...</a
 >
 ```
 

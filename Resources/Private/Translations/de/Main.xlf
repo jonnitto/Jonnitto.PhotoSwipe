@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" 
+<xliff version="1.2"
     xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" product-name="Jonnitto.PhotoSwipe" source-language="de" datatype="plaintext">
         <body>
-            <trans-unit id="close" xml:space="preserve">
-                <source>Schließen (Esc)</source>
+            <trans-unit id="closeTitle" xml:space="preserve">
+                <source>Schließen</source>
             </trans-unit>
-            <trans-unit id="share" xml:space="preserve">
-                <source>Teilen</source>
+            <trans-unit id="zoomTitle" xml:space="preserve">
+                <source>Zoomen</source>
             </trans-unit>
-            <trans-unit id="fullscreen" xml:space="preserve">
-                <source>Vollbildmodus ein-/ausschalten</source>
+            <trans-unit id="arrowPrevTitle" xml:space="preserve">
+                <source>Zurück</source>
             </trans-unit>
-            <trans-unit id="zoom" xml:space="preserve">
-                <source>Rein/Rauszoomen</source>
+            <trans-unit id="arrowNextTitle" xml:space="preserve">
+                <source>Vorwärts</source>
             </trans-unit>
-            <trans-unit id="prev" xml:space="preserve">
-                <source>Zurück (Pfeiltaste links)</source>
-            </trans-unit>
-            <trans-unit id="next" xml:space="preserve">
-                <source>Vorwärts (Pfeiltaste rechts)</source>
-            </trans-unit>
-            <trans-unit id="share.facebook" xml:space="preserve">
-                <source>Auf Facebook teilen</source>
-            </trans-unit>
-            <trans-unit id="share.twitter" xml:space="preserve">
-                <source>Twittern</source>
-            </trans-unit>
-            <trans-unit id="share.pinterest" xml:space="preserve">
-                <source>In Pinterest speichern</source>
-            </trans-unit>
-            <trans-unit id="share.download" xml:space="preserve">
-                <source>Bild downloaden</source>
+            <trans-unit id="errorMsg" xml:space="preserve">
+                <source>Das Bild konnte nicht geladen werden</source>
             </trans-unit>
             <trans-unit id="indexIndicatorSep" xml:space="preserve">
                 <source> / </source>
