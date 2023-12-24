@@ -1,103 +1,42 @@
 prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
-    executeJS = ${Configuration.setting('Jonnitto.PhotoSwipe.executeJS')}
-
-    selector = ${Configuration.setting('Jonnitto.PhotoSwipe.selector')}
-    show = Neos.Fusion:DataStructure {
-        topbar = ${Configuration.setting('Jonnitto.PhotoSwipe.show.topbar')}
-        arrows = ${Configuration.setting('Jonnitto.PhotoSwipe.show.arrows')}
-        caption = ${Configuration.setting('Jonnitto.PhotoSwipe.show.caption')}
-        close = ${Configuration.setting('Jonnitto.PhotoSwipe.show.close')}
-        counter = ${Configuration.setting('Jonnitto.PhotoSwipe.show.counter')}
-        fullscreen = ${Configuration.setting('Jonnitto.PhotoSwipe.show.fullscreen')}
-        modal = ${Configuration.setting('Jonnitto.PhotoSwipe.show.modal')}
-        preloader = ${Configuration.setting('Jonnitto.PhotoSwipe.show.preloader')}
-        zoom = ${Configuration.setting('Jonnitto.PhotoSwipe.show.zoom')}
-        zoomEffect = ${Configuration.setting('Jonnitto.PhotoSwipe.show.zoomEffect')}
-        tapToClose = ${Configuration.setting('Jonnitto.PhotoSwipe.show.tapToClose')}
-        tapToToggleControls = ${Configuration.setting('Jonnitto.PhotoSwipe.show.tapToToggleControls')}
-        clickToCloseNonZoomable = ${Configuration.setting('Jonnitto.PhotoSwipe.show.clickToCloseNonZoomable')}
+    i18n  = Neos.Fusion:DataStructure {
+        closeTitle = ${Translation.translate('closeTitle', 'Close', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        zoomTitle = ${Translation.translate('zoomTitle', 'Zoom', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        arrowPrevTitle = ${Translation.translate('arrowPrevTitle', 'Previous', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        arrowNextTitle = ${Translation.translate('arrowNextTitle', 'Next', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        errorMsg = ${Translation.translate('errorMsg', 'The image cannot be loaded', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
     }
 
-    share = Neos.Fusion:DataStructure {
-        facebook = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.facebook')}
-        twitter = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.twitter')}
-        pinterest = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.pinterest')}
-        download = ${Configuration.setting('Jonnitto.PhotoSwipe.show.share.download')}
-    }
+    # You can pass any option from here:
+    # https://photoswipe.com/options/
+    options = ${Configuration.setting('Jonnitto.PhotoSwipe.options')}
 
 
-    bgOpacity = ${Configuration.setting('Jonnitto.PhotoSwipe.bgOpacity')}
-    history = ${Configuration.setting('Jonnitto.PhotoSwipe.history')}
-    preloaderMarkup = ${Configuration.setting('Jonnitto.PhotoSwipe.preloaderMarkup')}
-
-    # Separator for "1 of X" counter
-    indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
+    useJsModule = ${Configuration.setting('Jonnitto.PhotoSwipe.useJsModule')}
 
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
-    renderer = Neos.Fusion:Tag {
-        attributes = Neos.Fusion:DataStructure {
-            id = 'pswp'
-            class = Neos.Fusion:DataStructure {
-                default = 'pswp'
-                zoom = ${props.show.zoom ? false : 'pswp-no-zoom'}
-            }
-            tabindex = '-1'
-            role = 'dialog'
-            aria-hidden = 'true'
-            data-init = ${props.executeJS ? 'true' : 'false'}
-            data-lightbox = ${props.selector.lightbox == '.lightbox' ? false : props.selector.lightbox}
-            data-gallery = ${props.selector.gallery == 'body' ? false : props.selector.gallery}
-            data-arrows = ${props.show.arrows}
-            data-caption = ${props.show.caption}
-            data-close = ${props.show.close}
-            data-counter = ${props.show.counter}
-            data-effect = ${props.show.zoomEffect}
-            data-fullscreen = ${props.show.fullscreen}
-            data-modal = ${props.show.modal}
-            data-opacity = ${props.bgOpacity ? props.bgOpacity : false}
-            data-preloader = ${props.show.preloader}
-            data-zoom = ${props.show.zoom}
-            data-history = ${props.history}
-            data-share = ${Type.isBoolean(props.share) ? props.share : (props.share.facebook || props.share.twitter || props.share.pinterest || props.share.download)}
-            data-share-facebook = ${(Type.isBoolean(props.share) ? props.share : props.share.facebook) ? Translation.translate('share.facebook', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
-            data-share-twitter = ${(Type.isBoolean(props.share) ? props.share : props.share.twitter) ? Translation.translate('share.twitter', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
-            data-share-pinterest = ${(Type.isBoolean(props.share) ? props.share : props.share.pinterest) ? Translation.translate('share.pinterest', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
-            data-share-download = ${(Type.isBoolean(props.share) ? props.share : props.share.download) ? Translation.translate('share.download', null, [], 'Main', 'Jonnitto.PhotoSwipe') : false}
-            data-tap-to-close = ${props.show.tapToClose}
-            data-tap-to-toggle-controls = ${props.show.tapToToggleControls}
-            data-click-to-close-non-zoomable = ${props.show.clickToCloseNonZoomable}
-            data-indicator = ${props.indexIndicatorSep}
-        }
-        content = afx`
-            <div class='pswp__bg'></div>
-            <div class='pswp__scroll-wrap'>
-                <div class='pswp__container'>
-                    <div class='pswp__item'></div>
-                    <div class='pswp__item'></div>
-                    <div class='pswp__item'></div>
-                </div>
-                <div class='pswp__ui pswp__ui--hidden'>
-                    <div @if.condition={props.show.topbar} class='pswp__top-bar'>
-                        <div @if.condition={props.show.counter} class='pswp__counter' ></div>
-                        <button @if.condition={props.show.close} class='pswp__button pswp__button--close' title={Translation.translate('close', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.share} class='pswp__button pswp__button--share' title={Translation.translate('share', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.fullscreen} class='pswp__button pswp__button--fs' title={Translation.translate('fullscreen', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                        <button @if.condition={props.show.zoom} class='pswp__button pswp__button--zoom' title={Translation.translate('zoom', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                        <div @if.condition={props.preloaderMarkup} class='pswp__preloader'>
-                            {props.preloaderMarkup}
-                        </div>
-                    </div>
-                    <div @if.condition={props.share} class='pswp__share-modal pswp__share-modal--hidden pswp__single-tap'>
-                        <div class='pswp__share-tooltip'></div>
-                    </div>
-                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--left' title={Translation.translate('prev', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                    <button @if.condition={props.show.arrows} class='pswp__button pswp__button--arrow--right' title={Translation.translate('next', null, [], 'Main', 'Jonnitto.PhotoSwipe')}></button>
-                    <div @if.condition={props.show.caption} class='pswp__caption'>
-                        <div class='pswp__caption__center'></div>
-                    </div>
-                </div>
-            </div>
-        `
-    }
+    renderer = afx`
+        <link
+            @key="stylesheet"
+            rel="stylesheet"
+            href={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Styles/Main.css')}
+        />
+        <script
+            @if={!props.useJsModule}
+            @key="script"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Scripts/Main.js')}
+            data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
+            defer
+        ></script>
+        <script
+            @if={props.useJsModule}
+            @key="script"
+            type="module"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Main.js')}
+            data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
+            defer
+        ></script>
+    `
 }

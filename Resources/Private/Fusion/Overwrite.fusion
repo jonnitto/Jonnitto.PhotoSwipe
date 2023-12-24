@@ -1,3 +1,5 @@
-prototype(Neos.Neos:Page).photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
-    @position = 'before closingBodyTag'
+prototype(Neos.Neos:Page) {
+    photoswipeMarkup = Jonnitto.PhotoSwipe:Markup {
+        @position = 'before head'
+    }
 }
