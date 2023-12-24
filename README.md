@@ -25,15 +25,20 @@ And optionally:
 
 - `<img>` thumbnail within the link element that will be displayed before the large image is loaded
 - Optional `data-cropped="true"` attribute if thumbnail is cropped. See also
-[Animating from Cropped Thumbnail](https://photoswipe.com/opening-or-closing-transition#animating-from-cropped-thumbnail).
-PhotoSwipe API supports almost any markup and any data source, [read more about it here](https://photoswipe.com/data-sources#custom-html-markup).
+  [Animating from Cropped Thumbnail](https://photoswipe.com/opening-or-closing-transition#animating-from-cropped-thumbnail).
+  PhotoSwipe API supports almost any markup and any data source, [read more about it here](https://photoswipe.com/data-sources#custom-html-markup).
 
 Example:
 
 ```html
-<a class="lightbox" data-pswp-width="2560" data-pswp-height="1200" href="path/to/image.jpg">...</a>
+<a
+  class="lightbox"
+  data-pswp-width="2560"
+  data-pswp-height="1200"
+  href="path/to/image.jpg"
+  >...</a
+>
 ```
-
 
 ## Javascript variables
 
