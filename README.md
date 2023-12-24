@@ -10,76 +10,38 @@
 | > 1.4    | 3.\* + 4.\* |     ✗      |
 | 2.\*     | 3.3 + 4.\*  |     ✗      |
 | > 3.\*   | 3.3 + 4.\*  |     ✗      |
-| >= 3.1.2 | 3.3 - 7.\*  |     ✓      |
+| >= 3.1.2 | 3.3 - 8.\*  |     ✗      |
+| 4.\*     | 7.3 - 8.\*  |     ✓      |
 
-![Screenshot of PhotoSwipe]
+## Required HTML markup
 
-## Needed Markup
+Each element that matches the selector `a.lightbox` must have such attributes:
 
-In consider to work, a link need to have the class `lightbox` and some `data-` attributes. If an image is inside the link, this image is used for small thumbnail for an faster UI experience.
+- Image URL in `href` or `data-pswp-src` attribute (latter has higher priority).
+- Image width in `data-pswp-width`.
+- Image height in `data-pswp-height`.
 
-### `data-title`
+And optionally:
 
-This attribute is used for the caption in the lightbox. If this is not given, it search inside the link for a `figcaption` and uses this as caption. This is also a great way if you want to have HTML some markup inside your caption.
+- `<img>` thumbnail within the link element that will be displayed before the large image is loaded
+- Optional `data-cropped="true"` attribute if thumbnail is cropped. See also
+[Animating from Cropped Thumbnail](https://photoswipe.com/opening-or-closing-transition#animating-from-cropped-thumbnail).
+PhotoSwipe API supports almost any markup and any data source, [read more about it here](https://photoswipe.com/data-sources#custom-html-markup).
 
-### `data-size`
-
-The size of the image to enlarge, e.g. `2560x1200`. Example:
-
-```html
-<a class="lightbox" data-size="2560x1200" href="path/to/image.jpg">...</a>
-```
-
-An alternative Markup would be:
+Example:
 
 ```html
-<a
-  class="lightbox"
-  data-width="2560"
-  data-height="1200"
-  href="path/to/image.jpg"
-  >...</a
->
+<a class="lightbox" data-pswp-width="2560" data-pswp-height="1200" href="path/to/image.jpg">...</a>
 ```
 
-### `data-ratio` and `data-ratio-image`
-
-If it not possible the get the size of the enlarged image (e.g. because the image is set to async), you can pass also `data-ratio` or `data-ratio-image`. Be aware, that this works best if you also pass the `data-width` (for zooming purposes). `data-ratio-image` can be a small version of the image (e.g. 100px wide). If this is given, it tries to get the dimensions and calculate the ratio from the filename. If this is not possible, the image get loaded and the ratio is calculated with `naturalWidth` and `naturalHeight`. After the first time an asnc picture is loaded, Neos replace the path width the filename where the ratio can be calculated without downloading the image.
-
-### `data-href-webp`
-
-If you want to open an image with the webp format you can pass it here (if the browser supports it)
 
 ## Javascript variables
 
-There are three global variables who get set during the intialisation:
+There is one global variable who get set during the intialisation:
 
-`PhotoSwipe` The prototype from PhotoSwipe  
-`PhotoSwipeUI` The prototype from PhotoSwipeUI  
-`neosPhotoSwipe` This object stores some informations and functions who can help you achive your requirements:
-
-| Path                          | Description                                                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------------- |
-| `defaults`                    | The default settings for PhotoSwipe (you can adust them in the [`Settings.yaml`] file)      |
-| `pswp`                        | This is a reference to the markup of the lightbox                                           |
-| `dataset`                     | The `dataset` of the `pswp` element                                                         |
-| `open(items, options)`        | With this function you can open a lightbox via javascript                                   |
-| `init({ gallery, lightbox })` | With this function you can initalize a new gallery. Normally this get called automatically. |
-| `initDom()`                   | This function calls `init()` if `dataset.init` is set to `true`                             |
-| `gallery`                     | This is a reference to the object created with `new PhotoSwipe()`                           |
-
-## Javascript events
-
-There are several events who get fired and you can react on. The events contains also some data like the instance, etc.
-
-| Event                           | Description                                                                |
-| ------------------------------- | -------------------------------------------------------------------------- |
-| `neosPhotoSwipe.open.before`    | This event is fired before the code from `instance.open` gets exectued.    |
-| `neosPhotoSwipe.open.after`     | This event is fired after the code from `instance.open` was exectued.      |
-| `neosPhotoSwipe.init.before`    | This event is fired before the code from `instance.init` gets exectued.    |
-| `neosPhotoSwipe.init.after`     | This event is fired after the code from `instance.init` was exectued.      |
-| `neosPhotoSwipe.initDom.before` | This event is fired before the code from `instance.initDom` gets exectued. |
-| `neosPhotoSwipe.initDom.after`  | This event is fired after the code from `instance.initDom` was exectued.   |
+`neosPhotoSwipe` This object stores the `lightbox` variable from PhotoSwiper. (The variable who get used to call
+`lightbox.init()`). With this, you can add you own [event listener](https://photoswipe.com/events/) or trigger
+[methods](https://photoswipe.com/methods/).
 
 ## Installation
 
@@ -93,20 +55,10 @@ your theme package (e.g.`Packages/Sites/Foo.Bar`) and run following command:
 composer require jonnitto/photoswipe --no-update
 ```
 
-To install the package under Neos 2.\* you have to enter
-
-```bash
-composer require "jonnitto/photoswipe:^0.2" --no-update
-```
-
 The `--no-update` command prevent the automatic update of the dependencies.
 After the package was added to your theme `composer.json`, go back to the root
 of the Neos installation and run `composer update`. Et voilà! Your desired
 package is now installed correctly.
-
-## License
-
-Licensed under MIT, see [LICENSE]
 
 [packagist]: https://packagist.org/packages/jonnitto/photoswipe
 [neos cms]: https://www.neos.io
@@ -124,6 +76,4 @@ Licensed under MIT, see [LICENSE]
 [stargazers]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/stargazers
 [subscription]: https://github.com/jonnitto/Jonnitto.PhotoSwipe/subscription
 [followers]: https://github.com/jonnitto/followers
-[screenshot of photoswipe]: https://user-images.githubusercontent.com/4510166/74859417-45f9be80-5347-11ea-901c-ad0ea5df07cf.jpg
-[license]: LICENSE
 [`settings.yaml`]: Configuration/Settings.yaml

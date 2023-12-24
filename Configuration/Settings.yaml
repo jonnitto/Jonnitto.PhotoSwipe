@@ -1,7 +1,10 @@
 Jonnitto:
   PhotoSwipe:
     alwaysInclude: false
+
+    # If true, JS files are separated, so you can dynamically load Core only when the user needs it, thus reducing the size of your main bundle.
     useJsModule: true
+
     selector:
       onDocument: '[instanceof Jonnitto.PhotoSwipe:Include]'
       collection: '[instanceof Neos.Neos:ContentCollection]'
