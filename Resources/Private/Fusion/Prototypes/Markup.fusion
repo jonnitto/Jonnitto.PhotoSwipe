@@ -32,7 +32,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
         ></script>
         <script
             @if={props.useJsModule}
-            @key="script"
+            @key="scriptModule"
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Main.js')}
             data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
