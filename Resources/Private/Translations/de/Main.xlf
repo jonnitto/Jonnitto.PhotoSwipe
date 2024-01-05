@@ -18,6 +18,9 @@
             <trans-unit id="errorMsg" xml:space="preserve">
                 <source>Das Bild konnte nicht geladen werden</source>
             </trans-unit>
+            <trans-unit id="errorMsgContent" xml:space="preserve">
+                <source>Der Inhalt konnte nicht geladen werden</source>
+            </trans-unit>
             <trans-unit id="indexIndicatorSep" xml:space="preserve">
                 <source> / </source>
             </trans-unit>
