@@ -52,6 +52,10 @@ function init(options = {}) {
         container?.addEventListener("click", pswpContentEventListener);
     });
 
+    lightbox.on("destroy", () => {
+        dispatchEvent({ type: "fetch", action: "close" });
+    });
+
     lightbox.on("contentLoad", async (event) => {
         const { content } = event;
         let src = content?.data?.src;
@@ -87,10 +91,7 @@ async function fetchUrl(url, fetchLinkAppend) {
     }
     const markup = await response.text();
     url = completeUrl(url);
-    const event = new CustomEvent("neosphotoswipe", {
-        detail: { url, lightbox: url + fetchLinkAppend, type: "fetch" },
-    });
-    document.dispatchEvent(event);
+    dispatchEvent({ url, lightbox: url + fetchLinkAppend, type: "fetch", action: "open" });
     return markup;
 }
 
@@ -128,6 +129,11 @@ function getPswpContainer() {
 
 function toggleLoadingClass(show = true) {
     getPswpContainer()?.classList.toggle("pswp--fetch-loading", show);
+}
+
+function dispatchEvent(detail) {
+    const event = new CustomEvent("neosphotoswipe", { detail });
+    document.dispatchEvent(event);
 }
 
 window.neosPhotoSwipe = window.neosPhotoSwipe || {};
