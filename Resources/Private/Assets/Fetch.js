@@ -87,7 +87,7 @@ async function fetchUrl(url, fetchLinkAppend) {
     }
     const markup = await response.text();
     url = completeUrl(url);
-    const event = new CustomEvent("neosPhotoSwipe", {
+    const event = new CustomEvent("neosphotoswipe", {
         detail: { url, lightbox: url + fetchLinkAppend, type: "fetch" },
     });
     document.dispatchEvent(event);
