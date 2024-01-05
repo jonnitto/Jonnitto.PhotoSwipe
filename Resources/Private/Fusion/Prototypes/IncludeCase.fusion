@@ -1,5 +1,6 @@
 prototype(Jonnitto.PhotoSwipe:IncludeCase) < prototype(Neos.Fusion:Component) {
     alwaysInclude = ${Configuration.setting('Jonnitto.PhotoSwipe.alwaysInclude')}
+    includeFetch = ${Configuration.setting('Jonnitto.PhotoSwipe.includeFetch')}
     selectorCollection = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.collection')}
     selectorContent = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.content')}
     selectorOnDocument = ${Configuration.setting('Jonnitto.PhotoSwipe.selector.onDocument')}
@@ -15,6 +16,10 @@ prototype(Jonnitto.PhotoSwipe:IncludeCase) < prototype(Neos.Fusion:Component) {
         inBackend {
             condition = ${node.context.inBackend}
             renderer = ${props.includeInBackend}
+        }
+        includeFetch {
+            condition = ${props.includeFetch}
+            renderer = true
         }
         onDocument {
             condition = ${props.selectorOnDocument && q(props.node).is(props.selectorOnDocument)}

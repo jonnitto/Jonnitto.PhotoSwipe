@@ -1,5 +1,5 @@
 prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
-    i18n  = Neos.Fusion:DataStructure {
+    i18n = Neos.Fusion:DataStructure {
         closeTitle = ${Translation.translate('closeTitle', 'Close', [], 'Main', 'Jonnitto.PhotoSwipe')}
         zoomTitle = ${Translation.translate('zoomTitle', 'Zoom', [], 'Main', 'Jonnitto.PhotoSwipe')}
         arrowPrevTitle = ${Translation.translate('arrowPrevTitle', 'Previous', [], 'Main', 'Jonnitto.PhotoSwipe')}
@@ -7,13 +7,22 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
         errorMsg = ${Translation.translate('errorMsg', 'The image cannot be loaded', [], 'Main', 'Jonnitto.PhotoSwipe')}
         indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
     }
+    fetchI18n = Neos.Fusion:DataStructure {
+        closeTitle = ${Translation.translate('closeTitle', 'Close', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        zoomTitle = ${Translation.translate('zoomTitle', 'Zoom', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        arrowPrevTitle = ${Translation.translate('arrowPrevTitle', 'Previous', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        arrowNextTitle = ${Translation.translate('arrowNextTitle', 'Next', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        errorMsg = ${Translation.translate('errorMsgContent', 'The content cannot be loaded', [], 'Main', 'Jonnitto.PhotoSwipe')}
+        indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
+    }
 
     # You can pass any option from here:
     # https://photoswipe.com/options/
     options = ${Configuration.setting('Jonnitto.PhotoSwipe.options')}
-
+    fetchOptions = ${Configuration.setting('Jonnitto.PhotoSwipe.fetchOptions')}
 
     useJsModule = ${Configuration.setting('Jonnitto.PhotoSwipe.useJsModule')}
+    includeFetch = ${Configuration.setting('Jonnitto.PhotoSwipe.includeFetch')}
 
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
@@ -36,6 +45,21 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Main.js')}
             data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
+            defer
+        ></script>
+        <script
+            @if={!props.useJsModule && props.includeFetch}
+            @key="fetchScript"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Scripts/Fetch.js')}
+            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat(props.fetchI18n, props.fetchOptions)))}
+            defer
+        ></script>
+        <script
+            @if={props.useJsModule && props.includeFetch}
+            @key="fetchScriptModule"
+            type="module"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Fetch.js')}
+            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat(props.fetchI18n, props.fetchOptions)))}
             defer
         ></script>
     `

@@ -1,1 +1,36 @@
 @import url("photoswipe/src/photoswipe.css");
+
+.pswp--fetch .pswp__zoom-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.jonnitto-photoswipe-content {
+  background: var(--photoswipe-fetch-background, #fff);
+  max-width: var(--photoswipe-fetch-max-width, 900px);
+  max-height: var(--photoswipe-fetch-max-height, 100%);
+  width: var(--photoswipe-fetch-width, 100%) !important;
+  height: var(--photoswipe-fetch-height, auto) !important;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+.pswp--fetch-loading .jonnitto-photoswipe-content {
+  pointer-events: none;
+}
+
+.pswp--show-preloader .pswp__preloader .pswp__icn {
+  opacity: 0.85 !important;
+}
+
+:where(.pswp--show-preloader.pswp--fetch-loading) .jonnitto-photoswipe-content {
+  opacity: 0.5;
+}

@@ -44,7 +44,7 @@ Example:
 
 There is one global variable who get set during the intialisation:
 
-`neosPhotoSwipe` This object stores the `lightbox` variable from PhotoSwiper. (The variable who get used to call
+`neosPhotoSwipe` This object stores the `lightbox` variables from PhotoSwiper. (The variable who get used to call
 `lightbox.init()`). With this, you can add you own [event listener](https://photoswipe.com/events/) or trigger
 [methods](https://photoswipe.com/methods/).
 

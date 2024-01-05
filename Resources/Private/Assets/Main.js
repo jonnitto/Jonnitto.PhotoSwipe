@@ -15,10 +15,10 @@ function init(options = {}) {
     return lightbox;
 }
 
-function triggerEvent(eventName, options = {}) {
-    document.dispatchEvent(new CustomEvent(eventName, { detail: options }));
-}
-
-window.neosPhotoSwipe = init();
+window.neosPhotoSwipe = window.neosPhotoSwipe || {};
+window.neosPhotoSwipe.images = {
+    init,
+    lightbox: init(),
+};
 
 export default init;
