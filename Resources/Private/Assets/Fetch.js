@@ -11,9 +11,6 @@ delete optionsFromNeos.fetchLinkAppend;
 
 let preloaderTimeout = null;
 let pswpContainer = null;
-
-let pswpContent = null;
-
 let currentContent = null;
 
 function init(options = {}) {
