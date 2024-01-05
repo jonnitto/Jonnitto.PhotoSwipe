@@ -7,14 +7,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
         errorMsg = ${Translation.translate('errorMsg', 'The image cannot be loaded', [], 'Main', 'Jonnitto.PhotoSwipe')}
         indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
     }
-    fetchI18n = Neos.Fusion:DataStructure {
-        closeTitle = ${Translation.translate('closeTitle', 'Close', [], 'Main', 'Jonnitto.PhotoSwipe')}
-        zoomTitle = ${Translation.translate('zoomTitle', 'Zoom', [], 'Main', 'Jonnitto.PhotoSwipe')}
-        arrowPrevTitle = ${Translation.translate('arrowPrevTitle', 'Previous', [], 'Main', 'Jonnitto.PhotoSwipe')}
-        arrowNextTitle = ${Translation.translate('arrowNextTitle', 'Next', [], 'Main', 'Jonnitto.PhotoSwipe')}
-        errorMsg = ${Translation.translate('errorMsgContent', 'The content cannot be loaded', [], 'Main', 'Jonnitto.PhotoSwipe')}
-        indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
-    }
+    fetchErrorMessage = ${Translation.translate('errorMsgFetch', 'The content cannot be loaded. <a href="%s" data-pswp-type="fetch" data-turbo="false">Try again</a>', [], 'Main', 'Jonnitto.PhotoSwipe')}
 
     # You can pass any option from here:
     # https://photoswipe.com/options/
@@ -36,7 +29,8 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             @if={!props.useJsModule}
             @key="script"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Scripts/Main.js')}
-            data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
+            data-photoswipe-options={Json.stringify(Array.filter(props.options))}
+            data-photoswipe-i18n={Json.stringify(Array.filter(props.i18n))}
             defer
         ></script>
         <script
@@ -44,14 +38,15 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             @key="scriptModule"
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Main.js')}
-            data-photoswipe-options={Json.stringify(Array.filter(Array.concat(props.i18n, props.options)))}
+            data-photoswipe-options={Json.stringify(Array.filter(props.options))}
+            data-photoswipe-i18n={Json.stringify(Array.filter(props.i18n))}
             defer
         ></script>
         <script
             @if={!props.useJsModule && props.includeFetch}
             @key="fetchScript"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Scripts/Fetch.js')}
-            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat(props.fetchI18n, props.fetchOptions)))}
+            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.fetchErrorMessage} props.fetchOptions)))}
             defer
         ></script>
         <script
@@ -59,7 +54,7 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             @key="fetchScriptModule"
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Fetch.js')}
-            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat(props.fetchI18n, props.fetchOptions)))}
+            data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.fetchErrorMessage}, props.fetchOptions)))}
             defer
         ></script>
     `

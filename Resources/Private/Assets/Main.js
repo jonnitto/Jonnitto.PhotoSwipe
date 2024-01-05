@@ -1,8 +1,10 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 
-const optionsFromNeos = JSON.parse(
+const i18n = JSON.parse(document.querySelector("[data-photoswipe-i18n]")?.dataset?.photoswipeI18n || "{}");
+let optionsFromNeos = JSON.parse(
     document.querySelector("[data-photoswipe-options]")?.dataset?.photoswipeOptions || "{}",
 );
+optionsFromNeos = { ...i18n, ...optionsFromNeos };
 
 function init(options = {}) {
     options = { ...optionsFromNeos, ...options };

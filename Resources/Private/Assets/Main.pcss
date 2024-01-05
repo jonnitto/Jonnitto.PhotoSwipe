@@ -23,14 +23,20 @@
   overflow: auto;
 }
 
+.jonnitto-photoswipe-content__error {
+  padding: 2rem;
+  margin: auto;
+  width: max-content;
+}
+
+.jonnitto-photoswipe-content__error a {
+  text-decoration: underline;
+}
+
+.jonnitto-photoswipe-content__error :is(a:hover, a:focus) {
+  text-decoration: none;
+}
+
 .pswp--fetch-loading .jonnitto-photoswipe-content {
   pointer-events: none;
-}
-
-.pswp--show-preloader .pswp__preloader .pswp__icn {
-  opacity: 0.85 !important;
-}
-
-:where(.pswp--show-preloader.pswp--fetch-loading) .jonnitto-photoswipe-content {
-  opacity: 0.5;
 }
