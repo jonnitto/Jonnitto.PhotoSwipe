@@ -1,4 +1,5 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
+import { getPswpContainer, dispatchEvent, createElement } from "./Helper";
 
 const i18n = JSON.parse(document.querySelector("[data-photoswipe-i18n]")?.dataset?.photoswipeI18n || "{}");
 let optionsFromNeos = JSON.parse(
@@ -8,10 +9,9 @@ optionsFromNeos = { ...i18n, ...optionsFromNeos };
 
 const wrappingClass = optionsFromNeos.wrappingClass || "jonnitto-photoswipe-content";
 const fetchLinkAppend = optionsFromNeos.fetchLinkAppend || "";
-delete optionsFromNeos.contentSelector;
+delete optionsFromNeos.wrappingClass;
 delete optionsFromNeos.fetchLinkAppend;
 
-let pswpContainer = null;
 let currentContent = null;
 
 function init(options = {}) {
@@ -110,30 +110,13 @@ async function fetchElement(url) {
         return `<p class="jonnitto-photoswipe-content__error">${message}</p>`;
     });
 
-    const template = document.createElement("template");
-    template.innerHTML = markup;
-    const element = document.createElement("div");
-    element.classList.add(wrappingClass);
-    element.append(...template.content.children);
+    const element = createElement(markup, wrappingClass);
     toggleLoadingClass(false);
     return element;
 }
 
-function getPswpContainer() {
-    if (pswpContainer) {
-        return pswpContainer;
-    }
-    pswpContainer = document.querySelector(".pswp");
-    return pswpContainer;
-}
-
 function toggleLoadingClass(show = true) {
     getPswpContainer()?.classList.toggle("pswp--fetch-loading", show);
-}
-
-function dispatchEvent(detail) {
-    const event = new CustomEvent("neosphotoswipe", { detail });
-    document.dispatchEvent(event);
 }
 
 window.neosPhotoSwipe = window.neosPhotoSwipe || {};

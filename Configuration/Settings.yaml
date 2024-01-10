@@ -3,6 +3,7 @@ Jonnitto:
     alwaysInclude: false
 
     includeFetch: false
+    includeTemplate: false
 
     # If true, JS files are separated, so you can dynamically load Core only when the user needs it, thus reducing the size of your main bundle.
     useJsModule: true
@@ -22,6 +23,11 @@ Jonnitto:
       gallery: '[data-pswp-type="fetch"]'
       wrappingClass: 'jonnitto-photoswipe-content'
       fetchLinkAppend: '.lightbox'
+
+    templateOptions:
+      children: '[data-pswp-type="template"]'
+      gallery: body
+      wrappingClass: 'jonnitto-photoswipe-content'
 
 Neos:
   Neos:

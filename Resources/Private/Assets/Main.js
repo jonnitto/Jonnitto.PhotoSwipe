@@ -1,4 +1,5 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
+import { dispatchEvent } from "./Helper";
 
 const i18n = JSON.parse(document.querySelector("[data-photoswipe-i18n]")?.dataset?.photoswipeI18n || "{}");
 let optionsFromNeos = JSON.parse(
@@ -12,6 +13,12 @@ function init(options = {}) {
         gallery: document.body,
         pswpModule: () => import("photoswipe"),
         ...options,
+    });
+    lightbox.on("contentLoadImage", ({ content, isLazy }) => {
+        dispatchEvent({ type: "image", action: "open", content, isLazy });
+    });
+    lightbox.on("destroy", () => {
+        dispatchEvent({ type: "image", action: "close" });
     });
     lightbox.init();
     return lightbox;

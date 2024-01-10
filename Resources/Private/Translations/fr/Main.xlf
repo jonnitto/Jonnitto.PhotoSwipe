@@ -21,6 +21,9 @@
             <trans-unit id="errorMsgFetch" xml:space="preserve">
                 <source><![CDATA[Le contenu ne peut pas être chargé. <a href="%s" data-pswp-type="fetch" data-turbo="false">Réessayer</a>]]></source>
             </trans-unit>
+            <trans-unit id="errorMsgContent" xml:space="preserve">
+                <source>Le contenu ne peut pas être chargé.</source>
+            </trans-unit>
             <trans-unit id="indexIndicatorSep" xml:space="preserve">
                 <source> / </source>
             </trans-unit>

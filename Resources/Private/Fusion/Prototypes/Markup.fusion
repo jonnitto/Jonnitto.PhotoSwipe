@@ -8,14 +8,17 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
         indexIndicatorSep = ${Translation.translate('indexIndicatorSep', ' / ', [], 'Main', 'Jonnitto.PhotoSwipe')}
     }
     fetchErrorMessage = ${Translation.translate('errorMsgFetch', 'The content cannot be loaded. <a href="%s" data-pswp-type="fetch" data-turbo="false">Try again</a>', [], 'Main', 'Jonnitto.PhotoSwipe')}
+    contentErrorMessage = ${Translation.translate('errorMsgContent', 'The content cannot be loaded.', [], 'Main', 'Jonnitto.PhotoSwipe')}
 
     # You can pass any option from here:
     # https://photoswipe.com/options/
     options = ${Configuration.setting('Jonnitto.PhotoSwipe.options')}
     fetchOptions = ${Configuration.setting('Jonnitto.PhotoSwipe.fetchOptions')}
+    templateOptions = ${Configuration.setting('Jonnitto.PhotoSwipe.templateOptions')}
 
     useJsModule = ${Configuration.setting('Jonnitto.PhotoSwipe.useJsModule')}
     includeFetch = ${Configuration.setting('Jonnitto.PhotoSwipe.includeFetch')}
+    includeTemplate = ${Configuration.setting('Jonnitto.PhotoSwipe.includeTemplate')}
 
     @if.includeLightbox = Jonnitto.PhotoSwipe:IncludeCase
 
@@ -55,6 +58,21 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Fetch.js')}
             data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.fetchErrorMessage}, props.fetchOptions)))}
+            defer
+        ></script>
+        <script
+            @if={!props.useJsModule && props.includeTemplate}
+            @key="templateScript"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Scripts/Template.js')}
+            data-photoswipe-template-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.contentErrorMessage} props.templateOptions)))}
+            defer
+        ></script>
+        <script
+            @if={props.useJsModule && props.includeTemplate}
+            @key="templateScriptModule"
+            type="module"
+            src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Template.js')}
+            data-photoswipe-template-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.contentErrorMessage}, props.templateOptions)))}
             defer
         ></script>
     `

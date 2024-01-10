@@ -1,6 +1,6 @@
 @import url("photoswipe/src/photoswipe.css");
 
-.pswp--fetch .pswp__zoom-wrap {
+:is(.pswp--fetch, .pswp--template) .pswp__zoom-wrap {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -10,11 +10,11 @@
 }
 
 .jonnitto-photoswipe-content {
-  background: var(--photoswipe-fetch-background, #fff);
-  max-width: var(--photoswipe-fetch-max-width, 900px);
-  max-height: var(--photoswipe-fetch-max-height, 100%);
-  width: var(--photoswipe-fetch-width, 100%) !important;
-  height: var(--photoswipe-fetch-height, auto) !important;
+  background: var(--photoswipe-content-background, #fff);
+  max-width: var(--photoswipe-content-max-width, 900px);
+  max-height: var(--photoswipe-content-max-height, 100%);
+  width: var(--photoswipe-content-width, 100%) !important;
+  height: var(--photoswipe-content-height, auto) !important;
   pointer-events: auto;
   position: absolute;
   top: 50%;
