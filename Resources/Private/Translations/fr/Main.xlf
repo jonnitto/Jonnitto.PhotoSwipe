@@ -19,7 +19,7 @@
                 <source>L'image ne peut pas être chargée</source>
             </trans-unit>
             <trans-unit id="errorMsgFetch" xml:space="preserve">
-                <source><![CDATA[Le contenu ne peut pas être chargé. <a href="%s" data-pswp-type="fetch" data-turbo="false">Réessayer</a>]]></source>
+                <source><![CDATA[Le contenu ne peut pas être chargé. <a href="%s" {0}>Réessayer</a>]]></source>
             </trans-unit>
             <trans-unit id="errorMsgContent" xml:space="preserve">
                 <source>Le contenu ne peut pas être chargé.</source>

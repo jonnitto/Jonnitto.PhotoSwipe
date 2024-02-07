@@ -1,11 +1,7 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import { dispatchEvent } from "./Helper";
+import { dispatchEvent, getDataOptions, setPswpContainerAttributes } from "./Helper";
 
-const i18n = JSON.parse(document.querySelector("[data-photoswipe-i18n]")?.dataset?.photoswipeI18n || "{}");
-let optionsFromNeos = JSON.parse(
-    document.querySelector("[data-photoswipe-options]")?.dataset?.photoswipeOptions || "{}",
-);
-optionsFromNeos = { ...i18n, ...optionsFromNeos };
+const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions("photoswipeOptions") };
 
 function init(options = {}) {
     options = { ...optionsFromNeos, ...options };
@@ -14,6 +10,7 @@ function init(options = {}) {
         pswpModule: () => import("photoswipe"),
         ...options,
     });
+    lightbox.on("firstUpdate", setPswpContainerAttributes);
     lightbox.on("contentLoadImage", ({ content, isLazy }) => {
         dispatchEvent({ type: "image", action: "open", content, isLazy });
     });

@@ -1,11 +1,7 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import { getPswpContainer, dispatchEvent, createElement } from "./Helper";
+import { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes } from "./Helper";
 
-const i18n = JSON.parse(document.querySelector("[data-photoswipe-i18n]")?.dataset?.photoswipeI18n || "{}");
-let optionsFromNeos = JSON.parse(
-    document.querySelector("[data-photoswipe-template-options]")?.dataset?.photoswipeTemplateOptions || "{}",
-);
-optionsFromNeos = { ...i18n, ...optionsFromNeos };
+const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions("photoswipeTemplateOptions") };
 
 const wrappingClass = optionsFromNeos.wrappingClass || "jonnitto-photoswipe-content";
 delete optionsFromNeos.wrappingClass;
@@ -34,8 +30,8 @@ function init(options = {}) {
     lightbox.addFilter("preventPointerEvent", () => true);
 
     lightbox.on("firstUpdate", (event) => {
+        setPswpContainerAttributes();
         const container = getPswpContainer();
-        container.setAttribute("data-turbo-temporary", true);
         // This enables default scrolling
         container?.addEventListener(
             "wheel",

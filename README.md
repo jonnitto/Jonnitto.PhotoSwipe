@@ -48,6 +48,28 @@ There is one global variable who get set during the intialisation:
 `lightbox.init()`). With this, you can add you own [event listener](https://photoswipe.com/events/) or trigger
 [methods](https://photoswipe.com/methods/).
 
+## Alter generated markup
+
+### Adding custom attributes to the PhotoSwipe container
+
+You can add custom attributes to the PhotoSwipe container like this:
+
+```yaml
+Jonnitto:
+  PhotoSwipe:
+    additonalPswpContainerAttributes:
+      data-turbo-temporary: true
+      class: 'my-custom-class'
+```
+
+### Adding custom attributes to the link in the error fetch message
+
+```yaml
+Jonnitto:
+  PhotoSwipe:
+    fetchAttributeErrorMessages: 'data-pswp-type="fetch" data-turbo="false"'
+```
+
 ## Installation
 
 Most of the time you have to make small adjustments to a package (e.g.

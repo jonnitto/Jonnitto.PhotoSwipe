@@ -29,6 +29,9 @@ Jonnitto:
       gallery: body
       wrappingClass: 'jonnitto-photoswipe-content'
 
+    fetchAttributeErrorMessages: 'data-pswp-type="fetch"'
+    additonalPswpContainerAttributes: null
+
 Neos:
   Neos:
     userInterface:

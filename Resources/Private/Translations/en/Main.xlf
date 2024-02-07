@@ -19,7 +19,7 @@
                 <source>The image cannot be loaded</source>
             </trans-unit>
             <trans-unit id="errorMsgFetch" xml:space="preserve">
-                <source><![CDATA[The content cannot be loaded. <a href="%s" data-pswp-type="fetch" data-turbo="false">Try again</a>]]></source>
+                <source><![CDATA[The content cannot be loaded. <a href="%s" {0}>Try again</a>]]></source>
             </trans-unit>
             <trans-unit id="errorMsgContent" xml:space="preserve">
                 <source>The content cannot be loaded.</source>

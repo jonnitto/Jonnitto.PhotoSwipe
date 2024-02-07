@@ -1,11 +1,25 @@
-let pswpContainer = null;
+const convertCamelCase = (string) => string.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+const getDataOptions = (dataSetName, fallback = "{}") =>
+    JSON.parse(document.querySelector(`[data-${convertCamelCase(dataSetName)}]`)?.dataset?.[dataSetName] || fallback);
 
-function getPswpContainer() {
-    if (pswpContainer) {
-        return pswpContainer;
+const photoswipeAttributes = getDataOptions("photoswipeAttributes", false);
+const getPswpContainer = () => document.querySelector(".pswp");
+
+function setPswpContainerAttributes() {
+    if (!photoswipeAttributes) {
+        return;
     }
-    pswpContainer = document.querySelector(".pswp");
-    return pswpContainer;
+    const container = getPswpContainer();
+    if (!container) {
+        return;
+    }
+    Object.entries(photoswipeAttributes).forEach(([key, value]) => {
+        if (key === "class") {
+            container.classList.add(...value.split(" "));
+            return;
+        }
+        container.setAttribute(key, value);
+    });
 }
 
 function dispatchEvent(detail) {
@@ -37,4 +51,4 @@ function createElement(markupOrNode, wrappingClass) {
     return element;
 }
 
-export { getPswpContainer, dispatchEvent, createElement };
+export { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes };
