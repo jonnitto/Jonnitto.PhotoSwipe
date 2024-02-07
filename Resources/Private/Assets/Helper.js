@@ -51,4 +51,9 @@ function createElement(markupOrNode, wrappingClass) {
     return element;
 }
 
-export { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes };
+function addEventListener(type, callback) {
+    const listener = ["neos-photoswipe:init", `neos-photoswipe.${type}:init`];
+    listener.forEach((event) => window.addEventListener(event, callback, true));
+}
+
+export { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes, addEventListener };

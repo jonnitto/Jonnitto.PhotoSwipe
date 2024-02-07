@@ -1,5 +1,12 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes } from "./Helper";
+import {
+    getPswpContainer,
+    dispatchEvent,
+    createElement,
+    getDataOptions,
+    setPswpContainerAttributes,
+    addEventListener,
+} from "./Helper";
 
 const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions("photoswipeFetchOptions") };
 
@@ -116,8 +123,14 @@ function toggleLoadingClass(show = true) {
     getPswpContainer()?.classList.toggle("pswp--fetch-loading", show);
 }
 
+const lightbox = init();
+
+addEventListener("fetch", () => {
+    lightbox.init();
+});
+
 window.neosPhotoSwipe = window.neosPhotoSwipe || {};
 window.neosPhotoSwipe.fetch = {
     init,
-    lightbox: init(),
+    lightbox,
 };

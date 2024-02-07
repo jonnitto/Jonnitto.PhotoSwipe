@@ -48,6 +48,18 @@ There is one global variable who get set during the intialisation:
 `lightbox.init()`). With this, you can add you own [event listener](https://photoswipe.com/events/) or trigger
 [methods](https://photoswipe.com/methods/).
 
+## Javascript event listener
+
+If you dispatch the event `neos-photoswipe:init` all type of lightboxes get initialized. Great if you work in AJAX
+enviroments. You can also activate a specific type of lightbox: `neos-photoswipe.images:init`,
+`neos-photoswipe.fetch:init` or `neos-photoswipe.template:init`.
+
+Example:
+
+```js
+window.dispatchEvent(new Event("neos-photoswipe:init"));
+```
+
 ## Alter generated markup
 
 ### Adding custom attributes to the PhotoSwipe container

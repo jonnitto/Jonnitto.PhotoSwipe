@@ -1,5 +1,12 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import { getPswpContainer, dispatchEvent, createElement, getDataOptions, setPswpContainerAttributes } from "./Helper";
+import {
+    getPswpContainer,
+    dispatchEvent,
+    createElement,
+    getDataOptions,
+    setPswpContainerAttributes,
+    addEventListener,
+} from "./Helper";
 
 const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions("photoswipeTemplateOptions") };
 
@@ -63,8 +70,14 @@ function init(options = {}) {
     return lightbox;
 }
 
+const lightbox = init();
+
+addEventListener("template", () => {
+    lightbox.init();
+});
+
 window.neosPhotoSwipe = window.neosPhotoSwipe || {};
 window.neosPhotoSwipe.template = {
     init,
-    lightbox: init(),
+    lightbox,
 };
