@@ -2,12 +2,12 @@ Bundled license information:
 
 photoswipe/dist/photoswipe.esm.js:
   /*!
-    * PhotoSwipe 5.4.3 - https://photoswipe.com
-    * (c) 2023 Dmytro Semenov
+    * PhotoSwipe 5.4.4 - https://photoswipe.com
+    * (c) 2024 Dmytro Semenov
     */
 
 photoswipe/dist/photoswipe-lightbox.esm.js:
   /*!
-    * PhotoSwipe Lightbox 5.4.3 - https://photoswipe.com
-    * (c) 2023 Dmytro Semenov
+    * PhotoSwipe Lightbox 5.4.4 - https://photoswipe.com
+    * (c) 2024 Dmytro Semenov
     */
