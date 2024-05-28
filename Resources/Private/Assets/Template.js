@@ -13,8 +13,6 @@ const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions
 const wrappingClass = optionsFromNeos.wrappingClass || "jonnitto-photoswipe-content";
 delete optionsFromNeos.wrappingClass;
 
-let currentContent = null;
-
 function init(options = {}) {
     options = { ...optionsFromNeos, ...options };
     const lightbox = new PhotoSwipeLightbox({
