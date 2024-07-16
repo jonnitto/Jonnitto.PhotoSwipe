@@ -46,7 +46,6 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             data-photoswipe-options={Json.stringify(Array.filter(props.options))}
             data-photoswipe-attributes={props.additonalPswpContainerAttributes ? Json.stringify(Array.filter(props.additonalPswpContainerAttributes)) : null}
             data-photoswipe-i18n={Json.stringify(Array.filter(props.i18n))}
-            defer
         ></script>
         <script
             @if={!props.useJsModule && props.includeFetch}
@@ -61,7 +60,6 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Fetch.js')}
             data-photoswipe-fetch-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.fetchErrorMessage}, props.fetchOptions)))}
-            defer
         ></script>
         <script
             @if={!props.useJsModule && props.includeTemplate}
@@ -76,7 +74,6 @@ prototype(Jonnitto.PhotoSwipe:Markup) < prototype(Neos.Fusion:Component) {
             type="module"
             src={StaticResource.uri('Jonnitto.PhotoSwipe', 'Public/Modules/Template.js')}
             data-photoswipe-template-options={Json.stringify(Array.filter(Array.concat({errorMsg: props.contentErrorMessage}, props.templateOptions)))}
-            defer
         ></script>
     `
 }
