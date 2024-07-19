@@ -34,7 +34,7 @@ function init(options = {}) {
     lightbox.addFilter("isContentZoomable", () => false);
     lightbox.addFilter("preventPointerEvent", () => true);
 
-    lightbox.on("firstUpdate", (event) => {
+    lightbox.on("firstUpdate", () => {
         setPswpContainerAttributes();
         const container = getPswpContainer();
         // This enables default scrolling
