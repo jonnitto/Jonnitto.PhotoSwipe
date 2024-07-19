@@ -38,7 +38,7 @@ function init(options = {}) {
     lightbox.addFilter("isContentZoomable", () => false);
     lightbox.addFilter("preventPointerEvent", () => true);
 
-    lightbox.on("firstUpdate", (event) => {
+    lightbox.on("firstUpdate", () => {
         setPswpContainerAttributes();
 
         const container = getPswpContainer();
@@ -62,7 +62,8 @@ function init(options = {}) {
 
     lightbox.on("contentLoad", async (event) => {
         const { content } = event;
-        let src = content?.data?.src;
+        const data = content?.data;
+        const src = data?.element?.dataset?.pwspSrc || data?.src;
         if (content.type != "fetch" || !src) {
             return;
         }
@@ -83,7 +84,8 @@ async function pswpContentEventListener(event) {
         return;
     }
     event.preventDefault();
-    const newElement = await fetchElement(target.href);
+    const href = target.dataset.pswpSrc || target.href;
+    const newElement = await fetchElement(href);
     currentContent.replaceWith(newElement);
     currentContent = newElement;
 }
