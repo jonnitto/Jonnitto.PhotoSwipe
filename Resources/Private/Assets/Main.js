@@ -1,4 +1,5 @@
 import PhotoSwipeLightbox from "photoswipe/lightbox";
+import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import { dispatchEvent, getDataOptions, setPswpContainerAttributes, addEventListener } from "./Helper";
 
 const optionsFromNeos = { ...getDataOptions("photoswipeI18n"), ...getDataOptions("photoswipeOptions") };
@@ -10,6 +11,12 @@ function init(options = {}) {
         pswpModule: () => import("photoswipe"),
         ...options,
     });
+    new PhotoSwipeDynamicCaption(lightbox, {
+        type: "auto",
+        captionContent: (slide) =>
+            slide.data.element.closest("figure").querySelector(".pswp-caption-content")?.innerHTML || "",
+    });
+
     lightbox.on("firstUpdate", setPswpContainerAttributes);
     lightbox.on("contentLoadImage", ({ content, isLazy }) => {
         dispatchEvent({ type: "image", action: "open", content, isLazy });

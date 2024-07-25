@@ -1,10 +1,11 @@
 @import url("photoswipe/src/photoswipe.css");
+@import url("photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css");
 
 :is(.pswp--fetch, .pswp--template) .pswp__zoom-wrap {
   position: relative;
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
   width: 100vw;
   height: 100vh;
-  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
   width: 100dvw;
   height: 100dvh;
 }
@@ -39,4 +40,8 @@
 
 .pswp--fetch-loading .jonnitto-photoswipe-content {
   pointer-events: none;
+}
+
+.pswp-caption-content {
+  display: none;
 }
