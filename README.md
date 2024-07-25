@@ -57,7 +57,7 @@ enviroments. You can also activate a specific type of lightbox: `neos-photoswipe
 Example:
 
 ```js
-window.dispatchEvent(new Event("neos-photoswipe:init"));
+window.dispatchEvent(new Event('neos-photoswipe:init'));
 ```
 
 ## Alter generated markup
