@@ -7,18 +7,18 @@
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "cssnano": "^7.0.4",
-    "esbuild": "^0.23.0",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.7",
+    "esbuild": "^0.25.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-prettier": "^5.4.0",
     "photoswipe": "^5.4.4",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
-    "postcss": "^8.4.40",
-    "postcss-cli": "^11.0.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.0",
-    "prettier": "^3.3.3"
+    "prettier": "^3.5.3"
   },
   "scripts": {
     "build:css": "postcss Resources/Private/Assets/*.pcss --no-map --use postcss-import autoprefixer cssnano --ext css --dir Resources/Public/Styles",
