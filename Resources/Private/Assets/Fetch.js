@@ -14,6 +14,8 @@ const wrappingClass = optionsFromNeos.wrappingClass || "jonnitto-photoswipe-cont
 const fetchLinkAppend = optionsFromNeos.fetchLinkAppend || "";
 delete optionsFromNeos.wrappingClass;
 delete optionsFromNeos.fetchLinkAppend;
+const body = document.body;
+const disableScrollClass = "jonnitto-photoswipe-disable-scroll";
 
 let currentContent = null;
 
@@ -39,6 +41,7 @@ function init(options = {}) {
     lightbox.addFilter("preventPointerEvent", () => true);
 
     lightbox.on("firstUpdate", () => {
+        body.classList.add(disableScrollClass);
         setPswpContainerAttributes();
 
         const container = getPswpContainer();
@@ -58,6 +61,7 @@ function init(options = {}) {
 
     lightbox.on("destroy", () => {
         dispatchEvent({ type: "fetch", action: "close" });
+        body.classList.remove(disableScrollClass);
     });
 
     lightbox.on("contentLoad", async (event) => {
