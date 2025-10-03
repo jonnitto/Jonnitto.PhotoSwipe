@@ -78,6 +78,11 @@ function init(options = {}) {
         currentContent = content.element;
         content.onLoaded();
     });
+
+    lightbox.on("loadComplete", (event) => {
+        dispatchEvent({ type: "fetch", action: "loadComplete", element: event?.content?.element });
+    });
+
     lightbox.init();
     return lightbox;
 }
