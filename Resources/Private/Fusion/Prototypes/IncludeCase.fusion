@@ -15,7 +15,7 @@ prototype(Jonnitto.PhotoSwipe:IncludeCase) < prototype(Neos.Fusion:Component) {
             renderer = true
         }
         inBackend {
-            condition = ${node.context.inBackend}
+            condition = ${renderingMode.isEdit}
             renderer = ${props.includeInBackend}
         }
         includeTemplate {

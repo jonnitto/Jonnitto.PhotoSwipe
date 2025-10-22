@@ -21,18 +21,11 @@
         }
     ],
     "require": {
-        "neos/neos": "^7.3 || ^8.0",
-        "neos/fusion-afx": "^7.3 || ^8.0"
+        "neos/neos": "^8.4 || ^9.0"
     },
     "autoload": {
         "psr-4": {
             "Jonnitto\\PhotoSwipe\\": "Classes"
-        }
-    },
-    "extra": {
-        "installer-name": "Jonnitto.PhotoSwipe",
-        "neos": {
-            "package-key": "Jonnitto.PhotoSwipe"
         }
     }
 }
