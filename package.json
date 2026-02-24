@@ -7,12 +7,14 @@
     "url": "git://github.com/jonnitto/Jonnitto.PhotoSwipe.git"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "autoprefixer": "^10.4.24",
     "cssnano": "^7.1.2",
     "esbuild": "^0.27.3",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.2",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.3.0",
     "photoswipe": "^5.4.4",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
     "postcss": "^8.5.6",
