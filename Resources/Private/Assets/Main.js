@@ -14,7 +14,7 @@ function init(options = {}) {
     new PhotoSwipeDynamicCaption(lightbox, {
         type: "auto",
         captionContent: (slide) =>
-            slide.data.element.closest("figure").querySelector(".pswp-caption-content")?.innerHTML || "",
+            slide.data.element?.closest("figure")?.querySelector(".pswp-caption-content")?.innerHTML || "",
     });
 
     lightbox.on("firstUpdate", setPswpContainerAttributes);
