@@ -17,7 +17,7 @@
     "globals": "^17.4.0",
     "photoswipe": "^5.4.4",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.10",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.1",
     "prettier": "^3.8.1"
