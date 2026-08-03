@@ -1,0 +1,15 @@
+diff --git a/photoswipe-dynamic-caption-plugin.css b/photoswipe-dynamic-caption-plugin.css
+index 768edc4005529639678aec57132e7396c520f9ed..cc52c7e6170a42f973f14ba659b7e77596d2eb98 100644
+--- a/photoswipe-dynamic-caption-plugin.css
++++ b/photoswipe-dynamic-caption-plugin.css
+@@ -7,10 +7,6 @@
+   transition: opacity 120ms linear !important; /* override default */
+ }
+ 
+-.pswp-caption-content {
+-  display: none;
+-}
+-
+ .pswp__dynamic-caption a {
+   color: #fff;
+ }

@@ -1,2 +1,4 @@
 allowBuilds:
   esbuild: true
+patchedDependencies:
+  photoswipe-dynamic-caption-plugin: patches/photoswipe-dynamic-caption-plugin.patch

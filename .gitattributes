@@ -11,5 +11,6 @@
 /eslint.config.mjs export-ignore
 /Makefile export-ignore
 /package.json export-ignore
+/patches export-ignore
 /pnpm-lock.yaml export-ignore
 /pnpm-workspace.yaml export-ignore
